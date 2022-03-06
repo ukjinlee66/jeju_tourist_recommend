@@ -29,8 +29,8 @@ def open_excel():
 def navapi(encText):
     print(type(encText))
     encText = urllib.parse.quote_plus(encText) # 페이지 index도 입력받아서 100~1000까지.
-    client_id = "mpP6QfRjS7xTImd2Ebbl"
-    client_secret = "BQkqTxBoPX"
+    client_id = ""
+    client_secret = ""
     #url = "https://openapi.naver.com/v1/search/blog?display=100&query=" + encText + "&start=" + ind
     url = "https://openapi.naver.com/v1/search/blog?display=100&query=" + encText # json 결과
     # url = "https://openapi.naver.com/v1/search/blog.xml?query=" + encText # xml 결과
