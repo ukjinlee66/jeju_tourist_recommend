@@ -16,7 +16,7 @@ def delete_tag(st):
 ##########################file open ################################
 
 def open_excel():
-    df = pd.read_csv('/Users/youlee/Desktop/jeju_tourist_recommand/Data/tourist.csv', encoding='CP949')
+    df = pd.read_csv('C:/Users/USER/Desktop/jeju_tourist_recommand/Data/tourist.csv', encoding='CP949')
     new_list = []
     for i in df["제목"]:
         new_list.append(i)
@@ -82,7 +82,11 @@ if __name__=="__main__":
     new_list = open_excel()
     for j in new_list:
         print(j,"##########시작##########")
+<<<<<<< HEAD
         if j == '제주불빛정원 테마파크':
+=======
+        if j == '대한민국최남단기념비/ 마라도 기념비':
+>>>>>>> 7c17bc2ee56727772faacd86e83625dca22c39ce
             check1 = True
         if check1 == False:
             continue
@@ -109,6 +113,7 @@ if __name__=="__main__":
             # 100개의 게시글을 요청했는데도 불구하고 100개보다 적을경우 -> 다음페이지가 존재하지않을경우.
             if len(out[cnt].get("items")) < 100:
                 break
-        with open("/Users/youlee/Desktop/jeju_tourist_recommand/Data/"+str(j)+".json", 'w', encoding='utf-8') as make_file:
+            j = j.replace('/','')
+        with open("C:/Users/USER/Desktop/jeju_tourist_recommand/Data/naver/"+str(j)+".json", 'w', encoding='utf-8') as make_file:
                 json.dump(dum_list, make_file, indent="\t", ensure_ascii=False)
         print("############################")
