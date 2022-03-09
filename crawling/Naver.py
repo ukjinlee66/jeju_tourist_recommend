@@ -77,10 +77,15 @@ def craw_contents(url1):
     return new_str
 
 if __name__=="__main__":
+    check1 = False
     #공공데이터의 제목에대한 열(하나의 관광지)만 가지고온다.
     new_list = open_excel()
     for j in new_list:
         print(j,"##########시작##########")
+        if j == '제주불빛정원 테마파크':
+            check1 = True
+        if check1 == False:
+            continue
         # csv 데이터의 한 행을 가져온다. 하나의 제목
         out = []
         cnt = -1
