@@ -44,6 +44,7 @@ for searchKey in tourlist:
     search_bar = driver.find_element_by_xpath(
         '//*[@id="txt_search"]')
 
+    search_bar.clear()
     search_bar.send_keys(searchKey)
     search_bar.send_keys(Keys.RETURN)
 
@@ -52,10 +53,9 @@ for searchKey in tourlist:
     start_page = 1
     brunch = []
 
-    while cnt < 60:
+    while cnt < 57:
         cnt += 1
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(1)
         new_height = driver.execute_script("return document.body.scrollHeight")
         
         if new_height == last_height:
@@ -108,7 +108,6 @@ for searchKey in tourlist:
             except:
                 pass
 
-            time.sleep(1)
             if brunch_content != '':
                 brunch.append({
                     "title": brunch_title,
@@ -126,6 +125,7 @@ for searchKey in tourlist:
         for i in brunch:
             csvWriter.writerow([i["title"], i["postdate"], i["content"], i["source"]])
         f.close()
+        print(f"{searchKey} {cnt}저장완료")
         
         brunch = []
         start_page += 18
