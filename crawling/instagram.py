@@ -1,6 +1,6 @@
 from tkinter import E
 from bs4 import BeautifulSoup
-from urllib.parse import quote_plus as qp # 아스크코드로 변환
+from urllib.parse import quote_plus as qp # 아스키코드로 변환
 import json
 import time
 from datetime import datetime
@@ -13,6 +13,7 @@ user_id = ""
 user_pwd = ""
 driver_path = "./chromedriver"
 save_path = './data/'
+today_date = '20220310'
 
 s = Service('./chromedriver')
 driver = webdriver.Chrome(service=s)
@@ -49,7 +50,7 @@ time.sleep(5)
 # 첫번째 게시물 클릭
 driver.find_element(By.CSS_SELECTOR,'div.v1Nh3.kIKUG._bz0w').click()
 time.sleep(5)
-count=0
+count=1
 while(True):
     insta_data = []
     count+=1
@@ -75,6 +76,15 @@ while(True):
         try:
             # 인스타 날짜
             insta_date = soup.select_one('time._1o9PC')['title']
+            temp = insta_date.split()
+            year = temp[0][:-1]
+            month = temp[1][:-1]
+            if(len(month)==1):
+                month = '0'+month
+            day = temp[2][:-1]
+            if(len(day)==1):
+                day = '0'+day
+            temp_insta_date = year+month+day
         except:
             insta_date=''
             date_error = 'date_Error'
@@ -120,19 +130,20 @@ while(True):
                     "hash_tag":insta_hashtags,
                     "like":insta_like,
                     "url":cur_url}
-        insta_data.append(temp_data)
+        if(temp_insta_date==today_date):
+            insta_data.append(temp_data)
         print(f'{i+1}번째 게시글 크롤링 완료 : ', id_error, geo_error, date_error, img_error, content_error, hastag_error, like_error, datetime.now())
         try:
             driver.find_element(By.CSS_SELECTOR,'div.l8mY4.feth3').click()
         except:
             print(f"크롤링 종료:{datetime.now()}")
-            with open(f'{save_path}instagram{count}.json','w', encoding='utf-8') as f:
+            with open(f'{save_path}instagram_{today_date}_{count}.json','w', encoding='utf-8') as f:
                 json.dump(insta_data, f, indent="\t", ensure_ascii=False)
             # 결과값 저장
             driver.quit()
             quit()
         time.sleep(5)
 
-    with open(f'{save_path}instagram{count}.json','w', encoding='utf-8') as f:
+    with open(f'{save_path}instagram_{today_date}_{count}.json','w', encoding='utf-8') as f:
         json.dump(insta_data, f, indent="\t", ensure_ascii=False)
 # driver.close()
