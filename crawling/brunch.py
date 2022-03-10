@@ -37,7 +37,11 @@ chDict = {'Jan' : '01',
 
 tourlist = open_excel()
 
-for searchKey in tourlist:
+for searchKeyword in tourlist:
+    if searchKeyword[0:2] != '제주':
+        searchKey = f'제주{searchKeyword}'
+    else:
+        searchKey = searchKeyword
     search_box = driver.find_element_by_xpath(
         '//*[@id="btnServiceMenuSearch"]')
     search_box.click()
@@ -52,6 +56,7 @@ for searchKey in tourlist:
     cnt = 0
     start_page = 1
     brunch = []
+    lastContent = ''
 
     while cnt < 57:
         cnt += 1
@@ -61,7 +66,7 @@ for searchKey in tourlist:
         if new_height == last_height:
             break
         last_height = new_height
-        print(f"{searchKey} brunch-{start_page} ~ {start_page+18}")
+        print(f"{searchKey} {searchKeyword} brunch-{start_page} ~ {start_page+18}")
         for page in range(start_page, start_page+18):  
             try:
                 acting_point = driver.find_element_by_xpath(
@@ -104,23 +109,23 @@ for searchKey in tourlist:
                 brunch_date += chDict[split_brunch_date[0]]
                 brunch_date = re.sub('\.', '', brunch_date)
                 brunch_date = re.sub('\w+\s(\d+)\s(\d+)', '\\2\\1', brunch_date)
-                
             except:
                 pass
 
-            if brunch_content != '':
+            if brunch_content != '' and lastContent != brunch_content:
                 brunch.append({
                     "title": brunch_title,
                     "postdate": brunch_date,
                     "content": brunch_content,
-                    "source": searchKey
+                    "source": searchKeyword
                 })
+                lastContent = brunch_content
                 
             driver.close()
             driver.switch_to.window(driver.window_handles[0])
             driver.get_window_position(driver.window_handles[0])
 
-        f = open("brunch_crawling.csv", "a", encoding="UTF-8", newline='')
+        f = open("brunch_jeju.csv", "a", encoding="UTF-8", newline='')
         csvWriter = csv.writer(f)
         for i in brunch:
             csvWriter.writerow([i["title"], i["postdate"], i["content"], i["source"]])
