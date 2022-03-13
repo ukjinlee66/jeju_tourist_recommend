@@ -10,5 +10,5 @@ public class RealKeyword {
 	 * ???
 	 */
 	
-	List<String> keywords;	// 단어들??
+	String keyword;
 }

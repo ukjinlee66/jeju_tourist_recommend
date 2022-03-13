@@ -5,11 +5,12 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class MatchRes {
+public class RecoRes {
 	/*
 	 *  ???
 	 */
 	
-	String touristName;		// match된 관광지 이름
-	List<String> keywords;	//
+	List<String> keywords;	// 
 }
+
+
