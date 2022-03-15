@@ -7,10 +7,10 @@ import lombok.Data;
 @Data
 public class RecoRes {
 	/*
-	 *  ???
+	 *	추천 결과 받아오는 객체
 	 */
 	
-	List<String> keywords;	// 
+	private List<String> resultList;
 }
 
 
