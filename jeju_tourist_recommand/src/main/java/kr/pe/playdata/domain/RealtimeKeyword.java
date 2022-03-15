@@ -7,13 +7,12 @@ import org.springframework.data.annotation.Id;
 import lombok.Data;
 
 @Data
-public class SearchRank {
+public class RealtimeKeyword {
 	/*
-	 * 		검색어 순위
+	 * 	실시간 검색어 키워드
 	 */
 	
-	@Id
+	@Id	
 	private String id;
-	private String searchName;
-	private int cnt;
+	private String keyword;
 }

@@ -13,13 +13,13 @@ public class TouristAttraction {
 	 */
 	
 	@Id
-	String id;				// id
-	String touristName;		// 관광지 이름
-	String touristInfo;		// visisJeju contents
-	String contentsClass;	// 관광지 업태명
-	String addr;			// 관광지 주소
-	String roadAddr;		// 관광지 도로명 주소
-	String imageName;		// 관광지 이미지 이름
-	float latitude;			// 위도
-	float longtitude;		// 경도
+	private String id;				// id
+	private String touristName;		// 관광지 이름
+	private String touristInfo;		// visisJeju contents
+	private String contentsClass;	// 관광지 업태명
+	private String addr;			// 관광지 주소
+	private String roadAddr;		// 관광지 도로명 주소
+	private String imageName;		// 관광지 이미지 이름
+	private float latitude;			// 위도
+	private float longtitude;		// 경도
 }

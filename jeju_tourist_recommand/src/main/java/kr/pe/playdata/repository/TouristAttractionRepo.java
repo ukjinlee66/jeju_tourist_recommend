@@ -10,5 +10,5 @@ import kr.pe.playdata.domain.TouristAttraction;
 @Repository
 public interface TouristAttractionRepo extends MongoRepository<TouristAttraction, String>{
 	public List<TouristAttraction> findByTouristName(String touristName);
-	List<TouristAttraction> findAll();
+	public List<TouristAttraction> findAll();
 }

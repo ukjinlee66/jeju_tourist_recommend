@@ -11,7 +11,7 @@ public class SentiRes {
 	 */
 	
 	@Id
-	String id;          // id
-	boolean sentiment; // 긍정,부정을 나타냄
-	String keyword;		// 키워드
+	private String id;          // id
+	private boolean sentiment;  // 긍정,부정을 나타냄
+	private String keyword;		// 키워드
 }
