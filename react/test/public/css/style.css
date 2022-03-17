@@ -1,9 +1,13 @@
 /********** Template CSS **********/
 :root {
-    --primary: #00B074;
+    --primary: #f89b00;
     --secondary: #2B9BFF;
     --light: #EFFDF5;
     --dark: #2B3940;
+}
+
+.main-text {
+    color: var(--primary);
 }
 
 .back-to-top {
@@ -13,6 +17,29 @@
     bottom: 45px;
     z-index: 99;
 }
+
+img {
+    width: 300px;
+    height: 150px;
+    object-fit: cover;
+}
+
+div .detail-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+div .list-p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 95px;
+}
+
+.bg-jeju {
+    background-color: var(--primary);
+}
+
 
 
 /*** Spinner ***/
@@ -37,8 +64,8 @@
     transition: .5s;
 }
 
-.btn.btn-primary,
-.btn.btn-secondary {
+.btn-primary,
+.btn-secondary {
     color: #FFFFFF;
 }
 
@@ -66,6 +93,8 @@
     justify-content: center;
     font-weight: normal;
     border-radius: 2px;
+    background-color: var(--primary);
+    
 }
 
 
@@ -362,6 +391,7 @@
 
 .footer .form-control {
     border-color: rgba(255,255,255,0.5);
+
 }
 
 .footer .copyright {
