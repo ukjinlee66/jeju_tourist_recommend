@@ -8,6 +8,6 @@ import kr.pe.playdata.domain.testModel;
 
 import java.util.List;
 
-public interface testService {
+public interface TestService {
     public List<testModel> find();
 }
