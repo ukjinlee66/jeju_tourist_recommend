@@ -8,6 +8,7 @@ class JejuTouristRecommandApplicationTests {
 
 	@Test
 	void contextLoads() {
+		
 	}
 
 }
