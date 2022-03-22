@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/test")
-public class HelloController {
+public class TestController {
 	
 	@Autowired
 	private TestService service;
@@ -20,7 +20,7 @@ public class HelloController {
 	@GetMapping("/hello")
 	public List<testModel> hello() {
 		System.out.println("here is controller");
-		List<testModel> li = service.find();
+		List<testModel> li = service.findAll();
 		return li;
 	}
 }

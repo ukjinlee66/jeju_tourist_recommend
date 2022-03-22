@@ -9,6 +9,5 @@ import kr.pe.playdata.domain.visitJeju;
 
 @Repository
 public interface TouristAttractionRepo extends MongoRepository<visitJeju, String>{
-	public List<visitJeju> findByTouristName(String touristName);
 	public List<visitJeju> findAll();
 }

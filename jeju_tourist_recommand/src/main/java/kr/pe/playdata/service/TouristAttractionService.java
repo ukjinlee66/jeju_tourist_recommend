@@ -5,5 +5,5 @@ import kr.pe.playdata.domain.visitJeju;
 import java.util.List;
 
 public interface TouristAttractionService {
-    public List<visitJeju> find();
+    public List<visitJeju> findAll();
 }

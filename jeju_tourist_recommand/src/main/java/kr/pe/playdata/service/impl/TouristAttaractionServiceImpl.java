@@ -14,7 +14,7 @@ public class TouristAttaractionServiceImpl implements TouristAttractionService {
     @Autowired
     private TouristAttractionRepo touristRepo;
 
-    public List<visitJeju> find(){
+    public List<visitJeju> findAll(){
         return touristRepo.findAll();
     }
 }

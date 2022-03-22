@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import kr.pe.playdata.domain.testModel;
 
 
-
 @Repository
 public interface TestModelRepository extends MongoRepository<testModel, String> {
 	public List<testModel> findAll();

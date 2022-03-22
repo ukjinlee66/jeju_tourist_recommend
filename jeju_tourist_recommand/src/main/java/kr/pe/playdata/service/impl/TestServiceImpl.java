@@ -14,7 +14,7 @@ public class TestServiceImpl implements TestService {
 	@Autowired
 	private TestModelRepository testModelRepo;
 	
-	public List<testModel> find(){
+	public List<testModel> findAll(){
 		return testModelRepo.findAll();
 	}
 }
