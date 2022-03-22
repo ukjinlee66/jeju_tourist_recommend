@@ -11,6 +11,6 @@ import kr.pe.playdata.domain.testModel;
 
 
 @Repository
-public interface testModelRepository extends MongoRepository<testModel, String> {
+public interface TestModelRepository extends MongoRepository<testModel, String> {
 	public List<testModel> findAll();
 }
