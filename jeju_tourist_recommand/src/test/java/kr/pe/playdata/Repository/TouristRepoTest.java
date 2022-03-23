@@ -20,4 +20,9 @@ public class TouristRepoTest {
         List<testModel> res = repo.findAll();
         assertThat(res.size()).isEqualTo(2);
     }
+
+//    @Test
+//    public void search(){
+//
+//    }
 }
