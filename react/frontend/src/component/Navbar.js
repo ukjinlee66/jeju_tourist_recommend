@@ -16,9 +16,9 @@ function Navbar(props) {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                     <div className="navbar-nav ms-auto p-4 p-lg-0">
-                        <a href="index.html" className="nav-item nav-link active">Home</a>
-                        <a href="TouristAttractionList.html" className="nav-item nav-link">List</a>
-                        <a href="TouristAttractionInfo.html" className="nav-item nav-link">Info</a>
+                        <a href="/" className="nav-item nav-link active">Home</a>
+                        <a href="/#/TouristAttractionList" className="nav-item nav-link">List</a>
+                        <a href="/#/TouristAttractionInfo" className="nav-item nav-link">Info</a>
                     </div>
                     <a href="" className="btn btn-primary bg-jeju-nav rounded-0 py-4 px-lg-5 d-none d-lg-block">Post A Job<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>

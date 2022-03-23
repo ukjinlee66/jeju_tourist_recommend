@@ -5,7 +5,7 @@ import './css/style.css';
 
 function Search(props) {
     function btClick(e) {
-        window.location.href = "/TouristAttractionList"
+        window.location.href = "/#/TouristAttractionList"
     }
     return (
         <div class="container-fluid-search bg-jeju mb-5 wow fadeIn" data-wow-delay="0.1s" >
