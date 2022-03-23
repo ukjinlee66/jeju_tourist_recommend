@@ -31,4 +31,9 @@ public class TouristController {
     public Optional<visitJeju> lookUp(@RequestParam String id){
         return service.findById(id);
     }
+
+    @GetMapping("/search")
+    public List<visitJeju> search(@RequestParam String tour){
+        return service.findByTourLike(tour);
+    }
 }

@@ -22,7 +22,6 @@ public class TestController {
 
 	@GetMapping("/hello")
 	public List<testModel> hello() {
-		System.out.println("here is controller");
 		List<testModel> li = service.findAll();
 		return li;
 	}
