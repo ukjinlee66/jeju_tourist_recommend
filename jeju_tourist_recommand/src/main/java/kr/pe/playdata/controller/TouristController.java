@@ -1,8 +1,6 @@
 package kr.pe.playdata.controller;
 
-import kr.pe.playdata.domain.testModel;
 import kr.pe.playdata.domain.visitJeju;
-import kr.pe.playdata.service.TestService;
 import kr.pe.playdata.service.TouristAttractionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
