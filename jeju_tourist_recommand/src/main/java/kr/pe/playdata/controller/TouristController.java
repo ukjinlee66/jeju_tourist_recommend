@@ -41,4 +41,9 @@ public class TouristController {
     public List<visitJeju> searchByCertainColumn(@RequestParam String search){
         return service.search(search);
     }
+
+    @GetMapping("/random")          // id로 관광지 검색
+    public List<visitJeju> random(){
+        return service.randomTour();
+    }
 }
