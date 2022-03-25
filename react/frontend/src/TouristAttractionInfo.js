@@ -3,11 +3,10 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import './component/css/bootstrap.min.css';
 import './component/css/style.css';
-import Search from './component/Search';
-import MainImg from './component/MainImg';
 import Scrolltop from './component/Scrolltop';
 import Footer from './component/Footer';
 import Tourinfoitem from './component/Tourinfoitem';
+import NaverBlog from './component/NaverBlog';
 
 function TouristAttractionInfo(props) {
     return (
@@ -16,7 +15,10 @@ function TouristAttractionInfo(props) {
             <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="container">
                     <div class="row g-5 ">
-                        <Tourinfoitem/>
+                        <div class="col-lg-6">
+                            <Tourinfoitem/>
+                            <NaverBlog/>
+                        </div>
                     </div>
                 </div>
             </div>
