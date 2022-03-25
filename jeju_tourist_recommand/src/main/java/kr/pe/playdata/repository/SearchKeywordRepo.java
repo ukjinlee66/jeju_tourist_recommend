@@ -1,5 +1,6 @@
 package kr.pe.playdata.repository;
 
+import kr.pe.playdata.domain.InstaRank;
 import kr.pe.playdata.domain.SearchRank;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.repository.MongoRepository;
