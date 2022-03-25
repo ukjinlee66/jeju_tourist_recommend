@@ -17,8 +17,6 @@ public class KeywordRankController {
     @Autowired
     private KeywordRankService service;
 
-//    @GetMapping("/insta")
-
     @GetMapping("/searchKeyword")
     public List<SearchRank> getTopFiveSearchKeywords(){
         return service.getTopFiveSearchKeywords();
@@ -28,6 +26,4 @@ public class KeywordRankController {
     public List<InstaRank> getTopFiveInstaKeywords(){
         return service.getTopFiveInstaKeywords();
     }
-
-
 }
