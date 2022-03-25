@@ -1,11 +1,29 @@
-import React from 'react';
+import React, {Fragment, useEffect, useState}from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './css/bootstrap.min.css';
 import './css/style.css';
+import axios from "axios";
 
 function Tourinfoitem(props) {
+
+    // 상세 페이지 출력 관광지 정보 
+    const [tourSpot, setTourSpot] = useState()
+
+    const reqUrl = '';
+
+    // 한글깨지는 현상 방지위해 decodeURI사용(관광지명)
+    let getValue = decodeURI(window.location.search.split('=')[1]);
+
+    // 처음 렌더링시 한번 실행되는 함수
+    useEffect(async () => {
+        console.log(getValue);
+        const params = {searchValue: {getValue}};
+        const response = await axios.get(reqUrl, {params});
+        setTourSpot(response.data)
+    }, [])
+
     return (
-        <div class="col-lg-6">
+        <Fragment>
             <div class="d-flex align-items-center">
                 <div class="text-left h3">관광지 명</div>
             </div>
@@ -22,19 +40,7 @@ function Tourinfoitem(props) {
                 <p class="h4">상세정보</p>
                 <p>가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 </p>
             </div>
-            <hr/>
-            <div class="d-flex align-items-center">
-                <div class="text-left h3 mb-3">네이버블로그</div>
-            </div>
-            <div class="mb-3">
-                <p class="h5">블로그1</p>
-                <p>가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 </p>
-            </div>
-            <div class="mb-3">
-                <p class="h5">블로그2</p>
-                <p>가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사 </p>
-            </div>
-        </div>
+        </Fragment>
     );
 }
 

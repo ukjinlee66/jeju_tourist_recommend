@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './css/bootstrap.min.css';
 import './css/style.css';
 
-function Search(props) {
+function MainSearch(props) {
+    const [searchInput, setSearchInput] = useState("")
+
     function btClick(e) {
-        window.location.href = "/#/TouristAttractionList"
+        window.location.href = "/jeju/TouristAttractionList?search=" + searchInput;
     }
+
+    const onKeyPress = (e) => {
+        if(e.key=='Enter'){
+            btClick();
+        }
+    }
+
     return (
         <div class="container-fluid-search bg-jeju mb-5 wow fadeIn" data-wow-delay="0.1s" >
             <div class="container">
@@ -14,7 +23,7 @@ function Search(props) {
                     <div class="col-md-10">
                         <div class="row g-2">
                             <div class="col-md-12">
-                                <input type="text" class="form-control border-0" placeholder="Keyword" />
+                                <input type="text" class="form-control border-0" placeholder="Keyword" onChange={(event) => setSearchInput(event.target.value)} onKeyPress={onKeyPress}/>
                             </div>
                         </div>
                     </div>
@@ -27,4 +36,4 @@ function Search(props) {
     );
 }
 
-export default Search;
+export default MainSearch;
