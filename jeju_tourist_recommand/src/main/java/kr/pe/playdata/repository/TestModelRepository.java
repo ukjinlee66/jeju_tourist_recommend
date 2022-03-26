@@ -12,6 +12,10 @@ import kr.pe.playdata.domain.testModel;
 
 @Repository
 public interface TestModelRepository extends MongoRepository<testModel, String>{
+	/*
+	 	테스팅
+	 */
+
 	public List<testModel> findAll();
 	public Optional<testModel> findByColumn1(String s);
 	public List<testModel> findByColumn1Like(String s);

@@ -6,6 +6,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TouristAttractionService {
+    /*
+
+     */
+
+
     public List<visitJeju> findAll();
     public Optional<visitJeju> findById(String id);
     public List<visitJeju> findByTourLike(String tour);

@@ -13,6 +13,10 @@ import java.util.List;
 @Service
 public class KeywordRankService implements kr.pe.playdata.service.KeywordRankService {
 
+    /*
+            키워드 랭킹 서비스
+     */
+
     @Autowired
     private SearchKeywordRepo searchRepo;
 
@@ -20,10 +24,11 @@ public class KeywordRankService implements kr.pe.playdata.service.KeywordRankSer
     private InstaKeywordRepo instaRepo;
 
     public List<SearchRank> getTopFiveSearchKeywords(){
-        return searchRepo.findBy(PageRequest.of(0,5));
+        return searchRepo.findBy(PageRequest.of(0,5));          //상위 5개를 뽑는다.
     }
 
     public List<InstaRank> getTopFiveInstaKeywords(){
-        return instaRepo.findBy(PageRequest.of(1,5));
+        return instaRepo.findBy(PageRequest.of(0,5));           //인스타 상위 5개를 뽑는다.
     }
 }
+

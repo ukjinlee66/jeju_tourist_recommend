@@ -11,6 +11,10 @@ import java.util.List;
 
 @Repository
 public interface InstaKeywordRepo extends MongoRepository<InstaRank, String> {
+    /*
+        인스타 키워드에 대한 레포지토리
+     */
+
     @Query(sort = "{cnt : -1}")
-    public List<InstaRank> findBy(Pageable pageable);
+    public List<InstaRank> findBy(Pageable pageable);       // cnt 많은 기준으로 top n 개를 가져온다.
 }

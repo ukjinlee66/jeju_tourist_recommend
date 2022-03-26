@@ -21,7 +21,7 @@ public class TouristController {
     @Autowired
     private TouristAttractionService service;
 
-    @GetMapping("/findAll")
+    @GetMapping("/findAll")         //
     public List<visitJeju> findAll(){
         return service.findAll();
     }
@@ -31,10 +31,9 @@ public class TouristController {
         return service.findById(id);    // null이 반환되는 경우 에러가 나지 않게 Optional을 사용
     }
 
-
-    @GetMapping("/searchByTourName")    // 요청한 이름과 관련된 관광지 검색
-    public List<visitJeju> searchByTourName(@RequestParam String tour){
-        return service.findByTourLike(tour);    //
+     @GetMapping("/searchByTourName")    // 요청한 이름과 관련된 관광지 검색
+        public List<visitJeju> searchByTourName(@RequestParam String tour){
+            return service.findByTourLike(tour);   //
     }
 
     @GetMapping("/searchByCertainColumn")       // tour, sub_titile, tag_prev, tag_next, purpose,  etc_property, content 기준으로 검색
@@ -42,7 +41,7 @@ public class TouristController {
         return service.search(search);
     }
 
-    @GetMapping("/random")          // id로 관광지 검색
+    @GetMapping("/random")              // id로 관광지 검색
     public List<visitJeju> random(){
         return service.randomTour();
     }
