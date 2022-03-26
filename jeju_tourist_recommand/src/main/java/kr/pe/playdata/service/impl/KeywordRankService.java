@@ -5,6 +5,7 @@ import kr.pe.playdata.domain.SearchRank;
 import kr.pe.playdata.repository.InstaKeywordRepo;
 import kr.pe.playdata.repository.SearchKeywordRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,10 +20,10 @@ public class KeywordRankService implements kr.pe.playdata.service.KeywordRankSer
     private InstaKeywordRepo instaRepo;
 
     public List<SearchRank> getTopFiveSearchKeywords(){
-        return searchRepo.findTop5ByAll();
+        return searchRepo.findBy(PageRequest.of(0,5));
     }
 
     public List<InstaRank> getTopFiveInstaKeywords(){
-        return instaRepo.findTopy5ByAll();
+        return instaRepo.findBy(PageRequest.of(1,5));
     }
 }
