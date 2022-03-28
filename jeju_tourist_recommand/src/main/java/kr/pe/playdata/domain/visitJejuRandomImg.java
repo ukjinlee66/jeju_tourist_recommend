@@ -5,14 +5,13 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Document(collection ="insta")
-public class InstaRank {
+@Document(collection="visitJeju")
+public class visitJejuRandomImg {
     /*
-       인스타 키워드의 순위를 나타내는 VO
+            Random으로 뽑은 img VO
      */
 
     @Id
     private String id;
-    private String keyword;
-//    private int cnt;
+    private String img;             // img url
 }

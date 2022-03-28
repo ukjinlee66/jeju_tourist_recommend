@@ -13,17 +13,20 @@ import java.util.List;
 @RestController
 @RequestMapping("/rank")
 public class KeywordRankController {
+    /*
+        검색, 인스타 키워드 랭킹 컨트롤러
+     */
 
     @Autowired
     private KeywordRankService service;
 
     @GetMapping("/searchKeyword")
     public List<SearchRank> getTopFiveSearchKeywords(){
-        return service.getTopFiveSearchKeywords();
+        return service.getTopFiveSearchKeywords();          // 상위 5개의 검색어를 가져온다.
     }
 
     @GetMapping("/instaKeyword")
     public List<InstaRank> getTopFiveInstaKeywords(){
-        return service.getTopFiveInstaKeywords();
+        return service.getTopFiveInstaKeywords();           // 상위 5개의 인스타 키워드를 가져온다.
     }
 }
