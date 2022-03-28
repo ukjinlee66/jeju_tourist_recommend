@@ -15,5 +15,5 @@ public class SearchRank {
 	@Id
 	private String id;
 	private String searchName;
-	private int cnt;
+//	private int cnt;
 }
