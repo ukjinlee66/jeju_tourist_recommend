@@ -14,5 +14,5 @@ public class InstaRank {
     @Id
     private String id;
     private String keyword;
-    private int cnt;
+//    private int cnt;
 }
