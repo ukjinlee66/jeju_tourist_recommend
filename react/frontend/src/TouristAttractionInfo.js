@@ -7,6 +7,7 @@ import Scrolltop from './component/Scrolltop';
 import Footer from './component/Footer';
 import Tourinfoitem from './component/Tourinfoitem';
 import NaverBlog from './component/NaverBlog';
+import Map from './component/Map';
 
 function TouristAttractionInfo(props) {
     return (
@@ -15,10 +16,11 @@ function TouristAttractionInfo(props) {
             <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="container">
                     <div class="row g-5 ">
-                        <div class="col-lg-6">
+                        <div class="col-lg-5">
                             <Tourinfoitem/>
                             <NaverBlog/>
                         </div>
+                        <Map/>
                     </div>
                 </div>
             </div>

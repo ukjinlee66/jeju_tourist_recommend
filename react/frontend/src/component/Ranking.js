@@ -6,15 +6,21 @@ import axios from "axios";
 
 function Ranking(props) {
     const [rankings, setRankings] = useState([]);
-    const rankingUrl = '/test'
+    const reqUrl = '/test/siterank'
 
-    useEffect(async () => {
-        const response = await axios.get(rankingUrl);
-        setRankings(response.data)
+    const getRanking = async () => {
+        await axios
+            .get(reqUrl)
+            .then((res) => setRankings(res.data));
+    }
+
+    useEffect(() => {
+        getRanking()
     }, [])
 
     const oursiteRender = () => {
         const result = [];
+        console.log(rankings);
         for (let i = 0; i < rankings.length; i++) {
             result.push(
                 <div class="row g-4 mb-4 p-4">

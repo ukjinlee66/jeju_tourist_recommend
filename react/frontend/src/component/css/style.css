@@ -107,8 +107,18 @@ div .list-p {
     
 }
 
+.closebutton{
+    height: 20px;
+    width: 20px;
+}
+
 
 /*** Navbar ***/
+
+.logo{
+    height: 100%;
+    width: 100%;
+}
 
 .navbar .dropdown-toggle::after {
     border: none;

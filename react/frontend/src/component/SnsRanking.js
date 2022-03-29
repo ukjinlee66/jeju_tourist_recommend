@@ -5,25 +5,32 @@ import './css/style.css';
 import axios from "axios";
 
 function SnsRanking(props) {
-    const [snsrankings, setSnsrankings] = useState([]);
-    // snsRankUrl = '/test'
+    const [snsrankings, setSnsrankings] = useState([{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''}]);
+    
+    const reqUrl = '/rank/instaKeyword'
 
-    // useEffect(async () => {
-    //     const response = await axios.get(snsRankUrl);
-    //     setSnsrankings(response.data)
-    // }, [])
+    const getSnsRanking = async () => {
+        await axios
+            .get(reqUrl)
+            .then((res) => setSnsrankings(res.data));
+    }
 
-    // const hotsnsRander = () => {
-    //     const result = [];
-    //     for (let i = 0; i < snsrankings.length; i++) {
-    //         result.push(
-    //             <div class="row g-4 mb-4 p-4">
-    //                 <h5 class="col-lg-1">{i + 1}</h5>
-    //                 <h5 class="col-lg-11 ">{snsrankings[i]}</h5>
-    //             </div>
-    //         );}
-    //     return result;
-    // };
+    useEffect(() => {
+        getSnsRanking();
+    }, [])
+
+    const hotsnsRander = () => {
+        const result = [];
+        console.log(snsrankings);
+        for (let i = 0; i < snsrankings.length; i++) {
+            result.push(
+                <div class="row g-4 mb-4 p-4">
+                    <h5 class="col-lg-1">{i + 1}</h5>
+                    <h5 class="col-lg-11 ">{snsrankings[i].keyword}</h5>
+                </div>
+            );}
+        return result;
+    };
 
     return (
         <div class="col-lg-6">
@@ -31,7 +38,7 @@ function SnsRanking(props) {
             <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
                 <div class="tab-content">
                     <div id="tab-1" class="tab-pane fade show p-0 active">
-                        {/* <div>{hotsnsRander()}</div> */}
+                        <div>{hotsnsRander()}</div>
                     </div>
                 </div>
             </div>
