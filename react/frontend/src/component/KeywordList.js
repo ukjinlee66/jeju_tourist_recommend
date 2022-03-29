@@ -6,15 +6,20 @@ import axios from "axios";
 
 function KeywordList(props) {
 
-    const [keywordList, setKeywordList] = useState();
+    const [keywordList, setKeywordList] = useState([]);
 
     let checkKeyword = []
 
-    const reqUrl = ''
+    const reqUrl = '/test/keyword'
 
-    useEffect(async () => {
-        const response = await axios.get(reqUrl);
-        setKeywordList(response.data)
+    const getKeyword = async () => {
+        await axios
+            .get(reqUrl)
+            .then((res) => setKeywordList(res.data));
+    }
+
+    useEffect(() => {
+        getKeyword();
     }, [])
 
     function getCheckboxValue()  {
@@ -43,13 +48,14 @@ function KeywordList(props) {
 
     const ketwordListRender = () => {
         const result = [];
-        for (let i = 1; i < 11; i++) {
+        console.log(keywordList);
+        for (let i = 0; i < 10; i++) {
             result.push(
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value={"키워드"+i} id={"check"+i} name='keyword' onClick={getCheckboxValue}/>
+                        <input class="form-check-input" type="checkbox" value={keywordList[i]} id={"check"+i} name='keyword' onClick={getCheckboxValue}/>
                         <label class="form-check-label" for={"check"+i} >
-                        {'키워드'+i}
+                        {keywordList[i]}
                         </label>
                     </div>
                 </div>

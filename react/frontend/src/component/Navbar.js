@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './css/bootstrap.min.css';
 import './css/style.css';
+import logo from './img/logo.png';
 
 function Navbar(props) {
 
@@ -9,7 +10,7 @@ function Navbar(props) {
         <Fragment>
             <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
                 <a href="/jeju" className="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
-                    <h1 className="m-0 main-text">제주 들렸섬?</h1>
+                    <img class="logo" src={logo}/>
                 </a>
                 <button type="button" className="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span className="navbar-toggler-icon"></span>
