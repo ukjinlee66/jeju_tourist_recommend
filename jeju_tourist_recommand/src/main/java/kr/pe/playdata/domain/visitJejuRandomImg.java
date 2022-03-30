@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @Document(collection="visitJeju")
-public class visitJejuRandomImg {
+public class VisitJejuRandomImg {
     /*
             Random으로 뽑은 img VO
      */
