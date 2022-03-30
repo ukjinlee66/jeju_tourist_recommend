@@ -10,15 +10,19 @@ export default function Map()
   useEffect(() => {
     const script = document.createElement("script");
     script.innerHTML = `         
-        function initTmap() {
+        function initTmap() 
+        {
             var map = new Tmapv2.Map("TMapApp", {
                 center: new Tmapv2.LatLng(33.4000,126.51555),
                 width: "100%",
                 height: "100%",
                 zoom:10
             });
+            var marker = new Tmapv2.Marker({
+              position: new Tmapv2.LatLng(33.4000,126.51555),
+              map: map
+            });
         }
-        
         initTmap();
    `;
     script.type = "text/javascript";
@@ -30,7 +34,7 @@ export default function Map()
     <div class="col-lg-7">
         <h1 class="text-center mb-5">&nbsp;<br/><br/><br/></h1>
         <div class="mb-5"/>
-        <div id="TMapApp"/>
+        <div id="TMapApp" style={{ height: `100%` }}/>
     </div>
   );
 }

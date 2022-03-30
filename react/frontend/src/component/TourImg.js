@@ -2,65 +2,60 @@ import React, { useState, useEffect, Fragment } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './css/bootstrap.min.css';
 import './css/style.css';
-import OwlCarousel from 'react-owl-carousel';  
-import 'owl.carousel/dist/assets/owl.carousel.css';  
-import 'owl.carousel/dist/assets/owl.theme.default.css';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 
 const tourOptions = {
     autoplay: true,
-    smartSpeed: 1000,
-    center: true,
-    margin: 24,
+    autoplaySpeed: 1500,
+    centerMode: true, // 현재 index 이미지 중앙배치
+    centerPadding: '0', // 안하면 왼쪽에 이전 이미지 테두리보임
     dots: true,
-    loop: true,
-    nav : false,
-    responsive: {
-        0:{
-            items:1
-        },
-        768:{
-            items:2
-        },
-        992:{
-            items:3
-        }
-    }
+    Infinity: true, //반복
+    pauseOnHover : true, // hover시 autoplay 정지
+    slidesToShow:3, // 보여줄 slide 수
+    responsive: [ 
+		{  
+			breakpoint: 992, 
+			settings: {
+				slidesToShow:3 
+			} 
+		},
+		{ 
+			breakpoint: 768, 
+			settings: {	
+				slidesToShow:2 
+			} 
+		},
+        { 
+			breakpoint: 0, 
+			settings: {	
+				slidesToShow:1
+			} 
+		}
+	]
 };
 
 function TourImg(props) {
-    const [imgSource, setImgSource] = useState([{img:'https://api.cdn.visitjeju.net/photomng/thumbnailpath/201804/30/e1c2f9e4-bf4c-488c-884c-5674f8d8b119.jpg'},{img:'https://api.cdn.visitjeju.net/photomng/thumbnailpath/201810/17/e798d53c-1c8a-4d44-a8ab-111beae96db4.gif'},{img:'https://api.cdn.visitjeju.net/photomng/thumbnailpath/201804/30/c9c42359-f82f-43a4-919e-03ecd197a2eb.jpg'},{img:'https://api.cdn.visitjeju.net/photomng/thumbnailpath/202110/20/b06b8d55-0f87-4efd-8a9f-a682a48a4868.JPG'}]);
-    const reqUrl = '/tour/random';
-    const tttt = 'https://api.cdn.visitjeju.net/photomng/thumbnailpath/201804/30/e1c2f9e4-bf4c-488c-884c-5674f8d8b119.jpg'
+    const [imgSource, setImgSource] = useState([
+        {id:'', img:''},
+        {id:'', img:''},
+        {id:'', img:''},
+        {id:'', img:''}
+    ]);
     
-    // const getImg = async () => {
-    //     await axios
-    //         .get(reqUrl)
-    //         .then((res) => setImgSource(res.data)); 
-    // }; 
-
-    // innerHTML 테스트 코드
+    const reqUrl = '/tour/random';
+    
     const getImg = async () => {
         await axios
             .get(reqUrl)
-            .then(function (res) {
-                console.log(res.data)
-                // let imgCaro = ''
-                // let imgCaro = '<OwlCarousel class="owl-carousel testimonial-carousel" {...tourOptions}>';
-                // for(let i = 0; i < 4; i++){
-                //     imgCaro = imgCaro + "<div class='testimonial-item bg-light rounded p-4'><img class='img-fluid' src=" + res.data[i].img + " /></div>";
-                // }
-
-                // imgCaro = imgCaro + '</OwlCarousel>';
-                        
-                // document.getElementById("imgTest").innerHTML = imgCaro;
-                setImgSource(res.data)
-            });
+            .then((res) => setImgSource(res.data)); 
     }; 
 
     useEffect(() => {
         getImg()
-
     }, [])
 
     const tourImgRender = () => {
@@ -70,7 +65,7 @@ function TourImg(props) {
             result.push(
                 <Fragment>
                 <div class="testimonial-item bg-light rounded p-4">
-                    <img class="img-fluid" src={imgSource[i].img}/>
+                    <img class="img-fluid-tour" src={imgSource[i].img} onClick={(e) => window.location.href = "/jeju/TouristAttractionInfo?tourSpot=" + imgSource[i].id}/>
                 </div>
                 </Fragment>
         );}    
@@ -81,9 +76,12 @@ function TourImg(props) {
         <div class="container-xxl py-5">
             <div class="container">
                 <h1 class="text-center mb-5">제주 관광지 사진</h1>
-                <OwlCarousel class="owl-carousel testimonial-carousel" {...tourOptions}>
+                <Slider className='testimonial-carousel' {...tourOptions}>
                     {tourImgRender()}
-                </OwlCarousel> 
+                    <div class="testimonial-item bg-light rounded p-4">
+                        <img class="img-fluid-tour" src='https://image.fmkorea.com/files/attach/new2/20210728/3674493/3731487823/3787216388/37dbf32737fa8f62174e3764bae950ab.jpg' onClick={(e) => alert("슈슉 슈숙. 슉. 하르방은 못참지  -박태준")} />
+                    </div>
+                </Slider>
             </div>
         </div>
     );

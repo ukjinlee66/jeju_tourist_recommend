@@ -24,7 +24,7 @@ function MainImg(props) {
         <div className="container-fluid p-0">
             <OwlCarousel className="header-carousel" {...options}>
                 <div className="owl-carousel-item position-relative">
-                    <img className="img-fluid" src="https://api.cdn.visitjeju.net/photomng/thumbnailpath/201810/17/e798d53c-1c8a-4d44-a8ab-111beae96db4.gif
+                    <img className="img-fluid" src="https://post-phinf.pstatic.net/MjAxODEyMThfMTcx/MDAxNTQ1MTE5OTc4Njg0.e0xskMHMFbYFsGjkH_4lFRjPxoPITOFFRKB_AUQF43kg.kRpk68pT3qBCDqelh5zPoHFyQIldwVJvvpDlmnJZT-og.JPEG/%EC%A0%9C%EC%A3%BC%EB%8F%84%EA%B0%80%EB%B3%BC%EB%A7%8C%ED%95%9C%EA%B3%B3_%281%29.jpg?type=w1200
 " alt=""/>
                 </div>
                 <div className="owl-carousel-item position-relative">
@@ -35,5 +35,4 @@ function MainImg(props) {
         </div>     
     );
 }
-
 export default MainImg;
