@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @Document(collection ="visitJeju")
-public class visitJeju {
+public class VisitJeju {
 	/*
 	 * 관광지에 대한 정보를 담고 있는 DAO(공공데이터 + visitJeju 데이터)
 	 */
