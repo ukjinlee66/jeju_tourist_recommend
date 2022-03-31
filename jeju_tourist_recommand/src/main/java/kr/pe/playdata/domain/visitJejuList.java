@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @Document(collection ="visitJeju")
-public class visitJejuList {
+public class VisitJejuList {
     /*
      * 검색 후 또는 추천 이후의 VO
      */

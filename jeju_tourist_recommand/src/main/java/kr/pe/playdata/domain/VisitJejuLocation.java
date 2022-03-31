@@ -6,12 +6,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @Document(collection="visitJeju")
-public class VisitJejuRandomImg {
+public class VisitJejuLocation {
     /*
-            Random으로 뽑은 img VO
+            visitJeju의 location VO
      */
 
     @Id
     private String id;
-    private String img;             // img url
+    private String tour;
+    private Location location;
 }
