@@ -15,8 +15,9 @@ import java.util.Optional;
 @Service
 public class TouristAttaractionServiceImpl implements TouristAttractionService {
 /*
-
+    visitJeju 서비스 구현체
  */
+
     @Autowired
     private TouristAttractionMongoRepo touristMongoRepo;
 

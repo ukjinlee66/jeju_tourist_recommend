@@ -14,6 +14,10 @@ import java.util.List;
 
 @Repository
 public class NaverTemplateRepoImpl implements NaverTemplateRepo {
+    /*
+        Naver 템플릿 레포지토리 구현
+     */
+
     @Autowired
     private MongoTemplate mongoTemplate;
 

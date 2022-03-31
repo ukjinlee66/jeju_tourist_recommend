@@ -11,6 +11,10 @@ import java.util.List;
 
 @Service
 public class BlogServiceImpl implements BlogService {
+    /*
+        Blog Service 구현체
+     */
+
     @Autowired
     private NaverTemplateRepo repo;
     public List<Naver> getTwoRecent(String tour){

@@ -17,7 +17,7 @@ import java.util.Optional;
 @RequestMapping("/tour")
 public class TouristController {
     /*
-     tour와 관련된 controller
+        tour와 관련된 controller
      */
 
     @Autowired

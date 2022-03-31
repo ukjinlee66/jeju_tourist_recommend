@@ -13,6 +13,9 @@ import java.util.List;
 
 @Repository
 public class TouristAttractionTemplateRepoImpl implements TouristAttractionTemplateRepo {
+    /*
+        TouristAttraction 템플릿 레포
+     */
 
     @Autowired
     private MongoTemplate mongoTemplate;
