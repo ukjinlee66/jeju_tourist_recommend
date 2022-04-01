@@ -1,7 +1,5 @@
 package kr.pe.playdata.domain;
 
-import java.util.List;
-
 import org.springframework.data.annotation.Id;
 
 import lombok.Data;
