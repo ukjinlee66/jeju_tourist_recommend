@@ -7,6 +7,7 @@ import kr.pe.playdata.repository.TouristAttractionMongoRepo;
 import kr.pe.playdata.repository.TouristAttractionTemplateRepo;
 import kr.pe.playdata.service.TouristAttractionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,8 +35,8 @@ public class TouristAttaractionServiceImpl implements TouristAttractionService {
         return touristMongoRepo.findByTourLike(tour);
     }
 
-    public List<VisitJejuList> search(String search){
-        return touristMongoRepo.search(search);
+    public List<VisitJejuList> search(String search, int page){
+        return touristMongoRepo.search(search, PageRequest.of(page-1,7));
     }
 
     public List<VisitJejuRandomImg> randomTour(){
