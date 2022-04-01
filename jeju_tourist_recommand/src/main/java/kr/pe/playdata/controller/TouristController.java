@@ -34,8 +34,8 @@ public class TouristController {
     }
 
     @GetMapping("/searchByCertainColumn")       // tour, sub_titile, tag_prev, tag_next, purpose,  etc_property, content 기준으로 검색
-    public List<VisitJejuList> searchByCertainColumn(@RequestParam String search){
-        return service.search(search);
+    public List<VisitJejuList> searchByCertainColumn(@RequestParam String search, @RequestParam int page){
+        return service.search(search, page);
     }
 
     @GetMapping("/random")              // id로 관광지 검색

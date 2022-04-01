@@ -1,6 +1,5 @@
 package kr.pe.playdata.controller;
 
-import kr.pe.playdata.domain.Blog;
 import kr.pe.playdata.domain.Naver;
 import kr.pe.playdata.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;

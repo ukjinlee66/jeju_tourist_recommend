@@ -1,6 +1,5 @@
 package kr.pe.playdata.service.impl;
 
-import kr.pe.playdata.domain.Blog;
 import kr.pe.playdata.domain.Naver;
 import kr.pe.playdata.repository.NaverTemplateRepo;
 import kr.pe.playdata.service.BlogService;
