@@ -2,6 +2,7 @@ package kr.pe.playdata.controller;
 
 import kr.pe.playdata.domain.VisitJeju;
 import kr.pe.playdata.domain.VisitJejuList;
+import kr.pe.playdata.domain.VisitJejuMap;
 import kr.pe.playdata.domain.VisitJejuRandomImg;
 import kr.pe.playdata.service.TouristAttractionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,8 @@ public class TouristController {
     }
 
      @GetMapping("/searchByTourName")    // 요청한 이름과 관련된 관광지 검색
-        public List<VisitJejuList> searchByTourName(@RequestParam String tour){
-            return service.findByTourLike(tour);   //
+        public List<VisitJejuMap> searchByTourName(@RequestParam String tour){
+            return service.findByTourStartsWith(tour);   //
     }
 
     @GetMapping("/searchByCertainColumn")       // tour, sub_titile, tag_prev, tag_next, purpose,  etc_property, content 기준으로 검색
