@@ -2,6 +2,7 @@ package kr.pe.playdata.service.impl;
 
 import kr.pe.playdata.domain.VisitJeju;
 import kr.pe.playdata.domain.VisitJejuList;
+import kr.pe.playdata.domain.VisitJejuMap;
 import kr.pe.playdata.domain.VisitJejuRandomImg;
 import kr.pe.playdata.repository.TouristAttractionMongoRepo;
 import kr.pe.playdata.repository.TouristAttractionTemplateRepo;
@@ -31,8 +32,8 @@ public class TouristAttaractionServiceImpl implements TouristAttractionService {
         return jeju;
     }
 
-    public List<VisitJejuList> findByTourLike(String tour){
-        return touristMongoRepo.findByTourLike(tour);
+    public List<VisitJejuMap> findByTourStartsWith(String tour){
+        return touristMongoRepo.findByTourStartsWith(tour);
     }
 
     public List<VisitJejuList> search(String search, int page){
