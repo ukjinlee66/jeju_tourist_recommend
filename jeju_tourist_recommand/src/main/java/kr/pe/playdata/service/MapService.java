@@ -5,11 +5,13 @@ import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.Point;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface LocationService {
+public interface MapService {
     /*
         Location 서비스 인터페이스
      */
 
     public List<VisitJejuLocation> findNear(Point p, Distance d);
+    public Optional<VisitJejuLocation> findBySource(String source);
 }

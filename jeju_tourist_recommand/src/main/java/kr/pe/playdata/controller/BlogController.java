@@ -21,7 +21,7 @@ public class BlogController {
     private BlogService blogService;
 
     @GetMapping("/recentTwo")
-    public List<Naver> blogRecentTwo(@RequestParam String tour){
-        return blogService.getTwoRecent(tour);
+    public List<Naver> blogRecentTwo(@RequestParam String source){
+        return blogService.getTwoRecent(source);
     }
 }

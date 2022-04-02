@@ -6,13 +6,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @Document(collection="visitJeju")
-public class VisitJejuLocation {
+public class VisitJejuMap {
     /*
-            visitJeju의 location VO
+         map에서 쓰일 visitJeju VO
      */
 
     @Id
     private String id;
     private String source;
     private Location location;
+    private String img;
 }

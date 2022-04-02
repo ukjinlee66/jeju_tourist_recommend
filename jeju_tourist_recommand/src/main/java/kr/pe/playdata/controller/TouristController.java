@@ -2,6 +2,7 @@ package kr.pe.playdata.controller;
 
 import kr.pe.playdata.domain.VisitJeju;
 import kr.pe.playdata.domain.VisitJejuList;
+import kr.pe.playdata.domain.VisitJejuMap;
 import kr.pe.playdata.domain.VisitJejuRandomImg;
 import kr.pe.playdata.service.TouristAttractionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/tour")
+@RequestMapping("/source")
 public class TouristController {
     /*
         tour와 관련된 controller
@@ -28,9 +29,9 @@ public class TouristController {
         return service.findById(id);    // null이 반환되는 경우 에러가 나지 않게 Optional을 사용
     }
 
-     @GetMapping("/searchByTourName")    // 요청한 이름과 관련된 관광지 검색
-        public List<VisitJejuList> searchByTourName(@RequestParam String tour){
-            return service.findByTourLike(tour);   //
+     @GetMapping("/searchBySource")    // 요청한 이름으로 시작하는 관광지
+        public List<VisitJejuMap> searchBySource(@RequestParam String source){
+            return service.findBySourceStartsWith(source);
     }
 
     @GetMapping("/searchByCertainColumn")       // tour, sub_titile, tag_prev, tag_next, purpose,  etc_property, content 기준으로 검색

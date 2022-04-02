@@ -13,7 +13,7 @@ public class VisitJejuList {
 
     @Id
     private String id;				// id
-    private String tour;			// 관광지 이름
+    private String source;			// 관광지 이름
     private String sub_title;		// 부제목, 관광지에 대한 짧은 설명
     private String tag_prev;		// 비짓제주 태그
     private String tag_next;		// 비짓제주 태그

@@ -16,7 +16,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Autowired
     private NaverTemplateRepo repo;
-    public List<Naver> getTwoRecent(String tour){
-        return repo.getTwoRecent(tour);
+    public List<Naver> getTwoRecent(String source){
+        return repo.getTwoRecent(source);
     }
 }

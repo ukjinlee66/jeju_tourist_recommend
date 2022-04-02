@@ -2,6 +2,7 @@ package kr.pe.playdata.service;
 
 import kr.pe.playdata.domain.VisitJeju;
 import kr.pe.playdata.domain.VisitJejuList;
+import kr.pe.playdata.domain.VisitJejuMap;
 import kr.pe.playdata.domain.VisitJejuRandomImg;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface TouristAttractionService {
      */
 
     public Optional<VisitJeju> findById(String id);
-    public List<VisitJejuList> findByTourLike(String tour);
+    public List<VisitJejuMap> findBySourceStartsWith(String source);
     public List<VisitJejuList> search(String search, int page);
     public long searchSize(String search);
     public List<VisitJejuRandomImg> randomTour();

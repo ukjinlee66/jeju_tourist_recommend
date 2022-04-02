@@ -7,12 +7,15 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface LocationMongoRepo extends MongoRepository<VisitJejuLocation, String> {
+public interface MapMongoRepo extends MongoRepository<VisitJejuLocation, String> {
     /*
         Location Repo
      */
 
     List<VisitJejuLocation> findByLocationNear(Point p, Distance d);
+
+    Optional<VisitJejuLocation> findBySource(String source);
 }
