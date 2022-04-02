@@ -38,6 +38,11 @@ public class TouristController {
         return service.search(search, page);
     }
 
+    @GetMapping("/searchSize")
+    public long searchSize(@RequestParam String search){
+        return service.searchSize(search);
+    }
+
     @GetMapping("/random")              // id로 관광지 검색
     public List<VisitJejuRandomImg> random(){
         return service.randomTour();
