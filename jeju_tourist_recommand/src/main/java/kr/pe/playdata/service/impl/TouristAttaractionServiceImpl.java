@@ -36,7 +36,11 @@ public class TouristAttaractionServiceImpl implements TouristAttractionService {
     }
 
     public List<VisitJejuList> search(String search, int page){
-        return touristMongoRepo.search(search, PageRequest.of(page-1,7));
+        return touristMongoRepo.search(search, PageRequest.of(page-1,5));
+    }
+
+    public long searchSize(String search){
+        return touristMongoRepo.searchCount(search);
     }
 
     public List<VisitJejuRandomImg> randomTour(){
