@@ -13,6 +13,6 @@ public class VisitJejuLocation {
 
     @Id
     private String id;
-    private String tour;
+    private String source;
     private Location location;
 }

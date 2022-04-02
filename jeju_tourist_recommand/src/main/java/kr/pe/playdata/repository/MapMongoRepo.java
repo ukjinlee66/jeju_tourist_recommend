@@ -17,5 +17,5 @@ public interface MapMongoRepo extends MongoRepository<VisitJejuLocation, String>
 
     List<VisitJejuLocation> findByLocationNear(Point p, Distance d);
 
-    Optional<VisitJejuLocation> findByTour(String tour);
+    Optional<VisitJejuLocation> findBySource(String source);
 }

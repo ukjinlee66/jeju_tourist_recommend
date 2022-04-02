@@ -9,5 +9,5 @@ public interface NaverTemplateRepo {
         네이버 블로그 Repo
      */
 
-    public List<Naver> getTwoRecent(String tour);   // 최근 2개의 블로그 가져옴
+    public List<Naver> getTwoRecent(String source);   // 최근 2개의 블로그 가져옴
 }

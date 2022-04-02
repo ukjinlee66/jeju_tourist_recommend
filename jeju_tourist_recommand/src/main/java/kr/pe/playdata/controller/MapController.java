@@ -24,9 +24,9 @@ public class MapController {
     @Autowired
     private MapService locationService;
 
-    @GetMapping("/findByName")
-    public Optional<VisitJejuLocation> findByName(@RequestParam String name){
-        return locationService.findByTour(name);
+    @GetMapping("/findBySource")
+    public Optional<VisitJejuLocation> findBySource(@RequestParam String source){
+        return locationService.findBySource(source);
     }
 
     @GetMapping("/findNear")

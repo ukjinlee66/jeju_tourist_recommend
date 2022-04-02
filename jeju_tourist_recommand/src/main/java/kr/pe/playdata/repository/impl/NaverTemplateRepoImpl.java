@@ -21,8 +21,8 @@ public class NaverTemplateRepoImpl implements NaverTemplateRepo {
     private MongoTemplate mongoTemplate;
 
     @Override
-    public List<Naver> getTwoRecent(String tour) {
-        MatchOperation match = Aggregation.match(Criteria.where("source").is(tour));
+    public List<Naver> getTwoRecent(String source) {
+        MatchOperation match = Aggregation.match(Criteria.where("source").is(source));
         UnwindOperation unwindOperation = Aggregation.unwind("contents");
         SortOperation sort = Aggregation.sort(Sort.Direction.DESC, "contents.postdate");
         LimitOperation limit = Aggregation.limit(2);

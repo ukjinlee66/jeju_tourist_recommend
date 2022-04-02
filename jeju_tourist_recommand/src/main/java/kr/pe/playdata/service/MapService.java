@@ -13,5 +13,5 @@ public interface MapService {
      */
 
     public List<VisitJejuLocation> findNear(Point p, Distance d);
-    public Optional<VisitJejuLocation> findByTour(String tour);
+    public Optional<VisitJejuLocation> findBySource(String source);
 }

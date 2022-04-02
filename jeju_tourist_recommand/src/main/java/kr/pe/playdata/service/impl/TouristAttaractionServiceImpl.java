@@ -32,8 +32,8 @@ public class TouristAttaractionServiceImpl implements TouristAttractionService {
         return jeju;
     }
 
-    public List<VisitJejuMap> findByTourStartsWith(String tour){
-        return touristMongoRepo.findByTourStartsWith(tour);
+    public List<VisitJejuMap> findBySourceStartsWith(String source){
+        return touristMongoRepo.findBySourceStartsWith(source);
     }
 
     public List<VisitJejuList> search(String search, int page){
@@ -45,7 +45,7 @@ public class TouristAttaractionServiceImpl implements TouristAttractionService {
     }
 
     public List<VisitJejuRandomImg> randomTour(){
-        List<VisitJejuRandomImg> tour = repo.random();
-        return tour;
+        List<VisitJejuRandomImg> source = repo.random();
+        return source;
     }
 }

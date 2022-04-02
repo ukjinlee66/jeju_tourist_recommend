@@ -14,7 +14,7 @@ public interface TouristAttractionService {
      */
 
     public Optional<VisitJeju> findById(String id);
-    public List<VisitJejuMap> findByTourStartsWith(String tour);
+    public List<VisitJejuMap> findBySourceStartsWith(String source);
     public List<VisitJejuList> search(String search, int page);
     public long searchSize(String search);
     public List<VisitJejuRandomImg> randomTour();

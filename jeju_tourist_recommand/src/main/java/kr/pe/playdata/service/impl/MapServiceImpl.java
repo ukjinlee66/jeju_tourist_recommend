@@ -23,7 +23,7 @@ public class MapServiceImpl implements MapService {
     public List<VisitJejuLocation> findNear(Point p, Distance d){
         return mapMongoRepo.findByLocationNear(p, d);
     }
-    public Optional<VisitJejuLocation> findByTour(String tour){
-        return mapMongoRepo.findByTour(tour);
+    public Optional<VisitJejuLocation> findBySource(String source){
+        return mapMongoRepo.findBySource(source);
     }
 }

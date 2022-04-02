@@ -13,7 +13,7 @@ public class VisitJejuMap {
 
     @Id
     private String id;
-    private String tour;
+    private String source;
     private Location location;
     private String img;
 }
