@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import kr.pe.playdata.domain.VisitJejuList;
+import kr.pe.playdata.domain.VisitJejuMap;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
@@ -19,8 +20,8 @@ public interface TouristAttractionMongoRepo extends MongoRepository<VisitJeju, S
 
 	public Optional<VisitJeju> findById(String id);			// id 기준으로 관광지 조회
 
-	@Query(fields="{tour:1, sub_title:1, tag_prev:1, tag_next:1, img:1}")
-	public List<VisitJejuList> findByTourLike(String tour);		// Tour 이름 기준으로 관광지 조회
+	@Query(fields="{_id:1, tour:1, location:1, img:1}")
+	public List<VisitJejuMap> findByTourStartsWith(String tour);		// Tour 이름 기준으로 시작하는 관광지 조회
 
 	@Query(value = "{$or:[{'tour':{$regex:?0,$options:'i'}},{'sub_title':{$regex:?0,$options:'i'}}," +
 			"{'tag_prev':{$regex:?0,$options:'i'}}, {'tag_next':{$regex:?0,$options:'i'}}," +
