@@ -11,7 +11,7 @@ const tourOptions = {
     autoplay: true,
     autoplaySpeed: 1500,
     centerMode: true, // 현재 index 이미지 중앙배치
-    centerPadding: '0', // 안하면 왼쪽에 이전 이미지 테두리보임
+    centerPadding: '0px', // 안하면 왼쪽에 이전 이미지 테두리보임
     dots: true,
     Infinity: true, //반복
     pauseOnHover : true, // hover시 autoplay 정지
@@ -64,7 +64,7 @@ function TourImg(props) {
         for (let i = 0; i < 4; i++) {
             result.push(
                 <Fragment>
-                <div class="testimonial-item bg-light rounded p-4">
+                <div class="testimonial-item bg-white rounded">
                     <img class="img-fluid-tour" src={imgSource[i].img} onClick={(e) => window.location.href = "/jeju/TouristAttractionInfo?tourSpot=" + imgSource[i].id}/>
                 </div>
                 </Fragment>
@@ -78,9 +78,7 @@ function TourImg(props) {
                 <h1 class="text-center mb-5">제주 관광지 사진</h1>
                 <Slider className='testimonial-carousel' {...tourOptions}>
                     {tourImgRender()}
-                    <div class="testimonial-item bg-light rounded p-4">
-                        <img class="img-fluid-tour" src='https://image.fmkorea.com/files/attach/new2/20210728/3674493/3731487823/3787216388/37dbf32737fa8f62174e3764bae950ab.jpg' onClick={(e) => alert("슈슉 슈숙. 슉. 하르방은 못참지  -박태준")} />
-                    </div>
+                    <img class="img-fluid-tour" src='https://image.fmkorea.com/files/attach/new2/20210728/3674493/3731487823/3787216388/37dbf32737fa8f62174e3764bae950ab.jpg' onClick={(e) => alert("슈슉 슈숙. 슉. 하르방은 못참지  -박태준")} />
                 </Slider>
             </div>
         </div>

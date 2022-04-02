@@ -13,14 +13,12 @@ function TouristAttractionList(props) {
         <Fragment>
             <MainSearch />
             <Scrolltop />
-            <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="container">
-                    <div class="row g-5 ">
-                        <div class="col-lg-5">
-                            <Tourlistitem/>
-                        </div>
-                        <Map/>
+            <div class="container-xxl py-5 wow fadeInUp pdCon" data-wow-delay="0.1s">
+                <div class="row g-5 maCon" style={{width:'100%'}}>
+                    <div class="col-lg-5">
+                        <Tourlistitem/>
                     </div>
+                    <Map/>
                 </div>
             </div>
             <Footer />
