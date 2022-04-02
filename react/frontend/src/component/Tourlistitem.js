@@ -11,40 +11,51 @@ function Tourlistitem(props) {
         {id:'' ,img:'', tour:'', sub_title:''}, 
         {id:'' ,img:'', tour:'', sub_title:''}, 
         {id:'' ,img:'', tour:'', sub_title:''}, 
-        {id:'' ,img:'', tour:'', sub_title:''}, 
+        {id:'' ,img:'', tour:'', sub_title:''},
         {id:'' ,img:'', tour:'', sub_title:''}
         ])
 
+    const [listSize, setListSize] = useState(1);
     const [page, setPage] = useState(1);
-    const handlePageChange = page => {
-        setPage(page);
-        tourlistRender();
+    const handlePageChange = nowPage => {
+        getListItem(nowPage);
+        setPage(nowPage);
     };
 
     const reqUrl = '/tour/searchByCertainColumn'
+    const tourSizeUrl = '/tour/searchSize'
 
-    const getListItem = async () => {
+    const getListItem = async (page) => {
         await axios
             .get(reqUrl, {
                 params: {
-                    search: decodeURI(window.location.search.split('=')[1])
+                    search: decodeURI(window.location.search.split('=')[1]),
+                    page: page
                 }
             })
             .then((res) => setTourList(res.data));  
     }
 
+    const getlistSize = async () => {
+        await axios
+            .get(tourSizeUrl, {
+                params: {
+                    search: decodeURI(window.location.search.split('=')[1])
+                }
+            })
+            .then((res) => setListSize(res.data));  
+    }
+
    // 처음 렌더링시 한번 실행되는 함수
     useEffect(() => {
-        getListItem();
+        getlistSize();
+        getListItem(page);
     }, [])
 
     const tourlistRender = () => {
         const result = [];
         console.log(tourList)
-        for (let i = (page - 1) * 5; i < page * 5; i++) {
-            if (i >= tourList.length){
-                break;
-            }
+        for (let i = 0; i < tourList.length; i++) {
             result.push(
                 // 출력 관광지 리스트의 관광지 명을 값으로 상세페이지에 보냄
                 <div class="list-item p-4 mb-4"  onClick={(e) => window.location.href = "/jeju/TouristAttractionInfo?tourSpot=" + tourList[i].id}>
@@ -64,7 +75,7 @@ function Tourlistitem(props) {
 
     return (
         <Fragment>
-            <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">관광지 리스트</h1>
+            {/* <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">관광지 리스트</h1> */}
             <div class="tab-class wow fadeInUp" data-wow-delay="0.3s">
                 <div class="tab-content-tourlist">
                     <div id="tab-1" class="tab-pane fade show p-0 active">
@@ -75,7 +86,7 @@ function Tourlistitem(props) {
             <Pagination
                     activePage={page}
                     itemsCountPerPage={5}
-                    totalItemsCount={tourList.length}
+                    totalItemsCount={listSize}
                     pageRangeDisplayed={5}
                     prevPageText="<"
                     nextPageText=">"
