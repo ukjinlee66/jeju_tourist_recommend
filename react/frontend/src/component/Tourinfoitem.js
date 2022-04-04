@@ -9,7 +9,7 @@ function Tourinfoitem(props) {
     // 상세 페이지 출력 관광지 정보 
     const [tourSpot, setTourSpot] = useState({tag_prev:'', content:'', detail_content:''})
 
-    const reqUrl = '/tour/lookup';
+    const reqUrl = '/source/lookup';
 
     const getInfoItem = async () => {
         await axios
@@ -31,7 +31,6 @@ function Tourinfoitem(props) {
         result.push(
             <Fragment>
             <div class="mb-5">
-
                 <p class="h4">상세정보</p>
                 <p>{tourSpot.content}</p>
             </div>

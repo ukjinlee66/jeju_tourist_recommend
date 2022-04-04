@@ -6,9 +6,9 @@ import axios from "axios";
 
 function TourinfoTop(props) {
     // 상세 페이지 출력 관광지 정보 
-    const [tourSpot, setTourSpot] = useState({tour:'', tag_prev:'', img:'https://image.fmkorea.com/files/attach/new2/20210728/3674493/3731487823/3787216388/37dbf32737fa8f62174e3764bae950ab.jpg', sub_title:'', call:'', address:'', detail_content:'' })
+    const [tourSpot, setTourSpot] = useState({source:'', tag_prev:'', img:'https://image.fmkorea.com/files/attach/new2/20210728/3674493/3731487823/3787216388/37dbf32737fa8f62174e3764bae950ab.jpg', sub_title:'', call:'', address:'', detail_content:'' })
 
-    const reqUrl = '/tour/lookup';
+    const reqUrl = '/source/lookup';
 
     const getInfoItem = async () => {
         await axios
@@ -33,7 +33,7 @@ function TourinfoTop(props) {
             <div class="row">
                 <img class="detail-img col-lg-5" src={tourSpot.img}/>
                 <div class="col-lg-7">
-                    <h3>{tourSpot.tour}</h3>
+                    <h3>{tourSpot.source}</h3>
                     <p class="text-con">{tourSpot.sub_title}</p>
                     <br/>
                     <p class="mb-2">

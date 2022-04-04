@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './css/bootstrap.min.css';
 import './css/style.css';
 
-function MainSearch(props) {
+function ListSearch(props) {
     const [searchInput, setSearchInput] = useState("")
+
+    const bfSearch = decodeURI(window.location.search.split('=')[1]);
 
     function btClick(e) {
         window.location.href = "/jeju/TouristAttractionList?search=" + searchInput;
@@ -15,6 +17,10 @@ function MainSearch(props) {
             btClick();
         }
     }
+
+    useEffect(() => {
+        setSearchInput(bfSearch)
+    }, [])
 
     return (
         <div class="container-fluid-search bg-jeju mb-5 wow fadeIn" data-wow-delay="0.1s" >
@@ -36,4 +42,4 @@ function MainSearch(props) {
     );
 }
 
-export default MainSearch;
+export default ListSearch;
