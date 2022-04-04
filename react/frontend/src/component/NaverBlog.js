@@ -10,7 +10,7 @@ function NaverBlog(props) {
     const [naverBlog, setNaverBlog] = useState([{title:'', contents:''}, {title:'', contents:''}])
 
     const reqUrl = '/Blog/recentTwo';
-    const tourUrl = '/tour/lookup';
+    const tourUrl = '/source/lookup';
 
     const getTourName = async () => {
         await axios
@@ -19,13 +19,13 @@ function NaverBlog(props) {
                     id: decodeURI(window.location.search.split('=')[1])
                 }
             })
-            .then((res) => getNaverBlog(res.data.tour));
+            .then((res) => getNaverBlog(res.data.source));
     }
 
     const getNaverBlog = async (tourName) => {
             await axios
                 .get(reqUrl, {
-                    params:{tour:tourName
+                    params:{source:tourName
                     }
                 })
                 .then((res) => setNaverBlog(res.data));

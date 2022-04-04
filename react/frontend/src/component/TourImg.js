@@ -46,7 +46,7 @@ function TourImg(props) {
         {id:'', img:''}
     ]);
     
-    const reqUrl = '/tour/random';
+    const reqUrl = '/source/random';
     
     const getImg = async () => {
         await axios

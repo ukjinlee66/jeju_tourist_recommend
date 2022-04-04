@@ -8,11 +8,11 @@ import Pagination from 'react-js-pagination';
 function Tourlistitem(props) {
     // 현재 페이지 출력 관광지 리스트 
     const [tourList, setTourList] = useState([
-        {id:'' ,img:'', tour:'', sub_title:''}, 
-        {id:'' ,img:'', tour:'', sub_title:''}, 
-        {id:'' ,img:'', tour:'', sub_title:''}, 
-        {id:'' ,img:'', tour:'', sub_title:''},
-        {id:'' ,img:'', tour:'', sub_title:''}
+        {id:'' ,img:'', source:'', sub_title:''}, 
+        {id:'' ,img:'', source:'', sub_title:''}, 
+        {id:'' ,img:'', source:'', sub_title:''}, 
+        {id:'' ,img:'', source:'', sub_title:''},
+        {id:'' ,img:'', source:'', sub_title:''}
         ])
 
     const [listSize, setListSize] = useState(1);
@@ -22,8 +22,8 @@ function Tourlistitem(props) {
         setPage(nowPage);
     };
 
-    const reqUrl = '/tour/searchByCertainColumn'
-    const tourSizeUrl = '/tour/searchSize'
+    const reqUrl = '/source/searchByCertainColumn'
+    const tourSizeUrl = '/source/searchSize'
 
     const getListItem = async (page) => {
         await axios
@@ -64,7 +64,7 @@ function Tourlistitem(props) {
                             <img class="img-list" src={tourList[i].img} />
                         </div>
                         <div class="col-md-8">
-                            <h3 class="text-left" typeof='text' id='test' >{tourList[i].tour}</h3>
+                            <h3 class="text-left" typeof='text' id='test' >{tourList[i].source}</h3>
                             <p class="list-p">{tourList[i].sub_title}</p>
                         </div>
                     </div>
