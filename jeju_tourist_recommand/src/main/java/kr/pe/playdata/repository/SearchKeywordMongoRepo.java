@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface SearchKeywordMongoRepo extends MongoRepository<SearchRank, String>{
     /*
-           검색어 순위를 뽑는 레포지토리
+        검색어 순위를 뽑는 레포지토리
      */
 
     @Query(sort = "{cnt : -1}", fields = "{searchName : 1}")
