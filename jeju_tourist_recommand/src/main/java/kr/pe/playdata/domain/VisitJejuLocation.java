@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection="visitJeju")
 public class VisitJejuLocation {
     /*
-            visitJeju의 location VO
+        visitJeju의 location VO
      */
 
     @Id

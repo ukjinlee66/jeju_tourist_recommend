@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection="visitJeju")
 public class VisitJejuRandomImg {
     /*
-            Random으로 뽑은 img VO
+        Random으로 뽑은 img VO
      */
 
     @Id
