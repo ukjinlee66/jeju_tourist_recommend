@@ -1,8 +1,8 @@
-# boostcamp_toy_project
+# visitJeju Project
 
 ## How to run
 ```
 pip install -r requirements.txt
 python server.py
-# localhost:6007로 브라우저에서 접속!
+# localhost:5000로 브라우저에서 접속!
 ```
