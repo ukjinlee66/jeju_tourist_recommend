@@ -48,13 +48,13 @@ function Tourlistitem(props) {
 
    // 처음 렌더링시 한번 실행되는 함수
     useEffect(() => {
+        console.log(window.sessionStorage.getItem('recoKeyword'))
         getlistSize();
         getListItem(page);
     }, [])
 
     const tourlistRender = () => {
         const result = [];
-        console.log(tourList)
         for (let i = 0; i < tourList.length; i++) {
             result.push(
                 // 출력 관광지 리스트의 관광지 명을 값으로 상세페이지에 보냄

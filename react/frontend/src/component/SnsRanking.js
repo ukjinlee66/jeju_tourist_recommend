@@ -21,7 +21,6 @@ function SnsRanking(props) {
 
     const hotsnsRander = () => {
         const result = [];
-        console.log(snsrankings);
         for (let i = 0; i < snsrankings.length; i++) {
             result.push(
                 <div class="row g-4 mb-4 p-4">

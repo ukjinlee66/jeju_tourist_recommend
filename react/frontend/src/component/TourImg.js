@@ -60,7 +60,6 @@ function TourImg(props) {
 
     const tourImgRender = () => {
         const result = [];
-        console.log(imgSource)
         for (let i = 0; i < 4; i++) {
             result.push(
                 <Fragment>

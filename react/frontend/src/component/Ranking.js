@@ -20,7 +20,6 @@ function Ranking(props) {
 
     const oursiteRender = () => {
         const result = [];
-        console.log(rankings);
         for (let i = 0; i < rankings.length; i++) {
             result.push(
                 <div class="row g-4 mb-4 p-4">

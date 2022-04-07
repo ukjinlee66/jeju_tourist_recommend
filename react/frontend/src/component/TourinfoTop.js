@@ -42,6 +42,9 @@ function TourinfoTop(props) {
                     <p class="mb-2">
                         <i class="fa fa-location-arrow me-3">&nbsp; {tourSpot.address}</i>
                     </p>
+                    <p class="mb-2 go-map" onClick={(e) => window.location.href = "/jeju/TouristAttractionInfo?tourSpot=" + tourSpot.source}>
+                        <i class="fa fa-globe me-3">&nbsp; 지도페이지 이동</i>
+                    </p>
                     <hr/>
                     <i class="fa fa-bullhorn me-3 text-con"></i><br/>
                     <p class="mb-2">{tourSpot.detail_content}</p>
