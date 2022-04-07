@@ -7,9 +7,9 @@ import axios from "axios";
 function KeywordList(props) {
 
     const [keywordList, setKeywordList] = useState([]);
-
+    // const keywordList = ['te1', 'te2', 'te3', 'te4', 'te5', 'te6', 'te7', 'te8', 'te9', 'te10']
     let checkKeyword = []
-
+    let result = ''
     const reqUrl = '/test/keyword'
 
     const getKeyword = async () => {
@@ -31,7 +31,7 @@ function KeywordList(props) {
             document.querySelectorAll(query);
         
         // 선택된 목록에서 value 찾기
-        let result = '';
+        result = '';
         selectedEls.forEach((el) => {
             if (result == ''){
                 result += el.value
@@ -48,7 +48,6 @@ function KeywordList(props) {
 
     const ketwordListRender = () => {
         const result = [];
-        console.log(keywordList);
         for (let i = 0; i < 10; i++) {
             result.push(
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -63,6 +62,11 @@ function KeywordList(props) {
         return result;
     };
 
+    function btClick(e) {
+        window.sessionStorage.setItem('recoKeyword', result);
+        window.location.href = "/jeju/TouristAttractionList";
+    }
+
     return (
         <div class="container-xxl py-5">
             <div class="container">
@@ -71,7 +75,7 @@ function KeywordList(props) {
                     {ketwordListRender()}
                     <div class="col-lg-3 offset-lg-3 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="form-check">
-                            <button type="button" class="btn btn-dark">추천</button>
+                            <button type="button" class="btn btn-dark" onClick={btClick}>추천</button>
                         </div>
                     </div>
                 </div>
