@@ -1,6 +1,6 @@
 package kr.pe.playdata.controller;
 
-import kr.pe.playdata.service.RecommandService;
+import kr.pe.playdata.service.RecommendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.CompletableFuture;
 
 @RestController
-@RequestMapping("/recommand")
-public class RecommandController {
+@RequestMapping("/recommend")
+public class RecommendController {
 
     @Autowired
-    private RecommandService recommandService;
+    private RecommendService recommendService;
 
     @GetMapping("/chatbot")
-    public CompletableFuture<String> recommand(@RequestParam String keywords) {
-        return recommandService.recommand(keywords);
+    public CompletableFuture<String> recommend(@RequestParam String sentence) {
+        return recommendService.recommend(sentence);
     }
 }
