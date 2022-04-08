@@ -1,0 +1,6 @@
+Flask==2.0.3
+mxnet==1.7.0.post2
+gluonnlp==0.10.0
+pandas==1.1.5
+tqdm==4.64.0
+git+https://git@github.com/SKTBrain/KoBERT.git@master
