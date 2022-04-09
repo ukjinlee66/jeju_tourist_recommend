@@ -28,9 +28,15 @@ import {
   Input,
 } from "reactstrap";
 import logo from "logo-white.svg";
+import { resolveTripleslashReference } from "typescript";
 
 var ps;
-
+console.important = function(text) 
+{
+  ReactDOM.render(
+    InputGroupText.props.Input
+  );
+}
 function Sidebar(props) {
   const sidebar = React.useRef();
   // verifies if routeName is the one active (in browser input)
@@ -67,14 +73,13 @@ function Sidebar(props) {
           className="simple-text logo-normal"
           target="_blank"
         >
-          Creative Tim
         </a>
       </div>
       <div className="sidebar-wrapper" ref={sidebar}>
         <Nav>
           <form>
             <InputGroup className="no-border">
-              <Input placeholder="Search..." />
+              <Input placeholder="관광지 검색..." />
               <InputGroupAddon addonType="append">
                 <InputGroupText>
                   <i className="now-ui-icons ui-1_zoom-bold" />
@@ -82,25 +87,21 @@ function Sidebar(props) {
               </InputGroupAddon>
             </InputGroup>
           </form>
-          {props.routes.map((prop, key) => {
+          {props.routes.map((prop, key) => 
+          {
             if (prop.redirect) return null;
             return (
-              <li
-                className={
-                  activeRoute(prop.layout + prop.path) +
-                  (prop.pro ? " active active-pro" : "")
-                }
-                key={key}
-              >
+              
                 <NavLink
                   to={prop.layout + prop.path}
                   className="nav-link"
                   activeClassName="active"
                 >
-                  <i className={"now-ui-icons " + prop.icon} />
-                  <p>{prop.name}</p>
+                {/* 왼쪽 메뉴 부분 출력하는 부분 */}
+                {ret_list()}
+                <button onClick={()=>Sendinfo()}>적용</button>
                 </NavLink>
-              </li>
+              
             );
           })}
         </Nav>
@@ -108,5 +109,31 @@ function Sidebar(props) {
     </div>
   );
 }
-
+function temp()
+{
+  return(
+    <div>
+      {()=>retres()}
+    </div>
+  );
+}
+function ret_list()
+{
+  console.log("call ret_list()");
+  var attr_arr = ['관광지1','관광지2','관광지3','관광지4','관광지5'];
+  var attr_arr2 = temp();
+  for(var i =0;i<attr_arr2.length;i++)
+  {
+    console.log(attr_arr2[i]);
+  }
+  // console.log('attr_arr2 list : ', Object.getOwnPropertyNames(attr_arr2));
+  const attr_list = attr_arr.map((name) => <li>{name}</li>)
+  return(
+    <div>
+      {/* 추후 각 관광지 정보에 따른 리스트에서 제거하는 버튼 뒷부분 추가 첫번째와 마지막 순서의
+      원소를 출발지와 도착지라 가정한다. */}
+      <li>{attr_list}</li>
+    </div>
+  );
+}
 export default Sidebar;

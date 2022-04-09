@@ -27,8 +27,8 @@ log_interval = 200
 # learning_rate 값이 너무 크면 원하는 값에 도달하기 힘들고, 너무 작으면 학습기간이 오래 걸린다.
 learning_rate =  5e-5
 
-def inference(keywordList):
-    print("데이터:",keywordList)
+def inference(sentence):
+    print(sentence)
     device = torch.device("cpu") # pytorch 에서 cpu 사용 선택, cpu 환경에서 모델 구동시
 
     # 사전 훈련된 kobert model 불러옴
@@ -43,8 +43,6 @@ def inference(keywordList):
         {'params': [p for n, p in model.named_parameters() if not any(nd in n for nd in no_decay)], 'weight_decay': 0.01},
         {'params': [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay)], 'weight_decay': 0.0}
     ]
-
-    print(bertmodel)
     
     # optimizer = 전체 데이터 셋의 실제 결과와 모델이 예측한 값 간의 차이가 효율적으로 좁혀질 수 있도록 최적화해주는 역할
     # transform에서 제공하는 AdamW optimizer 사용
@@ -63,7 +61,6 @@ def inference(keywordList):
 
     # 테스트 함수 
     def predict(predict_sentence):
-
         sources = ['공천포','휴애리 자연생활공원','성산일출봉(UNESCO 세계자연유산)','본태박물관','제주올레 14코스',
            '바이나흐튼 크리스마스 박물관','세계자동차 & 피아노박물관','한국야구명예전당(야구박물관)','초콜릿박물관']
 
@@ -96,6 +93,5 @@ def inference(keywordList):
 
             return test_eval[0]
 
-    res = predict(keywordList)
-    print(res)
+    res = predict(sentence)
     return res
