@@ -13,6 +13,6 @@ public class SearchRank {
 	 */
 	
 	@Id
-	private String id;
-	private String searchName;
+	private String id;				// id
+	private String searchName;		// 검색어
 }

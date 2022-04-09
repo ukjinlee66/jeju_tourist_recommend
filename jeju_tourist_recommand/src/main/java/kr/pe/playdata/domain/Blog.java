@@ -11,7 +11,7 @@ public class Blog {
      */
 
     private String title;               // 제목
-    private String postdate;
-    private String link;
-    private String description;
+    private String postdate;            // 게시글 날짜
+    private String link;                // url
+    private String description;         // 요약 설명
 }

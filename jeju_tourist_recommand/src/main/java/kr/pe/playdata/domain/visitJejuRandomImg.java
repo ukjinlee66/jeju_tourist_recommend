@@ -12,6 +12,6 @@ public class VisitJejuRandomImg {
      */
 
     @Id
-    private String id;
+    private String id;              // id
     private String img;             // img url
 }
