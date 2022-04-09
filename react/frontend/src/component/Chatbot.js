@@ -20,11 +20,11 @@ function Chatbot(props) {
     return (
         <ThemeProvider theme={theme}>
             <ChatBot
-            headerTitle="for dydrhkd"
+            headerTitle="recommend Chatbot"
             steps={[
                 {
                     id: '0',
-                    message: '어떤 여행을 원하는가?',
+                    message: '어떤 여행을 원하세요?',
                     trigger: '1',
                 },
                 {
@@ -34,10 +34,22 @@ function Chatbot(props) {
                 },
                 {
                     id: '2',
+                    message: '아래 관광지명 클릭시 검색페이지로 이동됩니다.',
+                    trigger: '3'
+                },
+                {
+                    id: '3',
                     component: <ReturnTour/>,
                     asMessage: true,
-                    end:true
+                    trigger: '4'
                 },
+                {
+                    id: '4',
+                    options: [
+                        { value: 1, label: '다른 추천 받기', trigger: '0' },
+                        { value: 2, label: '챗봇 종료', end:true }
+                    ],
+                }
             ]}
             />
         </ThemeProvider>

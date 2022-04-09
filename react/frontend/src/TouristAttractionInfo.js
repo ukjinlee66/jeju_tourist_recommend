@@ -8,11 +8,11 @@ import Tourinfoitem from './component/Tourinfoitem';
 import NaverBlog from './component/NaverBlog';
 import Map from './component/Map';
 import TourinfoTop from './component/TourinfoTop';
+import ChatButton from './component/ChatButton';
 
 function TouristAttractionInfo(props) {
     return (
         <Fragment>
-            <Scrolltop />
             <TourinfoTop />
             <hr/>
             <div class="container-xxl py-5 wow fadeInUp pdCon" data-wow-delay="0.1s">
@@ -25,6 +25,8 @@ function TouristAttractionInfo(props) {
                     <Map/>
                 </div>
             </div>
+            <Scrolltop />
+            <ChatButton/>
             <Footer />
         </Fragment>
     );
