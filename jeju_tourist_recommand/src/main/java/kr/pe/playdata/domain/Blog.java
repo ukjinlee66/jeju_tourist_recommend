@@ -10,7 +10,7 @@ public class Blog {
         블로그 VO
      */
 
-    private String title;
+    private String title;               // 제목
     private String postdate;
     private String link;
     private String description;
