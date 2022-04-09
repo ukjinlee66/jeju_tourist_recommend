@@ -12,6 +12,6 @@ public class Location {
         좌표 VO
      */
 
-    private String type;
-    private List<String> coordinates;
+    private String type;                    //
+    private List<String> coordinates;       // 좌표
 }
