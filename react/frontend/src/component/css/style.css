@@ -133,6 +133,12 @@ div .list-p {
     background-color: #BDBCBC;
 }
 
+.btn-primary:focus{
+    background-color:#f86300;
+    border-color:var(--primary);
+    box-shadow:0 0 0 0.25rem var(--primary);
+}
+
 
 /*** Navbar ***/
 
@@ -453,8 +459,11 @@ ul.pagination {
     margin-bottom: 10px;
 }
 
-
-
+/*** chatbot ***/
+.chatbot-btn {
+    cursor: pointer;
+    color: rgb(19, 121, 236);
+}
 /*** Footer ***/
 .footer .btn.btn-social {
     margin-right: 5px;

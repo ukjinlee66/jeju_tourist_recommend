@@ -10,13 +10,11 @@ import Ranking from './component/Ranking';
 import Scrolltop from './component/Scrolltop';
 import Footer from './component/Footer';
 import SnsRanking from './component/SnsRanking';
-import Chatbot from './component/Chatbot';
 import ChatButton from './component/ChatButton';
 
 function Main(props) {
     return (
         <Fragment>
-            <ChatButton/>
             <MainImg />
             <MainSearch />
             <KeywordList />
@@ -28,6 +26,7 @@ function Main(props) {
             </div>
             <TourImg />
             <Scrolltop />
+            <ChatButton/>
             <Footer />
         </Fragment>
     );

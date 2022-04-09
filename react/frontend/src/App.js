@@ -7,7 +7,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Main from './Main';
 import TouristAttractionInfo from './TouristAttractionInfo';
 import TouristAttractionList from './TouristAttractionList';
-
+import ChatButton from './component/ChatButton';
 
 function App() {
   useEffect(async () => {
