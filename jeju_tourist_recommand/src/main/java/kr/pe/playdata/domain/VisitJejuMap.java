@@ -12,8 +12,8 @@ public class VisitJejuMap {
      */
 
     @Id
-    private String id;
-    private String source;
-    private Location location;
-    private String img;
+    private String id;                  // id
+    private String source;              // 관광지 이름
+    private Location location;          // 장소
+    private String img;                 // 이미지
 }

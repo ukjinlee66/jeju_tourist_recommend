@@ -10,8 +10,8 @@ public class Blog {
         블로그 VO
      */
 
-    private String title;
-    private String postdate;
-    private String link;
-    private String description;
+    private String title;               // 제목
+    private String postdate;            // 게시글 날짜
+    private String link;                // url
+    private String description;         // 요약 설명
 }

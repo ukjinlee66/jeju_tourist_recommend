@@ -12,7 +12,7 @@ public class InstaRank {
      */
 
     @Id
-    private String id;
-    private String keyword;
-    private String date;
+    private String id;                  // id
+    private String keyword;             // 키워드
+    private String date;                // 날짜
 }

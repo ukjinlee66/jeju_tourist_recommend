@@ -12,7 +12,7 @@ public class Naver {
      */
 
     @Id
-    private String id;
-    private String source;
-    private Blog contents;
+    private String id;              // id
+    private String source;          // 관광지 이름
+    private Blog contents;          // 블로그 contents
 }
