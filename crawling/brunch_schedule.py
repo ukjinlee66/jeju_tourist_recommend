@@ -14,13 +14,14 @@ def open_excel():
     return new_list
 
 webdriver_options = webdriver.ChromeOptions()
-# webdriver_options.add_argument('headless')
+webdriver_options.add_argument('headless')
 driver = webdriver.Chrome('chromedriver', options=webdriver_options)
 driver.maximize_window()
 driver.implicitly_wait(2)
 
 driver.get(url='https://brunch.co.kr/')
 
+startTime = datetime.datetime.now()
 crawlDate = datetime.datetime.now().date()
 ckDate = datetime.datetime.now() - datetime.timedelta(days=7)
 chDict = {'Jan' : '01',
@@ -155,5 +156,8 @@ for searchKeyword in tourlist:
         
         brunch = []
         start_page += 18
+
+endTime = datetime.datetime.now()
+print(f"start {startTime} // end {endTime}")
 
 driver.close()
