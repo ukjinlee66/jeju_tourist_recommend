@@ -77,16 +77,6 @@ function Sidebar(props) {
       </div>
       <div className="sidebar-wrapper" ref={sidebar}>
         <Nav>
-          <form>
-            <InputGroup className="no-border">
-              <Input placeholder="관광지 검색..." />
-              <InputGroupAddon addonType="append">
-                <InputGroupText>
-                  <i className="now-ui-icons ui-1_zoom-bold" />
-                </InputGroupText>
-              </InputGroupAddon>
-            </InputGroup>
-          </form>
           {props.routes.map((prop, key) => 
           {
             if (prop.redirect) return null;
@@ -98,7 +88,7 @@ function Sidebar(props) {
                   activeClassName="active"
                 >
                 {/* 왼쪽 메뉴 부분 출력하는 부분 */}
-                {ret_list()}
+                <p id="result2"/>
                 <button onClick={()=>Sendinfo()}>적용</button>
                 </NavLink>
               
@@ -109,31 +99,5 @@ function Sidebar(props) {
     </div>
   );
 }
-function temp()
-{
-  return(
-    <div>
-      {()=>retres()}
-    </div>
-  );
-}
-function ret_list()
-{
-  console.log("call ret_list()");
-  var attr_arr = ['관광지1','관광지2','관광지3','관광지4','관광지5'];
-  var attr_arr2 = temp();
-  for(var i =0;i<attr_arr2.length;i++)
-  {
-    console.log(attr_arr2[i]);
-  }
-  // console.log('attr_arr2 list : ', Object.getOwnPropertyNames(attr_arr2));
-  const attr_list = attr_arr.map((name) => <li>{name}</li>)
-  return(
-    <div>
-      {/* 추후 각 관광지 정보에 따른 리스트에서 제거하는 버튼 뒷부분 추가 첫번째와 마지막 순서의
-      원소를 출발지와 도착지라 가정한다. */}
-      <li>{attr_list}</li>
-    </div>
-  );
-}
+
 export default Sidebar;
