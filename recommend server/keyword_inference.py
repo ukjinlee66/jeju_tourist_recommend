@@ -1,10 +1,10 @@
 import pandas as pd
 import numpy as np
-from tqdm.notebook import tqdm # 진행률 프로세스바
 from gensim.models import Word2Vec
 from gensim.models import KeyedVectors
 from konlpy.tag import Okt
 from sklearn.metrics.pairwise import cosine_similarity
+import json
 
 def keyword_inference(sentence):
     
@@ -26,7 +26,7 @@ def keyword_inference(sentence):
         resList = []
 
         # 각 문서에 대해서
-        for line in recoTourDf['content']:
+        for line in recoTourDf['keyword']:
             doc2vec = None
             count = 0
             for word in line.split():
@@ -67,5 +67,6 @@ def keyword_inference(sentence):
             
         return resList
     
-    res = keyword_recommend(sentence)
+    res = json.dumps(keyword_recommend(sentence), ensure_ascii=False)
+    
     return res

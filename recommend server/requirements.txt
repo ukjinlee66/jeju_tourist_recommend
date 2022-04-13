@@ -3,4 +3,8 @@ mxnet==1.7.0.post2
 gluonnlp==0.10.0
 pandas==1.1.5
 tqdm==4.64.0
+gensim==3.8.3
+konlpy==0.6.0
+sklearn==0.0
+pyarrow==6.0.1
 git+https://git@github.com/SKTBrain/KoBERT.git@master
