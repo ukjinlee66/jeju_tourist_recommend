@@ -30,7 +30,7 @@ public class RecommendServiceImpl implements RecommendService {
 
     @Async("asyncExecutor")
     public CompletableFuture<String> recommend(String sentence){
-        String url = "http://15.164.116.162:5000/recommend";
+        String url = "http://localhost:5000/recommend";
         MultiValueMap<String, String> param = new LinkedMultiValueMap<String, String>();
         param.add("sentence", sentence);
         String sb = restTemplate.postForObject(url, param, String.class);
@@ -39,7 +39,7 @@ public class RecommendServiceImpl implements RecommendService {
 
     @Async("asyncExecutor")
     public CompletableFuture<List<VisitJejuList>> relation(String sentence){
-        String url = "http://15.164.116.162:5000/keyRecommend";
+        String url = "http://localhost:5000/keyRecommend";
         MultiValueMap<String, String> param = new LinkedMultiValueMap<String, String>();
         param.add("sentence", sentence);
         String[] sb= restTemplate.postForObject(url, param, String[].class);

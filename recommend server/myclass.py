@@ -50,7 +50,7 @@ class BERTClassifier(nn.Module):
                 bert,
                 hidden_size = 768,
                 # num_classes는 카테고리의 개수를 의미한다. (현재 데이터셋의 경우 3개의 분류로 데이터셋이 구성되어 있음)
-                num_classes=9,
+                num_classes=100,
                 dr_rate=None,
                 params=None):
         super(BERTClassifier, self).__init__()
