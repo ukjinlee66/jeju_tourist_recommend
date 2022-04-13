@@ -41,7 +41,7 @@ function NaverBlog(props) {
         for (let i = 0; i < 2; i++) {
             result.push(
                 <div className="mb-3">
-                    <p className="h5">{naverBlog[i].contents.title}</p>
+                    <p className="h5 navarblog-btn" onClick={(e) => window.location.href = naverBlog[i].contents.link}>{naverBlog[i].contents.title}</p>
                     <p>{naverBlog[i].contents.description}</p>
                 </div>
             );}

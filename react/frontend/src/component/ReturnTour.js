@@ -6,31 +6,49 @@ import axios from "axios";
 
 function ReturnTour(props) {
 
-    const [userInput, setUserInput] = useState('');
+    const [tourInfo, setTourInfo] = useState([
+        {id:'' ,img:'', source:'', sub_title:''}])
 
-    const [tourSpot, setTourSpot] = useState('');
+    const infoUrl = '/source/searchBySource'
+    const reqUrl = '/recommend/chatbot';
 
-    const reqUrl = '/recommand/chatbot';
+    const getInfoTour = async (tourSpot) => {
+        await axios
+            .get(infoUrl, {
+                params: {
+                    source: tourSpot,
+                }
+            })
+            .then((res) => setTourInfo(res.data));  
+    }
     
-    const getRecoTour = async (sentence) => {
+    const getRecoTour = async (sentences) => {
         await axios
             .get(reqUrl, {
                 params: {
-                    search: sentence,
+                    sentence: sentences,
                 }
             })
-            .then((res) => setTourSpot(res.data));  
+            .then((res) => getInfoTour(res.data));  
     }
 
     useEffect(() => {
-        setUserInput(props.steps[1].value)
         getRecoTour(props.steps[1].value)
     }, [])
 
+    const output = () => {
+        let result;
+        if (tourInfo[0].id == '') {
+            result = <a>loading...</a>; 
+        } else {
+            result = <a className='chatbot-btn' onClick={(e) => window.location.href = "/jeju/TouristAttractionInfo?tourSpot=" + tourInfo[0].id}>{tourInfo[0].source}</a>;
+        } 
+    return result;
+    };
 
     return (
         <div>
-            <a className='chatbot-btn' onClick={(e) => window.location.href = "/jeju/TouristAttractionList?search=" + tourSpot}>{tourSpot}? 이건 못 참지</a>
+            {output()}
         </div>
     );
 }
