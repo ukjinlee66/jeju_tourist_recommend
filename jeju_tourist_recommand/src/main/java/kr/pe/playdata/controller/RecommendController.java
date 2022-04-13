@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import kr.pe.playdata.domain.VisitJeju;
+import kr.pe.playdata.domain.VisitJejuList;
 import kr.pe.playdata.service.RecommendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,7 +41,7 @@ public class RecommendController {
             @ApiResponse(code = 500, message = "500 에러 발생, Internal Server Error !")
     })
     @GetMapping("/relation")
-    public CompletableFuture<List<VisitJeju>> relation(
+    public CompletableFuture<List<VisitJejuList>> relation(
             @ApiParam(value = "사용자 입력", required=false, example = "드라이브")
             @RequestParam String sentence){
         return recommendService.relation(sentence);

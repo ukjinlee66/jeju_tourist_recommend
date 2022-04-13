@@ -95,7 +95,7 @@ def inference(sentence):
             out = model(token_ids, valid_length, segment_ids)
 
             test_eval=[]
-
+            
             # 학습위해 변환한 분류값 초기 분류값으로 변환
             for i in out:
                 logits=i
