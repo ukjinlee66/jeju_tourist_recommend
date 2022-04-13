@@ -34,4 +34,6 @@ public interface TouristAttractionMongoRepo extends MongoRepository<VisitJeju, S
 			"{'purpose':{$regex:?0,$options:'i'}}, {'etc_property':{$regex:?0,$options:'i'}}," +
 			" {'content':{$regex:?0,$options:'i'}}]}", fields="{source:1, sub_title:1, tag_prev:1, tag_next:1, img:1}", count = true)  // value는 있어도 되고 없어도 된다.
 	public long searchCount(String regexString);		// 특정 column들 기준으로 검색
+
+	public VisitJeju findBySourceLike(String source);
 }
