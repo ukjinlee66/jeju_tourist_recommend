@@ -23,19 +23,21 @@ import { Row, Col, Card, CardHeader, CardBody } from "reactstrap";
 // // core components
 import PanelHeader from "components/PanelHeader/PanelHeader.js";
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from "react-dom";
 
 // import 'bootstrap/dist/css/bootstrap.css';
 // import './css/bootstrap.min.css';
 // import './css/style.css';
 
+
 const MapWrapper = () => 
 {
+  const [aaa, setAaa] = useState()
   useEffect(() => {
     const script = document.createElement("script");
-    script.innerHTML = `
-      var map;
+	script.innerHTML = `
+	  		var map;
 			var markerInfo;
 			//출발지,도착지 마커
 			var marker_s, marker_e, marker_p, new_marker_p2;
@@ -48,7 +50,7 @@ const MapWrapper = () =>
 			var resultMarkerArr = [];
 			//관광지는 n x [2] 열은 위도,경도
 			var attr_list = ["관광지1",[33.5200,126.51555],"관광지2",[33.5030,126.50235]];
-		
+			var markers = new Map();
 			function initTmap() {
 				// 1. 지도 띄우기
 				map = new Tmapv2.Map("map_div", {
@@ -143,13 +145,12 @@ const MapWrapper = () =>
       
 		//end initmap
 		// function
-		var markers = [];
 		function addMarkersTooMuch(attr_list) 
 	  	{
-			removeMarkers();
 			for (var i = 0; i < attr_list.length; i+=2) 
 			{
-				var title1 = attr_list[i];
+				let title1 = attr_list[i];
+				console.log(title1);
 				var lat = attr_list[i+1][0];
 				var lng = attr_list[i+1][1];
 				//Marker 객체 생성.
@@ -161,15 +162,14 @@ const MapWrapper = () =>
 				marker.addListener("click", function(evt) 
 				{
 					console.log(title1+ 'push');
-					markers.push(marker);
+					markers.set(title1, marker);
+					console.log(markers.size);
+					retres();
 				});
 			}
     	}
 		function removeMarkers() {
-			for (var i = 0; i < markers.length; i++) {
-				markers[i].setMap(null);
-			}
-			markers = [];
+			markers.clear();
 		}
 
 		function Sendinfo() 
@@ -481,13 +481,30 @@ const MapWrapper = () =>
         }else if("ROAD" == type){
             map.setMapType(Tmapv2.Map.MapType.ROAD)
         }
-      }
+	  }
+	  let temp=[];
+	  var cnt=0;
       function retres()
 	  {
-		  console.log('retres call');
-		  return markers;
+		let str="";
+		console.log('retres()', markers.size);
+		for(let item of markers)
+		{
+			temp.push(item[0]);
+			console.log('item : ', tt);
+			str+='<div><h3>'+tt+'</h3>\
+			<button class="btn" type="button" onclick="deletemark(temp[temp.length-1])">삭제</button></div>';
+		}
+		$("#result2").html(str);
 	  }
-      initTmap();
+	  function deletemark(name)
+	  {
+		  console.log('delete click',name);
+		  markers.delete(name);
+		  console.log(markers.size);
+	  };
+	  retres();
+	  initTmap();
    `;
     script.type = "text/javascript";
     script.async = "async";
