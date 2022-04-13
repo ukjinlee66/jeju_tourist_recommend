@@ -27,7 +27,6 @@ log_interval = 200
 # learning_rate 값이 너무 크면 원하는 값에 도달하기 힘들고, 너무 작으면 학습기간이 오래 걸린다.
 learning_rate =  5e-5
 
-
 # 학습에 사용할 데이터 셋 클래스 선언
 class BERTDataset(Dataset):
     def __init__(self, dataset, sent_idx, label_idx, bert_tokenizer, max_len,
@@ -43,6 +42,7 @@ class BERTDataset(Dataset):
 
     def __len__(self):
         return (len(self.labels))
+
 
  # 분류에 사용할 모델 클래스 선언
 class BERTClassifier(nn.Module):
