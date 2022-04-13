@@ -8,7 +8,7 @@ app = Flask(__name__)
 def recommend():
     return inference.inference(request.form.get('sentence'))
 
-@app.route('/relation', methods=['post'])
+@app.route('/keyRecommend', methods=['post'])
 def relation():
     return inference.inference(request.form.get('sentence'))
 
