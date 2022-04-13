@@ -6,24 +6,19 @@ from konlpy.tag import Okt
 from sklearn.metrics.pairwise import cosine_similarity
 import json
 
+word2vec_model = KeyedVectors.load_word2vec_format("jeju_word2Vec_model")
+keywordDf = pd.read_parquet("top100_keyword.parquet")
+
 def keyword_inference(sentence):
-    
-    # word2vec 모델 불러오기
-    word2vec_model = KeyedVectors.load_word2vec_format("jeju_word2Vec_model")
-    
-    # 키워드 DataFrame 불러오기
-    keywordDf = pd.read_parquet('top100_keyword.parquet')
     
     recoTourDf = keywordDf.copy()
 
     def keyword_recommend(keywords):
-        
+        res = ''
         recoTourDf.loc[len(keywordDf)] = ['input', keywords]
         
         # 각 문서들의 벡터 리스트
         document_embedding_list = []
-
-        resList = []
 
         # 각 문서에 대해서
         for line in recoTourDf['keyword']:
@@ -61,12 +56,16 @@ def keyword_inference(sentence):
 
         # 전체 데이터 프레임에서 해당 행 추출
         recommend = tours.iloc[tour_indices].reset_index()
-
+        
+        forCnt = 0
         for tourlist in recommend['source']:
-            resList.append(tourlist)
-            
-        return resList
+            if forCnt == 0:
+                res = tourlist
+                forCnt += 1
+            else: 
+                res += ' ' + tourlist
+           
+        return res
     
-    res = json.dumps(keyword_recommend(sentence), ensure_ascii=False)
-    
+    res = keyword_recommend(sentence)
     return res
