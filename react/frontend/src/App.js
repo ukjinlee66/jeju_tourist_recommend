@@ -7,7 +7,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Main from './Main';
 import TouristAttractionInfo from './TouristAttractionInfo';
 import TouristAttractionList from './TouristAttractionList';
-import ChatButton from './component/ChatButton';
+import TouristAttractionListReco from './TouristAttractionListReco';
 
 function App() {
   useEffect(async () => {
@@ -26,6 +26,7 @@ function App() {
               <Route path='/jeju' element={<Main/>}/>
               <Route path='/jeju/TouristAttractionList' element={<TouristAttractionList/>}/>
               <Route path='/jeju/TouristAttractionInfo' element={<TouristAttractionInfo/>}/>
+              <Route path='/jeju/TouristAttractionListReco' element={<TouristAttractionListReco/>}/>
           </Routes>
       </BrowserRouter>
     </div>

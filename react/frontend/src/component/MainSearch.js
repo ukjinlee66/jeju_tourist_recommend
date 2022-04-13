@@ -6,10 +6,12 @@ import './css/style.css';
 function MainSearch(props) {
     const [searchInput, setSearchInput] = useState("")
 
+    // 검색 버튼 클릭 시 이동
     function btClick(e) {
         window.location.href = "/jeju/TouristAttractionList?search=" + searchInput;
     }
 
+    // 검색창에 ENTER 치는 경우에 검색 버튼 클릭으로 간주
     const onKeyPress = (e) => {
         if(e.key=='Enter'){
             btClick();

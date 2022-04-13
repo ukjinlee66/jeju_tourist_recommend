@@ -51,7 +51,6 @@ div .list-p {
 }
 
 
-
 /*** Spinner ***/
 #spinner {
     opacity: 0;
@@ -318,6 +317,7 @@ div .list-p {
     color: var(--light);
 }
 
+
 /*** About ***/
 .about-bg {
     background-image: -webkit-repeating-radial-gradient(center center, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 1px, transparent 1px, transparent 100%);
@@ -327,6 +327,8 @@ div .list-p {
     background-image: repeating-radial-gradient(center center, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 1px, transparent 1px, transparent 100%);
     background-size: 5px 5px;
 }
+
+
 /*** Info ***/
 .text-con {
     overflow: hidden;
@@ -366,6 +368,7 @@ div .list-p {
 .form-check .form-check-label:hover,.form-check .form-check-input:hover {
     cursor: pointer;
 }
+
 
 /*** TourListList ***/
 .list-item {
@@ -427,6 +430,7 @@ ul.pagination {
     display: inline-block;
 }
 
+
 /*** MainImg ***/
 .position-absolute {
     background: rgba(43, 57, 64, .5);
@@ -436,6 +440,7 @@ ul.pagination {
     max-width: 100%;
     height: 200px;
 }
+
 
 /*** Slick TourImg ***/
 .img-fluid-tour {
@@ -459,11 +464,14 @@ ul.pagination {
     margin-bottom: 10px;
 }
 
+
 /*** chatbot ***/
 .chatbot-btn {
     cursor: pointer;
     color: rgb(19, 121, 236);
 }
+
+
 /*** Footer ***/
 .footer .btn.btn-social {
     margin-right: 5px;

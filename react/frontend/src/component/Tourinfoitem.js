@@ -11,6 +11,7 @@ function Tourinfoitem(props) {
 
     const reqUrl = '/source/lookup';
 
+    // 한 관광지에 대한 상세정보 요청
     const getInfoItem = async () => {
         await axios
             .get(reqUrl, {
@@ -26,6 +27,7 @@ function Tourinfoitem(props) {
         getInfoItem();
     }, [])
 
+    // 상세페이지 관광지 정보 렌더링
     const tourSpotRender = () => {
         const result = [];
         result.push(

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './css/bootstrap.min.css';
 import './css/style.css';
@@ -7,11 +7,11 @@ import axios from "axios";
 function KeywordList(props) {
 
     const [keywordList, setKeywordList] = useState([]);
-    // const keywordList = ['te1', 'te2', 'te3', 'te4', 'te5', 'te6', 'te7', 'te8', 'te9', 'te10']
     let checkKeyword = []
     let result = ''
     const reqUrl = '/test/keyword'
 
+    // 키워드 옵션 리스트 요청
     const getKeyword = async () => {
         await axios
             .get(reqUrl)
@@ -22,6 +22,7 @@ function KeywordList(props) {
         getKeyword();
     }, [])
 
+    // 체크박스에서 선택된 키워드로 문자열 구성
     function getCheckboxValue()  {
         checkKeyword = []
 
@@ -36,7 +37,7 @@ function KeywordList(props) {
             if (result == ''){
                 result += el.value
             } else{
-                result += ', ' + el.value;
+                result += ' ' + el.value;
             }
             
           checkKeyword.push(el.value)
@@ -46,10 +47,11 @@ function KeywordList(props) {
         document.getElementById('result').innerText = result;
     }
 
+    // 키워드 리스트를 기반으로 옵션으로 제공할 키워드 체크박스 렌더링
     const ketwordListRender = () => {
-        const result = [];
+        const renderResult = [];
         for (let i = 0; i < 10; i++) {
-            result.push(
+            renderResult.push(
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value={keywordList[i]} id={"check"+i} name='keyword' onClick={getCheckboxValue}/>
@@ -59,9 +61,10 @@ function KeywordList(props) {
                     </div>
                 </div>
             );}
-        return result;
+        return renderResult;
     };
 
+    // 추천 버튼 클릭 시 값 전달 및 이동
     function btClick(e) {
         window.sessionStorage.setItem('recoKeyword', result);
         window.location.href = "/jeju/TouristAttractionList";

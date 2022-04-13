@@ -12,6 +12,7 @@ function NaverBlog(props) {
     const reqUrl = '/Blog/recentTwo';
     const tourUrl = '/source/lookup';
 
+    // 해당 상세페이지의 관광지명 요청
     const getTourName = async () => {
         await axios
             .get(tourUrl, {
@@ -22,6 +23,7 @@ function NaverBlog(props) {
             .then((res) => getNaverBlog(res.data.source));
     }
 
+    // 관광지명을 통해서 네이버 블로그 정보 요청
     const getNaverBlog = async (tourName) => {
             await axios
                 .get(reqUrl, {
@@ -36,6 +38,7 @@ function NaverBlog(props) {
         getTourName();
     }, [])
 
+    // 네이버 블로그 정보 렌더링
     const naverBlogRender = () => {
         const result = [];
         for (let i = 0; i < 2; i++) {

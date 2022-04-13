@@ -8,16 +8,19 @@ function Ranking(props) {
     const [rankings, setRankings] = useState([]);
     const reqUrl = '/test/siterank'
 
+    // 검색어 랭킹 요청
     const getRanking = async () => {
         await axios
             .get(reqUrl)
             .then((res) => setRankings(res.data));
     }
 
+    // 처음 렌더링시 한번 실행되는 함수
     useEffect(() => {
         getRanking()
     }, [])
 
+    // 검색어 랭킹 렌더링
     const oursiteRender = () => {
         const result = [];
         for (let i = 0; i < rankings.length; i++) {

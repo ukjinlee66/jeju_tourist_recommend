@@ -6,12 +6,11 @@ import axios from "axios";
 
 function ReturnTour(props) {
 
-    const [userInput, setUserInput] = useState('');
-
     const [tourSpot, setTourSpot] = useState('');
 
     const reqUrl = '/recommand/chatbot';
     
+    // 유저가 입력한 정보를 통해서 KoBERT 기반 추천 요청
     const getRecoTour = async (sentence) => {
         await axios
             .get(reqUrl, {
@@ -22,11 +21,10 @@ function ReturnTour(props) {
             .then((res) => setTourSpot(res.data));  
     }
 
+    // 처음 렌더링시 한번 실행되는 함수
     useEffect(() => {
-        setUserInput(props.steps[1].value)
         getRecoTour(props.steps[1].value)
     }, [])
-
 
     return (
         <div>
