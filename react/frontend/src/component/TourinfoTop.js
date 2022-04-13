@@ -5,11 +5,13 @@ import './css/style.css';
 import axios from "axios";
 
 function TourinfoTop(props) {
+
     // 상세 페이지 출력 관광지 정보 
     const [tourSpot, setTourSpot] = useState({source:'', tag_prev:'', img:'https://image.fmkorea.com/files/attach/new2/20210728/3674493/3731487823/3787216388/37dbf32737fa8f62174e3764bae950ab.jpg', sub_title:'', call:'', address:'', detail_content:'' })
 
     const reqUrl = '/source/lookup';
 
+    // 한 관광지에 대한 상세정보 요청
     const getInfoItem = async () => {
         await axios
             .get(reqUrl, {
@@ -25,6 +27,7 @@ function TourinfoTop(props) {
         getInfoItem();
     }, [])
 
+    // 관광지명, 전화번호, 주소, 간단한 정보 등 렌더링
     const tourSpotRender = () => {
         const result = [];
         result.push(

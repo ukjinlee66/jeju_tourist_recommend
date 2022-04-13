@@ -2,7 +2,6 @@ import React, { Fragment, useEffect, useState, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './css/bootstrap.min.css';
 import './css/style.css';
-import styled from 'styled-components';
 import logo from './img/logo.png';
 
 function Navbar(props) {
@@ -11,6 +10,7 @@ function Navbar(props) {
     // useRef를 통해 css 변경
     const stickyChange = useRef(null);
     
+    // 스크롤의 Y축을 감시하여 특정 지점 이동 시 Navbar가 화면 일정 지점에 따라가도록 설정
     function handleScroll() { 
         setScrollY(window.pageYOffset);
         if(ScrollY > 300) {
@@ -37,11 +37,11 @@ function Navbar(props) {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                     <div className="navbar-nav ms-auto p-4 p-lg-0">
-                        <a href="/jeju" className="nav-item nav-link active">Home</a>
+                        {/* <a href="/jeju" className="nav-item nav-link">Home</a> */}
                         <a href="/jeju/TouristAttractionList?search=" className="nav-item nav-link">List</a>
                         <a href="/jeju/TouristAttractionInfo" className="nav-item nav-link">Info</a>
                     </div>
-                    <a href="" className="btn btn-primary bg-jeju-nav rounded-0 py-4 px-lg-5 d-none d-lg-block">Post A Job<i class="fa fa-arrow-right ms-3"></i></a>
+                    <a href="/jeju" className="btn btn-primary bg-jeju-nav rounded-0 py-4 px-lg-5 d-none d-lg-block">Home<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </nav>
         </Fragment>

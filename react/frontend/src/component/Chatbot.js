@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
 import ReturnTour from './ReturnTour';
 
+// 챗봇 테마 설정
 const theme = {
     background: '#706F6F',
     fontFamily: 'Helvetica Neue',
@@ -13,7 +14,7 @@ const theme = {
     botFontColor: '#000000',
     userBubbleColor: '#fff',
     userFontColor: '#4a4a4a',
-  }
+}
   
 function Chatbot(props) {
 
@@ -34,7 +35,7 @@ function Chatbot(props) {
                 },
                 {
                     id: '2',
-                    message: '아래 관광지명 클릭시 상세페이지로 이동됩니다.',
+                    message: '아래 관광지명 클릭시 검색페이지로 이동됩니다.',
                     trigger: '3'
                 },
                 {

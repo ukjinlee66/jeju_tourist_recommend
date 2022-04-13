@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 
+// 슬라이더 옵션
 const tourOptions = {
     autoplay: true,
     autoplaySpeed: 1500,
@@ -48,16 +49,19 @@ function TourImg(props) {
     
     const reqUrl = '/source/random';
     
+    // 랜덤으로 5개의 관광지 이미지 요청
     const getImg = async () => {
         await axios
             .get(reqUrl)
             .then((res) => setImgSource(res.data)); 
     }; 
 
+    // 처음 렌더링시 한번 실행되는 함수
     useEffect(() => {
         getImg()
     }, [])
 
+    // 관광지 이미지 슬라이더로 렌더링
     const tourImgRender = () => {
         const result = [];
         for (let i = 0; i < 4; i++) {

@@ -6,6 +6,7 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 import 'owl.carousel/dist/assets/owl.theme.default.css'; 
 
+// OwlCarousel(슬라이더) 옵션 설정
 const options = {
     autoplay: true,
     smartSpeed: 1500,

@@ -1,9 +1,8 @@
-import React, { Fragment, useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './css/bootstrap.min.css';
 import './css/style.css';
 import Collapse from 'react-bootstrap/Collapse'
-import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Chatbot from './Chatbot';
 

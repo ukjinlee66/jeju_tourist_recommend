@@ -9,16 +9,19 @@ function SnsRanking(props) {
     
     const reqUrl = '/rank/instaKeyword'
 
+    // SNS 검색어 랭킹 요청
     const getSnsRanking = async () => {
         await axios
             .get(reqUrl)
             .then((res) => setSnsrankings(res.data));
     }
 
+    // 처음 렌더링시 한번 실행되는 함수
     useEffect(() => {
         getSnsRanking();
     }, [])
 
+    // SNS 검색어 랭킹 렌더링
     const hotsnsRander = () => {
         const result = [];
         for (let i = 0; i < snsrankings.length; i++) {
