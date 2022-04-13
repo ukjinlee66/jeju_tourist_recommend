@@ -51,7 +51,7 @@ def inference(sentence):
     loss_fn = nn.CrossEntropyLoss()
     # 전체 모델 불러오기(cpu 환경으로 사용할 때)
 
-    model.load_state_dict(torch.load('jeju_model_state_dict.pt', map_location='cpu'))
+    model.load_state_dict(torch.load('top100_jeju_model_state_dict_v2.pt', map_location='cpu'))
     # kobert에서 vocab을 통해서 토큰화 진행
     # 앞에 클래스를 선언해줘야 모델 실행 가능
 
