@@ -7,17 +7,17 @@ import axios from "axios";
 
 function NaverBlog(props) {
     // 네이버 블로그 정보 
-    const [naverBlog, setNaverBlog] = useState([{title:'', contents:''}, {title:'', contents:''}])
+    const [naverBlog, setNaverBlog] = useState([{title:'', contents:{title:'', link:'', description:''}}, {title:'', contents:{title:'', link:'', description:''}}])
 
     const reqUrl = '/Blog/recentTwo';
     const tourUrl = '/source/lookup';
 
     // 해당 상세페이지의 관광지명 요청
-    const getTourName = async () => {
+    const getTourName = async (tourNames) => {
         await axios
             .get(tourUrl, {
                 params: {
-                    id: decodeURI(window.location.search.split('=')[1])
+                    id: tourNames
                 }
             })
             .then((res) => getNaverBlog(res.data.source));
@@ -27,7 +27,8 @@ function NaverBlog(props) {
     const getNaverBlog = async (tourName) => {
             await axios
                 .get(reqUrl, {
-                    params:{source:tourName
+                    params:{
+                        source:tourName
                     }
                 })
                 .then((res) => setNaverBlog(res.data));
@@ -35,7 +36,7 @@ function NaverBlog(props) {
 
     // 처음 렌더링시 한번 실행되는 함수
     useEffect(() => {
-        getTourName();
+        getTourName(decodeURI(window.location.search.split('=')[1]))
     }, [])
 
     // 네이버 블로그 정보 렌더링
@@ -44,7 +45,7 @@ function NaverBlog(props) {
         for (let i = 0; i < 2; i++) {
             result.push(
                 <div className="mb-3">
-                    <p className="h5">{naverBlog[i].contents.title}</p>
+                    <p className="h5 navarblog-btn" onClick={(e) => window.location.href = naverBlog[i].contents.link}>{naverBlog[i].contents.title}</p>
                     <p>{naverBlog[i].contents.description}</p>
                 </div>
             );}

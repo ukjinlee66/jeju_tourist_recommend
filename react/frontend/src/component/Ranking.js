@@ -5,8 +5,8 @@ import './css/style.css';
 import axios from "axios";
 
 function Ranking(props) {
-    const [rankings, setRankings] = useState([]);
-    const reqUrl = '/test/siterank'
+    const [rankings, setRankings] = useState([{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''}]);
+    const reqUrl = '/keyword/searchKeyword'
 
     // 검색어 랭킹 요청
     const getRanking = async () => {
@@ -27,7 +27,7 @@ function Ranking(props) {
             result.push(
                 <div class="row g-4 mb-4 p-4">
                     <h5 class="col-lg-1">{i + 1}</h5>
-                    <h5 class="col-lg-11 ">{rankings[i]}</h5>
+                    <h5 class="col-lg-11 ">{rankings[i].keyword}</h5>
                 </div>
             );}
         return result;
