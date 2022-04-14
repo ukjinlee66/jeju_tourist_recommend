@@ -35,7 +35,7 @@ function Chatbot(props) {
                 },
                 {
                     id: '2',
-                    message: '아래 관광지명 클릭시 검색페이지로 이동됩니다.',
+                    message: '아래 관광지명 클릭시 상세페이지로 이동됩니다.',
                     trigger: '3'
                 },
                 {

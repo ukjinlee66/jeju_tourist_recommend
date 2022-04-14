@@ -7,7 +7,7 @@ import axios from "axios";
 function SnsRanking(props) {
     const [snsrankings, setSnsrankings] = useState([{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''}]);
     
-    const reqUrl = '/rank/instaKeyword'
+    const reqUrl = '/keyword/instaKeyword'
 
     // SNS 검색어 랭킹 요청
     const getSnsRanking = async () => {

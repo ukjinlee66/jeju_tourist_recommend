@@ -6,10 +6,10 @@ import axios from "axios";
 
 function KeywordList(props) {
 
-    const [keywordList, setKeywordList] = useState([]);
+    const [keywordList, setKeywordList] = useState([{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''}]);
     let checkKeyword = []
     let result = ''
-    const reqUrl = '/test/keyword'
+    const reqUrl = '/keyword/randomRecommendKeyword'
 
     // 키워드 옵션 리스트 요청
     const getKeyword = async () => {
@@ -54,9 +54,9 @@ function KeywordList(props) {
             renderResult.push(
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value={keywordList[i]} id={"check"+i} name='keyword' onClick={getCheckboxValue}/>
+                        <input class="form-check-input" type="checkbox" value={keywordList[i].keyword} id={"check"+i} name='keyword' onClick={getCheckboxValue}/>
                         <label class="form-check-label" for={"check"+i} >
-                        {keywordList[i]}
+                        {keywordList[i].keyword}
                         </label>
                     </div>
                 </div>
@@ -67,7 +67,7 @@ function KeywordList(props) {
     // 추천 버튼 클릭 시 값 전달 및 이동
     function btClick(e) {
         window.sessionStorage.setItem('recoKeyword', result);
-        window.location.href = "/jeju/TouristAttractionList";
+        window.location.href = "/jeju/TouristAttractionListReco";
     }
 
     return (

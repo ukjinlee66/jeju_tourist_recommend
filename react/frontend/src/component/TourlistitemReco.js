@@ -23,30 +23,18 @@ function TourlistitemReco(props) {
         setPage(nowPage);
     };
 
-    const reqUrl = '/source/searchByCertainColumn'
+    const reqUrl = '/recommend/relation'
 
     // 키워드 기준 추천된 관광지 리스트 요청
     const getListItemReco = async (userInput) => {
         await axios
             .get(reqUrl, {
                 params: {
-                    search: userInput,
-                    page: page
+                    sentence: userInput,
                 }
             })
             .then((res) => setTourList(res.data));  
     }
-
-    // const getListItem = async (page) => {
-    //     await axios
-    //         .get(reqUrl, {
-    //             params: {
-    //                 search: decodeURI(window.location.search.split('=')[1]),
-    //                 page: page
-    //             }
-    //         })
-    //         .then((res) => setTourList(res.data));  
-    // }
 
    // 처음 렌더링시 한번 실행되는 함수
     useEffect(() => {
