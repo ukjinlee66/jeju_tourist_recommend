@@ -43,7 +43,7 @@ public class RecommendServiceImpl implements RecommendService {
         MultiValueMap<String, String> param = new LinkedMultiValueMap<String, String>();
         param.add("sentence", sentence);
         String sb = restTemplate.postForObject(url, param, String.class);
-        List<String> li = Arrays.asList(sb.split(" "));
+        List<String> li = Arrays.asList(sb.split(","));
         List<VisitJejuList> arr = new ArrayList<>();
         for(int i=0; i<li.size(); i++){
             arr.add(mongoRepo.findBySource(li.get(i)));

@@ -63,7 +63,7 @@ def keyword_inference(sentence):
                 res = tourlist
                 forCnt += 1
             else: 
-                res += ' ' + tourlist
+                res += ',' + tourlist
            
         return res
     
