@@ -1,13 +1,13 @@
 import React, {Fragment} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import './component/css/bootstrap.min.css';
-import './component/css/style.css';
-import MainSearch from './component/MainSearch';
-import Scrolltop from './component/Scrolltop';
-import Footer from './component/Footer';
-import TourlistitemReco from './component/TourlistitemReco';
-import Map from './component/Map';
-import ChatButton from './component/ChatButton';
+import '../assets/css/bootstrap.min.css';
+import '../assets/css/style.css';
+import MainSearch from '../components/MainSearch';
+import Scrolltop from '../components/Scrolltop';
+import Footer from '../components/Footer';
+import TourlistitemReco from '../components/TourlistitemReco';
+import Map from '../components/Map';
+import ChatButton from '../components/ChatButton';
 
 function TouristAttractionListReco(props) {
     return (

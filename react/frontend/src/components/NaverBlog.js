@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import './css/bootstrap.min.css';
-import './css/style.css';
-import naverlogo from './img/naver.ico'
+import '../assets/css/bootstrap.min.css';
+import '../assets/css/style.css';
+import naverlogo from '../assets/img/naver.ico'
 import axios from "axios";
 
 function NaverBlog(props) {

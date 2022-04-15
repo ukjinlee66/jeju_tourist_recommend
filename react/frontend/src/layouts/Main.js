@@ -1,16 +1,16 @@
 import React, {Fragment} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import './component/css/bootstrap.min.css';
-import './component/css/style.css';
-import MainSearch from './component/MainSearch';
-import KeywordList from './component/KeywordList';
-import MainImg from './component/MainImg';
-import TourImg from './component/TourImg';
-import Ranking from './component/Ranking';
-import Scrolltop from './component/Scrolltop';
-import Footer from './component/Footer';
-import SnsRanking from './component/SnsRanking';
-import ChatButton from './component/ChatButton';
+import '../assets/css/bootstrap.min.css';
+import '../assets/css/style.css';
+import MainSearch from '../components/MainSearch';
+import KeywordList from '../components/KeywordList';
+import MainImg from '../components/MainImg';
+import TourImg from '../components/TourImg';
+import Ranking from '../components/Ranking';
+import Scrolltop from '../components/Scrolltop';
+import Footer from '../components/Footer';
+import SnsRanking from '../components/SnsRanking';
+import ChatButton from '../components/ChatButton';
 
 function Main(props) {
     return (

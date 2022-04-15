@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import './css/bootstrap.min.css';
-import './css/style.css';
+import '../assets/css/bootstrap.min.css';
+import '../assets/css/style.css';
 import OwlCarousel from 'react-owl-carousel'; 
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 import 'owl.carousel/dist/assets/owl.theme.default.css'; 

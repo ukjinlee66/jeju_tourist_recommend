@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import './component/css/bootstrap.min.css';
-import './component/css/style.css';
-import Navbar from './component/Navbar';
+import './assets/css/bootstrap.min.css';
+import './assets/css/style.css';
+import Navbar from './components/Navbar';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import Main from './Main';
-import TouristAttractionInfo from './TouristAttractionInfo';
-import TouristAttractionList from './TouristAttractionList';
-import TouristAttractionListReco from './TouristAttractionListReco';
+import Main from './layouts/Main';
+import TouristAttractionInfo from './layouts/TouristAttractionInfo';
+import TouristAttractionList from './layouts/TouristAttractionList';
+import TouristAttractionListReco from './layouts/TouristAttractionListReco';
 
 function App() {
   useEffect(async () => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import './css/bootstrap.min.css';
-import './css/style.css';
+import '../assets/css/bootstrap.min.css';
+import '../assets/css/style.css';
 import axios from "axios";
 
 function KeywordList(props) {

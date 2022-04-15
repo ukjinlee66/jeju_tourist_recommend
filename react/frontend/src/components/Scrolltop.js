@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import './css/bootstrap.min.css';
-import './css/style.css';
+import '../assets/css/bootstrap.min.css';
+import '../assets/css/style.css';
 
 // 스크롤을 맨 위로 올려주는 버튼
 function Scrolltop(props) {
