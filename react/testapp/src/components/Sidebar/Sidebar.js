@@ -28,9 +28,15 @@ import {
   Input,
 } from "reactstrap";
 import logo from "logo-white.svg";
+import { resolveTripleslashReference } from "typescript";
 
 var ps;
-
+console.important = function(text) 
+{
+  ReactDOM.render(
+    InputGroupText.props.Input
+  );
+}
 function Sidebar(props) {
   const sidebar = React.useRef();
   // verifies if routeName is the one active (in browser input)
@@ -67,40 +73,25 @@ function Sidebar(props) {
           className="simple-text logo-normal"
           target="_blank"
         >
-          Creative Tim
         </a>
       </div>
       <div className="sidebar-wrapper" ref={sidebar}>
         <Nav>
-          <form>
-            <InputGroup className="no-border">
-              <Input placeholder="Search..." />
-              <InputGroupAddon addonType="append">
-                <InputGroupText>
-                  <i className="now-ui-icons ui-1_zoom-bold" />
-                </InputGroupText>
-              </InputGroupAddon>
-            </InputGroup>
-          </form>
-          {props.routes.map((prop, key) => {
+          {props.routes.map((prop, key) => 
+          {
             if (prop.redirect) return null;
             return (
-              <li
-                className={
-                  activeRoute(prop.layout + prop.path) +
-                  (prop.pro ? " active active-pro" : "")
-                }
-                key={key}
-              >
+              
                 <NavLink
                   to={prop.layout + prop.path}
                   className="nav-link"
                   activeClassName="active"
                 >
-                  <i className={"now-ui-icons " + prop.icon} />
-                  <p>{prop.name}</p>
+                {/* 왼쪽 메뉴 부분 출력하는 부분 */}
+                <p id="result2"/>
+                <button onClick={()=>Sendinfo()}>적용</button>
                 </NavLink>
-              </li>
+              
             );
           })}
         </Nav>

@@ -61,9 +61,8 @@ function Admin(props) {
       
       <Sidebar {...props} routes={routes} backgroundColor={backgroundColor}/>
       <div className="main-panel" ref={mainPanel}>
-        <DemoNavbar {...props} />
-        
-        <Switch>
+        {/* <DemoNavbar {...props} />
+        <Switch> */}
           {routes.map((prop, key) => {
             return (
               <Route
@@ -74,7 +73,7 @@ function Admin(props) {
             );
           })}
           <Redirect from="/admin" to="/admin/maps" />
-        </Switch>
+        {/* </Switch> */}
         <Footer fluid />
       </div>
     </div>

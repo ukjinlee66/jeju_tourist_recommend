@@ -1,6 +1,7 @@
 from flask import Flask, request
 
 import inference
+import keyword_inference
 
 app = Flask(__name__)
 
