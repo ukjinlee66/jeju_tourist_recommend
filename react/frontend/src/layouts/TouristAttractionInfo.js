@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect} from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../assets/css/bootstrap.min.css';
 import '../assets/css/style.css';
@@ -9,10 +9,12 @@ import NaverBlog from '../components/NaverBlog';
 import Map from '../components/Map';
 import TourinfoTop from '../components/TourinfoTop';
 import ChatButton from '../components/ChatButton';
+import Navbar from '../components/Navbar';
 
 function TouristAttractionInfo(props) {
     return (
-        <Fragment>
+        <div class="container-xxl bg-white p-0">
+            <Navbar/>
             <TourinfoTop />
             <hr/>
             <div class="container-xxl py-5 wow fadeInUp pdCon" data-wow-delay="0.1s">
@@ -28,7 +30,7 @@ function TouristAttractionInfo(props) {
             <Scrolltop />
             <ChatButton/>
             <Footer />
-        </Fragment>
+        </div>
     );
 }
 
