@@ -57,7 +57,7 @@ function Sidebar(props) {
   });
   return (
     <div className="sidebar" data-color={props.backgroundColor}>
-      <div className="logo">
+      <div className="logo side-logo">
         <a
           href="https://www.creative-tim.com?ref=nudr-sidebar"
           className="simple-text logo-mini"

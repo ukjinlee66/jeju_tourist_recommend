@@ -492,8 +492,8 @@ const MapWrapper = () =>
 		{
 			temp = item[0];
 			console.log('item : ', temp);
-			str+='<h3>'+temp+'</h3>\
-			<button type="button" onclick="deletemark(temp);return false;">삭제</button>';
+			str+='<div class="row btn-row g-3"><h3 class="col-lg-8">'+temp+'</h3>\
+			<button class="col-lg-4 del-btn" type="button" onclick="deletemark(temp);return false;">삭제</button></div>';
 		}
 		$("#result2").html(str);
 	  }

@@ -430,10 +430,10 @@ Copyright (c) 2015 Daniel Eden
   .show > .btn-primary.dropdown-toggle,
   .show > .btn-primary.dropdown-toggle:focus,
   .show > .btn-primary.dropdown-toggle:hover {
-    background-color: #fa7a50;
+    background-color: #f86300;
     color: #FFFFFF;
     box-shadow: none;
-    border-color: #fa7a50; }
+    border-color: #f86300; }
   .btn-primary:not([data-action]):not([class*="btn-outline-"]):hover {
     box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.17); }
   .btn-primary.disabled, .btn-primary.disabled:hover, .btn-primary.disabled:focus, .btn-primary.disabled.focus, .btn-primary.disabled:active, .btn-primary.disabled.active, .btn-primary:disabled, .btn-primary:disabled:hover, .btn-primary:disabled:focus, .btn-primary:disabled.focus, .btn-primary:disabled:active, .btn-primary:disabled.active, .btn-primary[disabled], .btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary[disabled].focus, .btn-primary[disabled]:active, .btn-primary[disabled].active,
@@ -820,7 +820,7 @@ fieldset[disabled]
   opacity: 1;
   filter: alpha(opacity=100); }
 
-.form-control {
+/* .form-control {
   background-color: transparent;
   border: 1px solid #E3E3E3;
   border-radius: 30px;
@@ -834,7 +834,7 @@ fieldset[disabled]
   -ms-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
   transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
   -webkit-box-shadow: none;
-  box-shadow: none; }
+  box-shadow: none; } */
   .form-control:focus {
     border: 1px solid #f96332;
     -webkit-box-shadow: none;
@@ -1219,7 +1219,7 @@ textarea.form-control {
 .form-horizontal .form-check-inline {
   margin-top: 6px; }
 
-button,
+/* button,
 input,
 optgroup,
 select,
@@ -1227,23 +1227,23 @@ textarea {
   font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 400; }
+  font-weight: 400; } */
 
 a {
   color: #f96332; }
   a:hover, a:focus {
     color: #f96332; }
 
-h1, .h1 {
+/* h1, .h1 {
   font-size: 3.5em;
   line-height: 1.15;
   margin-bottom: 30px; }
   h1 small, .h1 small {
     font-weight: 700;
     text-transform: uppercase;
-    opacity: .8; }
+    opacity: .8; } */
 
-h2, .h2 {
+/* h2, .h2 {
   font-size: 2.5em;
   margin-bottom: 30px; }
 
@@ -1260,17 +1260,17 @@ h4, .h4 {
   h4 + .category,
   h4.title + .category, .h4 + .category,
   .h4.title + .category {
-    margin-top: -10px; }
+    margin-top: -10px; } */
 
-h5, .h5 {
+/* h5, .h5 {
   font-size: 1.57em;
   line-height: 1.4em;
-  margin-bottom: 15px; }
-
+  margin-bottom: 15px; } */
+/* 
 h6, .h6 {
   font-size: 1em;
   font-weight: 700;
-  text-transform: uppercase; }
+  text-transform: uppercase; } */
 
 p.description {
   font-size: 1.14em; }
@@ -1352,12 +1352,12 @@ a.text-gray:focus, a.text-gray:hover {
     .blockquote.blockquote-white small {
       color: rgba(255, 255, 255, 0.8); }
 
-body {
+/* body {
   color: #2c2c2c;
   font-size: 14px;
   font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased; }
+  -webkit-font-smoothing: antialiased; } */
 
 .main {
   position: relative;
@@ -1449,10 +1449,10 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
 .pull-right {
   float: right; }
 
-.form-check {
-  margin-top: .5rem; }
+/* .form-check {
+  margin-top: .5rem; } */
 
-.form-check .form-check-label {
+/* .form-check .form-check-label {
   display: inline-block;
   position: relative;
   cursor: pointer;
@@ -1463,7 +1463,7 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
   -moz-transition: color 0.3s linear;
   -o-transition: color 0.3s linear;
   -ms-transition: color 0.3s linear;
-  transition: color 0.3s linear; }
+  transition: color 0.3s linear; } */
 
 .radio .form-check-sign {
   padding-left: 28px; }
@@ -1504,11 +1504,11 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
   opacity: .5;
   cursor: not-allowed; }
 
-.form-check input[type="checkbox"],
+/* .form-check input[type="checkbox"],
 .radio input[type="radio"] {
   opacity: 0;
   position: absolute;
-  visibility: hidden; }
+  visibility: hidden; } */
 
 .form-check input[type="checkbox"]:checked + .form-check-sign::after {
   opacity: 1; }
@@ -2087,9 +2087,9 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
   .alert.alert-with-icon {
     padding-left: 65px; }
 
-img {
+/* img {
   max-width: 100%;
-  border-radius: 0.1875rem; }
+  border-radius: 0.1875rem; } */
 
 .img-raised {
   box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.3); }
@@ -2935,7 +2935,7 @@ Created using IcoMoon - icomoon.io
   -ms-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
   transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1); }
   .main-panel > .content {
-    padding: 0 30px 30px;
+    /* padding: 0 30px 30px; */
     min-height: calc(100vh - 123px);
     margin-top: -30px; }
   .main-panel > .navbar {
@@ -2979,8 +2979,8 @@ Created using IcoMoon - icomoon.io
 .panel-header-lg {
   height: 380px; }
 
-.footer {
-  padding: 24px 0; }
+/* .footer {
+  padding: 24px 0; } */
   .footer.footer-default {
     background-color: #f2f2f2; }
   .footer nav {
@@ -3004,9 +3004,9 @@ Created using IcoMoon - icomoon.io
   .footer.fixed-bottom {
     width: calc(100% - 80px);
     margin-left: auto; }
-  .footer .copyright {
+  /* .footer .copyright {
     font-size: 0.8571em;
-    line-height: 1.8; }
+    line-height: 1.8; } */
   .footer:after {
     display: table;
     clear: both;
@@ -3357,8 +3357,8 @@ Created using IcoMoon - icomoon.io
   margin-bottom: 6px;
   text-align: center; }
 
-.map {
-  height: 500px; }
+/* .map {
+  height: 500px; } */
 
 @media screen and (max-width: 991px) {
   .profile-photo .profile-photo-small {
@@ -3751,9 +3751,10 @@ Created using IcoMoon - icomoon.io
     margin: 0 0 0 auto; }
   .dropdown-menu .dropdown-item {
     color: inherit; }
-  .footer .copyright {
+  /* .footer .copyright {
     float: right;
-    padding-right: 15px; } }
+    padding-right: 15px; }  */
+  }
 
 @media screen and (max-width: 768px) {
   .nav-tabs {
