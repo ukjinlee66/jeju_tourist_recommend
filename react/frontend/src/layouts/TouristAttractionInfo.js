@@ -1,14 +1,14 @@
 import React, {Fragment, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import './component/css/bootstrap.min.css';
-import './component/css/style.css';
-import Scrolltop from './component/Scrolltop';
-import Footer from './component/Footer';
-import Tourinfoitem from './component/Tourinfoitem';
-import NaverBlog from './component/NaverBlog';
-import Map from './component/Map';
-import TourinfoTop from './component/TourinfoTop';
-import ChatButton from './component/ChatButton';
+import '../assets/css/bootstrap.min.css';
+import '../assets/css/style.css';
+import Scrolltop from '../components/Scrolltop';
+import Footer from '../components/Footer';
+import Tourinfoitem from '../components/Tourinfoitem';
+import NaverBlog from '../components/NaverBlog';
+import Map from '../components/Map';
+import TourinfoTop from '../components/TourinfoTop';
+import ChatButton from '../components/ChatButton';
 
 function TouristAttractionInfo(props) {
     return (

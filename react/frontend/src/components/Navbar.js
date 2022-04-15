@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect, useState, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import './css/bootstrap.min.css';
-import './css/style.css';
-import logo from './img/logo.png';
+import '../assets/css/bootstrap.min.css';
+import '../assets/css/style.css';
+import logo from '../assets/img/logo.png';
 
 function Navbar(props) {
     const [ScrollY, setScrollY] = useState(0); // window 의 pageYOffset값을 저장 

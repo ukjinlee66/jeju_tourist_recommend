@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 //import ReactDOM from "react-dom";
 import 'bootstrap/dist/css/bootstrap.css';
-import './css/bootstrap.min.css';
-import './css/style.css';
-import closebutton from './img/close-button.png'
+import '../assets/css/bootstrap.min.css';
+import '../assets/css/style.css';
+import closebutton from '../assets/img/close-button.png'
 
 export default function Map() 
 { 

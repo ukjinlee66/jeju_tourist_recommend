@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import './css/bootstrap.min.css';
-import './css/style.css';
+import '../assets/css/bootstrap.min.css';
+import '../assets/css/style.css';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
