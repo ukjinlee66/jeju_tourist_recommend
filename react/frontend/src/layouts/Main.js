@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../assets/css/bootstrap.min.css';
 import '../assets/css/style.css';
@@ -11,10 +11,12 @@ import Scrolltop from '../components/Scrolltop';
 import Footer from '../components/Footer';
 import SnsRanking from '../components/SnsRanking';
 import ChatButton from '../components/ChatButton';
+import Navbar from '../components/Navbar';
 
 function Main(props) {
     return (
-        <Fragment>
+        <div class="container-xxl bg-white p-0">
+            <Navbar />
             <MainImg />
             <MainSearch />
             <KeywordList />
@@ -28,7 +30,7 @@ function Main(props) {
             <Scrolltop />
             <ChatButton/>
             <Footer />
-        </Fragment>
+        </div>
     );
 }
 
