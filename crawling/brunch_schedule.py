@@ -81,7 +81,7 @@ for searchKeyword in tourlist:
         
         last_height = new_height
         print(f"{searchKey} {searchKeyword} brunch-{start_page} ~ {start_page+18}")
-        for page in range(start_page, start_page+18):  
+        for page in range(start_page, start_page+18):
             try:
                 acting_point = driver.find_element_by_xpath(
                     f'//*[@id="resultArticle"]/div/div[1]/div[2]/ul/li[{page}]/a/div[1]/strong')
@@ -110,8 +110,8 @@ for searchKeyword in tourlist:
                     dateCheak = False
                     driver.close()
                     driver.switch_to.window(driver.window_handles[0])
-                    driver.get_window_position(driver.window_handles[0])
-                    break                
+                    driver.get_window_position(driver.window_handles[0])            
+                    break
             except:
                 pass
             
@@ -159,5 +159,4 @@ for searchKeyword in tourlist:
 
 endTime = datetime.datetime.now()
 print(f"start {startTime} // end {endTime}")
-
 driver.close()
