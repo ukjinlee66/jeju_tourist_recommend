@@ -1,12 +1,24 @@
 package kr.pe.playdata.domain;
 
-import org.springframework.data.annotation.Id;
+import java.util.Date;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.DateFormat;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.NoArgsConstructor;
+
 
 @Data
-@Document(collection = "keyword")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Document(indexName = "test", createIndex = true)
 public class SearchRank {
 	/*
 	 * 		검색어 순위
@@ -14,5 +26,14 @@ public class SearchRank {
 	
 	@Id
 	private String id;				// id
-	private String searchName;		// 검색어
+	//private String searchName;		
+	
+	@Field(type = FieldType.Keyword)
+    private String searchName;		// 검색어
+	
+	
+	@Field(type = FieldType.Date)
+	private String searchDate;
+	
+	
 }
