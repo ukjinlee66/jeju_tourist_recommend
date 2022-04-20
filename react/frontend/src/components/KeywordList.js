@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../assets/css/bootstrap.min.css';
 import '../assets/css/style.css';
@@ -6,10 +6,15 @@ import axios from "axios";
 
 function KeywordList(props) {
 
-    const [keywordList, setKeywordList] = useState([{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''}]);
-    let checkKeyword = []
-    let result = ''
+    const [keywordList, setKeywordList] = useState([{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''}]);
+
+    const [test, setTest] = useState([{keyword:'하나'},{keyword:'아이와함께 가즈아'},{keyword:'삼'},{keyword:'사'},{keyword:'오'},{keyword:'육'},{keyword:'칠'},{keyword:'팔'},{keyword:'구'},{keyword:'십'},{keyword:'테스트'},{keyword:'요기어때'}]);
+    
+    const [checkKeywordList, setCheckKeywordList] = useState([])
+    const [testResult, setTestResult] = useState('')
     const reqUrl = '/keyword/randomRecommendKeyword'
+
+    let result = ''
 
     // 키워드 옵션 리스트 요청
     const getKeyword = async () => {
@@ -22,44 +27,54 @@ function KeywordList(props) {
         getKeyword();
     }, [])
 
-    // 체크박스에서 선택된 키워드로 문자열 구성
-    function getCheckboxValue()  {
-        checkKeyword = []
-
-        // 선택된 목록 가져오기
-        const query = 'input[name="keyword"]:checked';
-        const selectedEls = 
-            document.querySelectorAll(query);
-        
-        // 선택된 목록에서 value 찾기
-        result = '';
-        selectedEls.forEach((el) => {
-            if (result == ''){
-                result += el.value
-            } else{
-                result += ' ' + el.value;
+    // 체크박스에서 선택된 키워드로 배열 구성
+    const getCheckboxValue = (value) => {
+        const checkKeyword = checkKeywordList
+        if (checkKeyword.indexOf(value) > -1){
+            checkKeyword.splice(checkKeyword.indexOf(value), 1)
+        }
+        else{
+            if (checkKeyword.length < 5){
+                checkKeyword.push(value)
             }
-            
-          checkKeyword.push(el.value)
-        });
-
-        // 출력
-        document.getElementById('result').innerText = result;
+        }
+        setCheckKeywordList(checkKeyword)
+        setResultKeyword()
     }
+
+    // 체크박스에서 선택된 키워드로 문자열 구성
+    const setResultKeyword = () => {
+        let resultStr = ''
+        for (let i = 0; i < checkKeywordList.length; i++) {
+            if (resultStr == ''){
+                resultStr += checkKeywordList[i]
+            } else{
+                resultStr += ' ' + checkKeywordList[i]
+            }
+        }
+        setTestResult(resultStr)
+    }
+
+    // 선택된 키워드 리스트를 확인할 수 있도록 선택 리스트 렌더링
+    const selectKeywordRender = () => {
+        const renderResult = [];
+        for (let i = 0; i < checkKeywordList.length; i++) {
+            renderResult.push(
+                <Fragment>
+                    <button class="select-keyword-btn" value={checkKeywordList[i]} onClick={(event) => getCheckboxValue(event.target.value)}>{checkKeywordList[i]}</button>
+                </Fragment>
+        );}
+        return renderResult;
+    };
 
     // 키워드 리스트를 기반으로 옵션으로 제공할 키워드 체크박스 렌더링
     const ketwordListRender = () => {
         const renderResult = [];
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < keywordList.length; i++) {
             renderResult.push(
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value={keywordList[i].keyword} id={"check"+i} name='keyword' onClick={getCheckboxValue}/>
-                        <label class="form-check-label" for={"check"+i} >
-                        {keywordList[i].keyword}
-                        </label>
-                    </div>
-                </div>
+                <li className='col-4 keyword-list'>
+                    <button class="keyword-btn" value={test[i].keyword} onClick={(event) => getCheckboxValue(event.target.value)}>{test[i].keyword}</button>
+                </li>
             );}
         return renderResult;
     };
@@ -71,18 +86,29 @@ function KeywordList(props) {
     }
 
     return (
-        <div class="container-xxl py-5">
-            <div class="container">
-                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">키워드 추천</h1>
-                <div class="row g-4">
-                    {ketwordListRender()}
-                    <div class="col-lg-3 offset-lg-3 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="form-check">
+        <div className="container-xxl py-5">
+            <div className="container">
+                {/* <h1 className="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">키워드 추천</h1> */}
+                <div className="row keyword-basket">
+                    <ui className='col-lg-11 row g-4 keyword-section'>
+                        {ketwordListRender()}
+                    </ui>
+                    <div class="col-lg-1 btn-section" data-wow-delay="0.1s">
+                        <div class="btn-list">
+                            <button type="button" class="btn new-btn" onClick={btClick}>추천</button>
+                        </div>
+                    </div>
+                </div>
+                <div className="row g-4 select-keyword">
+                    <ui className='col-lg-11 row g-4 select-keyword-section'>
+                        {selectKeywordRender()}
+                    </ui>
+                    <div class="col-lg-1 btn-section" data-wow-delay="0.1s">
+                        <div class="btn-list">
                             <button type="button" class="btn btn-dark" onClick={btClick}>추천</button>
                         </div>
                     </div>
                 </div>
-                <div id='result'></div>
             </div>
         </div>
     );
