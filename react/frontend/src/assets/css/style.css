@@ -68,9 +68,9 @@ div .list-p {
 
 /*** Button ***/
 .btn {
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    transition: .5s;
+    font-family: 'Inter', sans-serif ;
+    font-weight: 600 ;
+    transition: .5s ;
 }
 
 .bg-jeju-nav:hover {
@@ -160,7 +160,7 @@ div .list-p {
     content: "\f107";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
-    vertical-align: middle;
+    /* vertical-align: middle; */
     margin-left: 5px;
     transition: .5s;
 }
@@ -265,7 +265,7 @@ div .list-p {
 
 .header-carousel .owl-carousel-item {
     position: relative;
-    min-height: 500px;
+    min-height: 300px;
 }
 
 .header-carousel .owl-carousel-item img {
@@ -367,17 +367,90 @@ div .list-p {
     padding: 35px;
 }
 
-
 /*** KeywordList ***/
-.form-check .form-check-label:hover {
-    letter-spacing: 1px;
-    box-shadow: none;
+.keyword-section{
+    list-style: none;
+    text-align: center;
+    text-align: -webkit-center;
+    margin-top: 0;
+    --bs-gutter-x: 0rem;
 }
 
-.form-check .form-check-label:hover,.form-check .form-check-input:hover {
+.keyword-basket{
+    border: 1px solid var(--primary);
+    box-shadow: 1px 1px 1px 1px var(--primary);
+    border-radius: 6px;
+    margin:auto;
+    --bs-gutter-x: 0rem;
+}
+
+.keyword-list{
+    display: inline-block;
+    margin: 0px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.new-btn{
+    border-radius: 6px;
+}
+
+.keyword-btn{
+    display: block;
+    font-size: 1em;
+    /* height: 30px; */
+    padding: 3px 20px;
+    border: 1px solid #d9d8d8;
+    border-radius: 6px;
+    color: #666;
     cursor: pointer;
+    width: 100%;
+    height: 56.18px;
 }
 
+.keyword-btn:hover{
+    border: 1px solid var(--primary);
+    border-radius: 6px;
+    color: var(--primary);
+}
+
+.keyword-btn .clicked{
+    border: 1px solid var(--primary);
+    border-radius: 6px;
+    color: var(--primary);
+}
+
+.btn-section{
+    position: relative;
+    margin-top: 0;
+}
+
+.btn-list{
+    right: 0px;
+    position: absolute;
+    border-radius: 6px;
+}
+
+.select-keyword-section{
+    --bs-gutter-x: 0rem;
+    list-style: none;
+    text-align: center;
+    border: 1px solid var(--primary);
+    border-radius: 6px;
+    height: 38.21px;
+}
+
+.select-keyword{
+    margin-top: 0px;
+    --bs-gutter-x: 0rem;
+}
+.select-keyword-btn{
+    margin: 0;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 6px;
+    margin: 3px 10px;
+}
 
 /*** TourListList ***/
 .list-item {
@@ -549,4 +622,81 @@ ul.pagination {
     margin-right: 0;
     padding-right: 0;
     border-right: none;
+}
+
+/* Maps */
+
+.side-logo{
+    height: 2.5%;
+}
+
+.del-btn{
+    height: 100%;
+    width: auto;
+}
+
+.btn-row{
+    margin-top: 0;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+/* sns ranking */
+.ranking-section{
+    padding: 0 30px 18px;
+    border: 1px solid var(--primary);
+    background: #fff;
+    border-radius: 6px;
+}
+
+.ranking-title{
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    height: 97px;
+    position: relative;
+    margin: 0;
+    font-size: 30px;
+    color: #000;
+    text-align: center;
+}
+
+.title-span{
+    display: table-cell;
+    width: 100%;
+    padding-top: 8px;
+    vertical-align: middle;
+    font-family: helvetica;
+    line-height: 24px;
+}
+
+.ranking-inner{
+    position: relative;
+    left: 0px;
+}
+
+.ranking-list{
+    padding: 8px 10px 0;
+    list-style: none;
+    margin: 0;
+}
+
+.list-element{
+    margin-top: 20px;
+    letter-spacing: 0;
+}
+
+.rank{
+    font-size: 25px;
+    margin-right: 19px;
+    text-align: left;
+    border: 0;
+    font-weight: bold;
+    color: #000;
+    font-family: helvetica;
+}
+
+.rank-element{
+    font-size: 20px;
+    color: #000;
 }

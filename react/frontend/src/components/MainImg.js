@@ -13,7 +13,7 @@ const options = {
     items: 1,
     dots: false,
     loop: true,
-    nav : true,
+    nav : false,
     navText : [
         '<i class="bi bi-chevron-left"></i>',
         '<i class="bi bi-chevron-right"></i>'

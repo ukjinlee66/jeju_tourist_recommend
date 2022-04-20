@@ -557,9 +557,9 @@ function FullScreenMap()
                   className="map"
                   style={{ position: "relative", overflow: "hidden" }}
                 >
-                <button onClick={()=>MapType('ROAD')}>ROAD</button>
+                {/* <button onClick={()=>MapType('ROAD')}>ROAD</button>
                 <button onClick={()=>MapType('SATELLITE')}>SATELLITE</button>
-                <button onClick={()=>MapType('HYBRID')}>HYBRID</button>
+                <button onClick={()=>MapType('HYBRID')}>HYBRID</button> */}
             
               <div id="map_wrap" class="map_wrap">
               <MapWrapper/>

@@ -4,7 +4,7 @@ import Main from './layouts/Main';
 import TouristAttractionInfo from './layouts/TouristAttractionInfo';
 import TouristAttractionList from './layouts/TouristAttractionList';
 import TouristAttractionListReco from './layouts/TouristAttractionListReco';
-// import Admin from './layouts/Admin.js'
+import Admin from './layouts/Admin.js'
 
 function App() {
   useEffect(async () => {
@@ -22,7 +22,7 @@ function App() {
               <Route path='/jeju/TouristAttractionList' element={<TouristAttractionList/>}/>
               <Route path='/jeju/TouristAttractionInfo' element={<TouristAttractionInfo/>}/>
               <Route path='/jeju/TouristAttractionListReco' element={<TouristAttractionListReco/>}/>
-              {/* <Route path='/jeju/Maps' element={(props) => <Admin {...props} />}/> */}
+              <Route path='/jeju/Maps' element={<Admin/>}/>
           </Routes>
       </BrowserRouter>
   );
