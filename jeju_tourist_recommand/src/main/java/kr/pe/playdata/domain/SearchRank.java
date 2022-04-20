@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document(indexName = "test", createIndex = true)
+@Document(indexName = "searchrank", createIndex = true)
 public class SearchRank {
 	/*
 	 * 		검색어 순위

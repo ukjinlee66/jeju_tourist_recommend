@@ -1,9 +1,13 @@
 package kr.pe.playdata.service.impl;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,8 +17,11 @@ import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.aggregations.Aggregation;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
+import org.elasticsearch.search.aggregations.BucketOrder;
 import org.elasticsearch.search.aggregations.bucket.terms.Terms;
 import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
@@ -30,11 +37,24 @@ public class HighLevelClientElasticServiceImpl implements HighLevelClientElastic
 	private final RestHighLevelClient restHighLevelClient;
 	
 	public List<String> getTopFiveSearchKeywords(String term){
-		SearchRequest searchRequest = new SearchRequest("test");
-		SearchSourceBuilder sourceBuilder = SearchSourceBuilder.searchSource();
-		TermsAggregationBuilder terms = AggregationBuilders.terms(term).field(term);
 		
+		// 현재로 부터 하루 전의 시간을 구함
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+		cal.add(Calendar.DATE, -1);
+		String date = sdf.format(cal.getTime());
+		
+		// 검색을 위한 request객체 생성
+		SearchRequest searchRequest = new SearchRequest("searchrank");
+		SearchSourceBuilder sourceBuilder = SearchSourceBuilder.searchSource();
+		// 검색어 집계를 위한 aggregation 생성
+		TermsAggregationBuilder terms = AggregationBuilders.terms(term).field(term).order(BucketOrder.count(true));
+		// 하루동안의 검색어를 가지고 오기위한 query 생성
+		QueryBuilder q = QueryBuilders.rangeQuery("searchDate").gt(date);
+				
 		sourceBuilder.size(0);
+		sourceBuilder.query(q);
 		sourceBuilder.aggregation(terms);
 		
 		searchRequest.source(sourceBuilder);
