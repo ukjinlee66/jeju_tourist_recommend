@@ -1,7 +1,7 @@
 /********** Basic **********/
 :root {
     --primary: #f89b00;
-    --secondary: #2B9BFF;
+    --secondary: #323232;
     --light: #EFFDF5;
     --dark: #2B3940;
 }
@@ -385,8 +385,8 @@ div .list-p {
 }
 
 .keyword-basket{
-    border: 1px solid var(--primary);
-    box-shadow: 1px 1px 1px 1px var(--primary);
+    border: 1px solid var(--secondary);
+    box-shadow: 3px 3px var(--secondary);
     border-radius: 6px;
     margin:auto;
     --bs-gutter-x: 0rem;
@@ -443,17 +443,17 @@ div .list-p {
 }
 
 .select-keyword{
-    border: 1px solid var(--primary);
+    border: 1px solid var(--secondary);
     border-radius: 6px;
     margin-top: 10px;
     --bs-gutter-x: 0rem;
-    box-shadow: 1px 1px 1px 1px var(--primary);
+    box-shadow: 3px 3px var(--secondary);
     height: 40px;
 }
 
 .recommend-btn{
-    border: 1px solid var(--primary);
-    background-color: var(--primary);
+    border: 1px solid var(--secondary);
+    background-color: var(--secondary);
     color: #FFFFFF;
     border-radius: 6px;
     margin: 4px 3px;
@@ -554,13 +554,13 @@ ul.pagination {
 .img-fluid-tour {
     width: 380px !important;
     height: 300px !important;
-    border: 10px solid var(--primary) !important;
+    border: 10px solid var(--secondary) !important;
     cursor: pointer !important;
     border-radius: 10px;
 }
 
 .slick-dots li.slick-active button:before {
-    color:var(--primary) !important;
+    color:var(--secondary) !important;
 }
 
 .slick-slide div{
@@ -671,9 +671,9 @@ ul.pagination {
 /* sns ranking */
 .ranking-section{
     padding: 0 30px 18px;
-    border: 1px solid var(--primary);
+    border: 1px solid var(--secondary);
     background: #fff;
-    box-shadow: 1px 1px 1px 1px var(--primary);
+    box-shadow: 3px 3px var(--secondary);
     border-radius: 6px;
 }
 

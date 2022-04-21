@@ -5,10 +5,8 @@ import '../assets/css/style.css';
 import axios from "axios";
 
 function Ranking(props) {
-    const [rankings, setRankings] = useState([{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''}]);
-    const reqUrl = '/keyword/searchKeyword'
-
-    const [test, setTest] = useState([{keyword:'하나'},{keyword:'둘'},{keyword:'셋'},{keyword:'넷'},{keyword:'다섯'}]);
+    const [rankings, setRankings] = useState(['', '', '', '', '']);
+    const reqUrl = '/keyword/top5Keyword'
 
     // 검색어 랭킹 요청
     const getRanking = async () => {
@@ -31,7 +29,7 @@ function Ranking(props) {
                     <li className='list-element'>
                         <a className='list-area'>
                             <em className='rank'>{i + 1}</em>
-                            <span className='rank-element'>{test[i].keyword}</span>
+                            <span className='rank-element'>{rankings[i]}</span>
                         </a>
                     </li>
                 </Fragment>
