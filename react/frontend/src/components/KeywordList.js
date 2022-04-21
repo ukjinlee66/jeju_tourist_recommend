@@ -11,10 +11,10 @@ function KeywordList(props) {
     const [test, setTest] = useState([{keyword:'하나'},{keyword:'아이와함께 가즈아'},{keyword:'삼'},{keyword:'사'},{keyword:'오'},{keyword:'육'},{keyword:'칠'},{keyword:'팔'},{keyword:'구'},{keyword:'십'},{keyword:'테스트'},{keyword:'요기어때'}]);
     
     const [checkKeywordList, setCheckKeywordList] = useState([])
-    const [testResult, setTestResult] = useState('')
-    const reqUrl = '/keyword/randomRecommendKeyword'
+    const [strResult, setStrResult] = useState('')
 
-    let result = ''
+    const reqUrl = '/keyword/randomRecommendKeyword'
+    const testData = [{keyword:'하나'},{keyword:'아이와함께 가즈아1'},{keyword:'삼1'},{keyword:'사1'},{keyword:'오1'},{keyword:'육1'},{keyword:'칠1'},{keyword:'팔'},{keyword:'구'},{keyword:'십'},{keyword:'테스트'},{keyword:'요기어때'}]
 
     // 키워드 옵션 리스트 요청
     const getKeyword = async () => {
@@ -27,17 +27,60 @@ function KeywordList(props) {
         getKeyword();
     }, [])
 
+    // 키워드 리스트가 변할때마다 실행되는 함수
+    useEffect(() => {
+        console.log(test)
+        setStyleColor()
+    }, [test])
+
+    // 새로고침시 선택된 키워드는 css 유지, 아닐시 초기화
+    const setStyleColor = () => {
+        for (let i = 0; i < keywordList.length; i++) {
+            const x = document.getElementById('keyword'+i);
+            if (checkKeywordList.indexOf(document.getElementById('keyword'+i).value) > -1){
+                x.style.borderColor = "var(--primary)";
+                x.style.color = "var(--primary)";
+            }
+            else{
+                x.style.borderColor = "#d9d8d8";
+                x.style.color = "#06113C";
+            }
+        }
+    }
+
     // 체크박스에서 선택된 키워드로 배열 구성
-    const getCheckboxValue = (value) => {
+    const getCheckboxValue = (value, id) => {
         const checkKeyword = checkKeywordList
-        if (checkKeyword.indexOf(value) > -1){
-            checkKeyword.splice(checkKeyword.indexOf(value), 1)
+        const idx = checkKeyword.indexOf(value)
+        const x = document.getElementById(id);       
+        if (idx > -1){
+            checkKeyword.splice(idx, 1)
+            if (x.style.borderColor == "var(--primary)"){
+                x.style.borderColor = "#d9d8d8";
+                x.style.color = "#06113C";
+            }
+            else{
+                x.style.borderColor = "var(--primary)";
+                x.style.color = "var(--primary)";
+            }
         }
         else{
             if (checkKeyword.length < 5){
                 checkKeyword.push(value)
+                if (x.style.borderColor == "var(--primary)"){
+                    x.style.borderColor = "#d9d8d8";
+                    x.style.color = "#06113C";
+                }
+                else{
+                    x.style.borderColor = "var(--primary)";
+                    x.style.color = "var(--primary)";
+                }
+            }
+            else{
+                alert('최대 5개의 키워드만 선택할 수 있습니다.')
             }
         }
+
         setCheckKeywordList(checkKeyword)
         setResultKeyword()
     }
@@ -52,7 +95,7 @@ function KeywordList(props) {
                 resultStr += ' ' + checkKeywordList[i]
             }
         }
-        setTestResult(resultStr)
+        setStrResult(resultStr)
     }
 
     // 선택된 키워드 리스트를 확인할 수 있도록 선택 리스트 렌더링
@@ -61,7 +104,7 @@ function KeywordList(props) {
         for (let i = 0; i < checkKeywordList.length; i++) {
             renderResult.push(
                 <Fragment>
-                    <button class="select-keyword-btn" value={checkKeywordList[i]} onClick={(event) => getCheckboxValue(event.target.value)}>{checkKeywordList[i]}</button>
+                    <button class="select-keyword-btn" value={checkKeywordList[i]} onClick={(event) => getCheckboxValue(event.target.value)}>#{checkKeywordList[i]}</button>
                 </Fragment>
         );}
         return renderResult;
@@ -73,16 +116,24 @@ function KeywordList(props) {
         for (let i = 0; i < keywordList.length; i++) {
             renderResult.push(
                 <li className='col-4 keyword-list'>
-                    <button class="keyword-btn" value={test[i].keyword} onClick={(event) => getCheckboxValue(event.target.value)}>{test[i].keyword}</button>
+                    <button id={"keyword"+i} class="keyword-btn" value={test[i].keyword} onClick={(event) => getCheckboxValue(event.target.value, event.target.id)}>#{test[i].keyword}</button>
                 </li>
             );}
         return renderResult;
     };
 
-    // 추천 버튼 클릭 시 값 전달 및 이동
+    // 추천 버튼 클릭시 값 전달 및 이동
     function btClick(e) {
-        window.sessionStorage.setItem('recoKeyword', result);
+        window.sessionStorage.setItem('recoKeyword', strResult);
         window.location.href = "/jeju/TouristAttractionListReco";
+    }
+
+    // 새로고침 버튼 클릭시 
+    const refreshKeyword = () => {
+        // await axios
+        //     .get(reqUrl)
+        //     .then((res) => setKeywordList(res.data));
+        setTest(testData)
     }
 
     return (
@@ -95,7 +146,7 @@ function KeywordList(props) {
                     </ui>
                     <div class="col-lg-1 btn-section" data-wow-delay="0.1s">
                         <div class="btn-list">
-                            <button type="button" class="btn new-btn" onClick={btClick}>추천</button>
+                            <i class="bi bi-arrow-clockwise fa-2x refresh-icon" onClick={refreshKeyword}></i>
                         </div>
                     </div>
                 </div>
@@ -105,7 +156,7 @@ function KeywordList(props) {
                     </ui>
                     <div class="col-lg-1 btn-section" data-wow-delay="0.1s">
                         <div class="btn-list">
-                            <button type="button" class="btn btn-dark" onClick={btClick}>추천</button>
+                            <button type="button" class="recommend-btn" onClick={btClick}>추천</button>
                         </div>
                     </div>
                 </div>

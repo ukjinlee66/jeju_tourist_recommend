@@ -44,8 +44,9 @@ function SnsRanking(props) {
         <div class="col-lg-3 offset-lg-2">
             <div className='ranking-section'>
                 <strong className='ranking-title'>
-                    <span className='title-span'>sns 키워드</span>
+                    <span className='title-span'>SNS Hot Rank</span>
                 </strong>
+                <hr className='ranking-hr'/>
                 <div className='ranking-inner'>
                     <ui className='ranking-list'>
                         {hotsnsRander()}
