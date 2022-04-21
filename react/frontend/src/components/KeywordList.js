@@ -157,7 +157,7 @@ function KeywordList(props) {
     }
 
     return (
-        <div className="container-xxl py-5">
+        <div className="container-xxl py-5 ">
             <div className="container">
                 {/* <h1 className="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">키워드 추천</h1> */}
                 <div className="row keyword-basket">
