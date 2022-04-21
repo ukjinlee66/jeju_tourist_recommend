@@ -376,6 +376,14 @@ div .list-p {
     --bs-gutter-x: 0rem;
 }
 
+.refresh-icon{
+    cursor: pointer;
+}
+
+.refresh-icon:hover{
+    color: #f86300;
+}
+
 .keyword-basket{
     border: 1px solid var(--primary);
     box-shadow: 1px 1px 1px 1px var(--primary);
@@ -391,33 +399,29 @@ div .list-p {
     padding-bottom: 15px;
 }
 
-.new-btn{
-    border-radius: 6px;
-}
-
 .keyword-btn{
     display: block;
     font-size: 1em;
     /* height: 30px; */
     padding: 3px 20px;
     border: 1px solid #d9d8d8;
-    border-radius: 6px;
-    color: #666;
+    border-radius: 20px;
+    color: #06113C;
+    background-color: #FFFFFF;
     cursor: pointer;
-    width: 100%;
+    width: 80%;
     height: 56.18px;
+    overflow : hidden;
+    text-overflow : ellipsis; 
+    word-wrap : brek-word; 
+    display : -webkit-box;
+    -webkit-line-clamp : 1;
+    -webkit-box-orient: vertical; 
 }
 
 .keyword-btn:hover{
-    border: 1px solid var(--primary);
-    border-radius: 6px;
-    color: var(--primary);
-}
-
-.keyword-btn .clicked{
-    border: 1px solid var(--primary);
-    border-radius: 6px;
-    color: var(--primary);
+    border: 1px solid #f86300 !important;
+    color: #f86300 !important;
 }
 
 .btn-section{
@@ -435,21 +439,43 @@ div .list-p {
     --bs-gutter-x: 0rem;
     list-style: none;
     text-align: center;
-    border: 1px solid var(--primary);
-    border-radius: 6px;
-    height: 38.21px;
+    margin-top: 0px;
 }
 
 .select-keyword{
-    margin-top: 0px;
+    border: 1px solid var(--primary);
+    border-radius: 6px;
+    margin-top: 10px;
     --bs-gutter-x: 0rem;
+    box-shadow: 1px 1px 1px 1px var(--primary);
+    height: 40px;
 }
+
+.recommend-btn{
+    border: 1px solid var(--primary);
+    background-color: var(--primary);
+    color: #FFFFFF;
+    border-radius: 6px;
+    margin: 4px 3px;
+}
+
+.recommend-btn:hover{
+    border: 1px solid #f86300;
+    background-color: #f86300;
+    color: #FFFFFF;
+    border-radius: 6px;
+    margin: 4px 3px;
+}
+
 .select-keyword-btn{
     margin: 0;
     width: fit-content;
     height: fit-content;
     border-radius: 6px;
-    margin: 3px 10px;
+    margin: 4px 10px;
+    border: 1px solid #d9d8d8;
+    color: #06113C;
+    background-color: #FFFFFF;
 }
 
 /*** TourListList ***/
@@ -530,6 +556,7 @@ ul.pagination {
     height: 300px !important;
     border: 10px solid var(--primary) !important;
     cursor: pointer !important;
+    border-radius: 10px;
 }
 
 .slick-dots li.slick-active button:before {
@@ -646,6 +673,7 @@ ul.pagination {
     padding: 0 30px 18px;
     border: 1px solid var(--primary);
     background: #fff;
+    box-shadow: 1px 1px 1px 1px var(--primary);
     border-radius: 6px;
 }
 
@@ -684,6 +712,12 @@ ul.pagination {
 .list-element{
     margin-top: 20px;
     letter-spacing: 0;
+    overflow : hidden;
+    text-overflow : ellipsis; 
+    display : -webkit-box;
+    -webkit-line-clamp : 1;
+    -webkit-box-orient: vertical; 
+    height: 37.5px;
 }
 
 .rank{
@@ -699,4 +733,8 @@ ul.pagination {
 .rank-element{
     font-size: 20px;
     color: #000;
+}
+
+.ranking-hr{
+    color: #06113C;
 }
