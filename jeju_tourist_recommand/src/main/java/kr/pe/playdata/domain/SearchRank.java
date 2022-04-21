@@ -34,6 +34,4 @@ public class SearchRank {
 	
 	@Field(type = FieldType.Date)
 	private String searchDate;
-	
-	
 }
