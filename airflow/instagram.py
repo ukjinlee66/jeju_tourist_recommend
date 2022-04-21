@@ -1,18 +1,16 @@
-from tkinter import E
 from bs4 import BeautifulSoup
-from urllib.parse import quote_plus as qp # 아스크코드로 변환
-import json
+from urllib.parse import quote_plus as qp # 아스키코드로 변환
 import time
-from datetime import datetime
-
+from datetime import datetime, timedelta
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+import pandas as pd
+import pyarrow
+from util import get_today_date
 
 user_id = '아이디'
 user_pwd = '비밀번호'
-driver_path = '/home/hadoop/airflow/dags/chromedriver'
-save_path = '/home/hadoop/airflow/dags'
-today_date = datetime.today().strftime("%Y%m%d")
+
 chDict = {'Jan' : '01',
             'Feb' : '02',
             'Mar' : '03',
@@ -27,7 +25,8 @@ chDict = {'Jan' : '01',
             'Dec' : '12'
             }
 
-def crawl():
+def insta_crawl(execution_date, save_path, driver_path):
+    today_date = get_today_date(execution_date)
     webdriver_options = webdriver.ChromeOptions()       # 옵션 설정
     webdriver_options.add_argument('headless')          # 창을 띄우지 않고 크롤링
     driver = webdriver.Chrome(driver_path, options=webdriver_options)
@@ -65,7 +64,7 @@ def crawl():
     driver.find_element(By.CSS_SELECTOR,'div.v1Nh3.kIKUG._bz0w').click()
     time.sleep(5)
     insta_data = []
-    for i in range(1000):
+    for i in range(10):
         cur_url = driver.current_url
         html = driver.page_source
         soup = BeautifulSoup(html, 'html.parser')
@@ -88,15 +87,22 @@ def crawl():
             # 인스타 날짜
             insta_date = soup.select_one('time._1o9PC')['title']
             temp = insta_date.split()
-            year = temp[-1]
-            month = chDict[temp[0]]
+
+            # mac 환경
+            # year = temp[2]
+            # month = chDict[temp[0]]
+            # day = temp[1][:-1]
+            # temp_insta_date = year+month+day
+
+            # AWS 환경
+            year = temp[0][:-1]
+            month = temp[1][:-1]
             if(len(month)==1):
                 month = '0'+month
-            day = temp[1][:-1]
+            day = temp[2][:-1]
             if(len(day)==1):
                 day = '0'+day
             temp_insta_date = year+month+day
-            print(temp_insta_date)
         except:
             insta_date=''
             temp_insta_date = ''
@@ -135,14 +141,16 @@ def crawl():
             insta_like = ''
             like_error = 'insta_like Error'
         
-        temp_data = {"id":insta_id,
-                    "geo_tag":insta_geo_tag,
-                    "date":insta_date,
-                    "img_url":insta_img,
-                    "content":insta_content,
-                    "hash_tag":insta_hashtags,
-                    "like":insta_like,
-                    "url":cur_url}
+        temp_data = {
+            "id":insta_id,
+            "geo_tag":insta_geo_tag,
+            "date":insta_date,
+            "img_url":insta_img,
+            "content":insta_content,
+            "hash_tag":insta_hashtags,
+            "like":insta_like,
+            "url":cur_url
+        }
         if(temp_insta_date==today_date):
             insta_data.append(temp_data)
         print(f'{i+1}번째 게시글 크롤링 완료 : ', id_error, geo_error, date_error, img_error, content_error, hastag_error, like_error, datetime.now())
@@ -150,17 +158,15 @@ def crawl():
             driver.find_element(By.CSS_SELECTOR,'div.l8mY4.feth3').click()
         except:
             print(f"크롤링 종료:{datetime.now()}")
-            with open(f'{save_path}/instagram_{today_date}.json','w', encoding='utf-8') as f:
-                json.dump(insta_data, f, indent="\t", ensure_ascii=False)
-            # 결과값 저장
+            df = pd.DataFrame(insta_data)
+            df.to_parquet(f'{save_path}/{today_date}_instagram.parquet', engine='pyarrow', compression='snappy')
             driver.quit()
             quit()
         time.sleep(5)
-        if(len(insta_data)==200):
-            with open(f'{save_path}/instagram_{today_date}.json','w', encoding='utf-8') as f:
-                json.dump(insta_data, f, indent="\t", ensure_ascii=False)
-            break
+    # with open(f'{save_path}/{today_date}_instagram.json','w', encoding='utf-8') as f:
+    #     json.dump(insta_data, f, indent="\t", ensure_ascii=False)
+    df = pd.DataFrame(insta_data)
+    df.to_parquet(f'{save_path}/{today_date}_instagram.parquet', engine='pyarrow', compression='snappy')
     driver.close()
-
 if __name__ == '__main__':
-    crawl()
+    insta_crawl('20220420')
