@@ -45,6 +45,7 @@ function Ranking(props) {
             <strong className='ranking-title'>
                 <span className='title-span'>실시간 검색어 랭킹</span>
             </strong>
+            <hr className='ranking-hr'/>
             <div className='ranking-inner'>
                 <ui className='ranking-list'>
                     {oursiteRender()}
