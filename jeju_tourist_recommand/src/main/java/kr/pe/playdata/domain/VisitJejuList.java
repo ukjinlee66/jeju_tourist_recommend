@@ -18,4 +18,5 @@ public class VisitJejuList {
     private String tag_prev;		// 비짓제주 태그
     private String tag_next;		// 비짓제주 태그
     private String img;				// 이미지 링크
+    private Location location;      // 장소
 }
