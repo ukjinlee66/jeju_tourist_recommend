@@ -26,7 +26,7 @@ public interface TouristAttractionMongoRepo extends MongoRepository<VisitJeju, S
 	@Query(value = "{$or:[{'source':{$regex:?0,$options:'i'}},{'sub_title':{$regex:?0,$options:'i'}}," +
 			"{'tag_prev':{$regex:?0,$options:'i'}}, {'tag_next':{$regex:?0,$options:'i'}}," +
 			"{'purpose':{$regex:?0,$options:'i'}}, {'etc_property':{$regex:?0,$options:'i'}}," +
-			" {'content':{$regex:?0,$options:'i'}}]}", fields="{source:1, sub_title:1, tag_prev:1, tag_next:1, img:1}")  // value는 있어도 되고 없어도 된다.
+			" {'content':{$regex:?0,$options:'i'}}]}", fields="{source:1, sub_title:1, tag_prev:1, tag_next:1, img:1, location:1}")  // value는 있어도 되고 없어도 된다.
 	public List<VisitJejuList> search(String regexString, Pageable pageable);		// 특정 column들 기준으로 검색
 
 	@Query(value = "{$or:[{'source':{$regex:?0,$options:'i'}},{'sub_title':{$regex:?0,$options:'i'}}," +

@@ -42,7 +42,14 @@ function Sidebar(props) {
   const activeRoute = (routeName) => {
     return props.location.pathname.indexOf(routeName) > -1 ? "active" : "";
   };
-  React.useEffect(() => {
+  React.useEffect(() => 
+  {
+    const script = document.createElement("script");
+    let tt = 2;
+    let arr = [1,2,3,4];
+    script.innerHTML += `let abc = 1;`;
+    sessionStorage.setItem("test",arr);
+    document.head.appendChild(script);
     if (navigator.platform.indexOf("Win") > -1) {
       ps = new PerfectScrollbar(sidebar.current, {
         suppressScrollX: true,
@@ -78,6 +85,7 @@ function Sidebar(props) {
         {/* 왼쪽 메뉴 부분 출력하는 부분 */}
         <p id="result2"/>
         <button onClick={()=>Sendinfo()}>적용</button>
+        <p id="init_map"/>
       </div>
     </div>
   );

@@ -22,10 +22,8 @@ import { Row, Col, Card, CardHeader, CardBody } from "reactstrap";
 
 // // core components
 import PanelHeader from "../components/PanelHeader/PanelHeader.js";
-
+import ReactDOM from 'react-dom';
 import React, { useEffect, useState } from 'react';
-import ReactDOM from "react-dom";
-
 // import 'bootstrap/dist/css/bootstrap.css';
 // import './css/bootstrap.min.css';
 // import './css/style.css';
@@ -33,7 +31,6 @@ import ReactDOM from "react-dom";
 
 const MapWrapper = () => 
 {
-  const [aaa, setAaa] = useState()
   useEffect(() => {
     const script = document.createElement("script");
 	script.innerHTML = `
@@ -44,13 +41,17 @@ const MapWrapper = () =>
 			//경로그림정보
 			var drawInfoArr = [];
 			var drawInfoArr2 = [];
-		
+			var marker_attr = [];
 			var chktraffic = [];
 			var resultdrawArr = [];
 			var resultMarkerArr = [];
+
+			
+
 			//관광지는 n x [2] 열은 위도,경도
-			var attr_list = ["관광지1",[33.5200,126.51555],"관광지2",[33.5030,126.50235]];
-			var markers = new Map();
+			var attr_list = ["관광지1",[33.5200,126.51555],"관광지2",[33.5030,126.50235],"관광지3",[33.5030,126.49235],"관광지4",[33.5030,126.48235]];
+			//var attr_list = session;
+			const markers = new Map();
 			function initTmap() {
 				// 1. 지도 띄우기
 				map = new Tmapv2.Map("map_div", {
@@ -62,6 +63,21 @@ const MapWrapper = () =>
 					scrollwheel : true
 				});
 				addMarkersTooMuch(attr_list);
+				
+
+				let temp_html = "";
+				temp_html = '<button value="ROAD" onclick="MapType(this.value)">ROAD</button>\
+                <button value="SATELLITE" onclick="MapType(this.value)">SATELLITE</button>\
+				<button value="HYBRID" onclick="MapType(this.value)">HYBRID</button>';
+				$("#mapty").html(temp_html);
+
+				let cent_button="";
+				cent_button='<button>'+this+'</button>';
+				$("#res3").html(cent_button);
+				
+				temp_html = '<form><input type="button" value="초기화" onclick="window.location.reload()"></form>';
+				$("#init_map").html(temp_html);
+
 				// 2. 시작, 도착 심볼찍기
 				// 시작
 				// marker_s = new Tmapv2.Marker(
@@ -151,19 +167,19 @@ const MapWrapper = () =>
 			{
 				let title1 = attr_list[i];
 				console.log(title1);
-				var lat = attr_list[i+1][0];
-				var lng = attr_list[i+1][1];
+				let lat = attr_list[i+1][0];
+				let lng = attr_list[i+1][1];
+				let marker;
 				//Marker 객체 생성.
-				var marker = new Tmapv2.Marker({
+				marker = new Tmapv2.Marker({
 					position: new Tmapv2.LatLng(lat, lng), //Marker의 중심좌표 설정.
-					title: title1
+					title: title1,
 				});
+				marker_attr.push(marker);
 				marker.setMap(map); //Marker가 표시될 Map 설정.
 				marker.addListener("click", function(evt) 
 				{
-					console.log(title1+ 'push');
 					markers.set(title1, marker);
-					console.log(markers.size);
 					retres();
 				});
 			}
@@ -175,19 +191,56 @@ const MapWrapper = () =>
 		function Sendinfo() 
 		{
                 //기존 맵에 있던 정보들 초기화
-                resettingMap();
-                //JSON TYPE EDIT [S]
+				resettingMap();
+				//sendinfo variable
+				let startx="";
+				let starty="";
+				let endx="";
+				let endy="";
+				let pass="";
+				const iter1 = markers.entries();
+				console.log("call Sendinfo()", markers.size);
+				let temp_mark;
+				for(var i=0;i<markers.size;i++)
+				{
+					console.log(i);
+					//start point
+					temp_mark = iter1.next().value;
+					console.log(temp_mark);
+					temp_mark = temp_mark[1].getPosition();
+					if(i==0)
+					{
+						starty = String(temp_mark.latitude());
+						startx = String(temp_mark.longitude());
+					}
+					else if(i == Number(markers.size)-1) // end point
+					{
+						endy = String(temp_mark.latitude());
+						endx = String(temp_mark.longitude());
+					}
+					else // pass point
+					{
+						if(i == Number(markers.size)-2)
+						{
+							pass+=String(temp_mark.longitude()) + "," + String(temp_mark.latitude());
+						}else{
+							pass+=String(temp_mark.longitude()) + "," + String(temp_mark.latitude()+ "_");
+						}
+					}
+				}
+				//JSON TYPE EDIT [S]
+				console.log(startx, starty, endx, endy, pass);
                 $.ajax({
                       type : "POST",
                       url : "https://apis.openapi.sk.com/tmap/routes?version=1&format=json&callback=result",
                       async : false,
                       data : {
                         "appKey" : "l7xx34194c87b04c4474abec384877be1ee4",
-                        "startX" : "126.51555",
-                        "startY" : "33.5200",
-                        "endX" : "126.53555",
-                        "endY" : "33.4400",
-						"passList" : "126.50235,33.5030_126.52555,33.4200",
+                        "startX" : startx,
+                        "startY" : starty,
+                        "endX" : endx,
+                        "endY" : endy,
+						"passList" : pass,
                         "reqCoordType" : "WGS84GEO",
                         "resCoordType" : "EPSG3857",
                         "searchOption" : "0",
@@ -213,36 +266,34 @@ const MapWrapper = () =>
   
                         $("#result").text(
                         		tDistance + tTime + tFare
-                        				+ taxiFare);
+										+ taxiFare);
   
-                        //교통정보 표출 옵션값을 체크
+						//교통정보 표출 옵션값을 체크
                           for ( var i in resultData) { //for문 [S]
                             var geometry = resultData[i].geometry;
                             var properties = resultData[i].properties;
   
-                            if (geometry.type == "LineString") {
+							if (geometry.type == "LineString") 
+							{
                               //교통 정보도 담음
-                              chktraffic
-                                  .push(geometry.traffic);
+                              chktraffic.push(geometry.traffic);
                               var sectionInfos = [];
                               var trafficArr = geometry.traffic;
   
-                              for ( var j in geometry.coordinates) {
+							  for ( var j in geometry.coordinates) 
+							  {
                                 // 경로들의 결과값들을 포인트 객체로 변환 
-                                var latlng = new Tmapv2.Point(
-                                    geometry.coordinates[j][0],
-                                    geometry.coordinates[j][1]);
+                                var latlng = new Tmapv2.Point(geometry.coordinates[j][0], geometry.coordinates[j][1]);
                                 // 포인트 객체를 받아 좌표값으로 변환
-                                var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(
-                                    latlng);
+                                var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
   
-                                sectionInfos
-                                    .push(convertPoint);
+                                sectionInfos.push(convertPoint);
                               }
   
-                              drawLine(sectionInfos,
-                                  trafficArr);
-                            } else {
+                              drawLine(sectionInfos,trafficArr);
+							} 
+							else 
+							{
   
                               var markerImg = "";
                               var pType = "";
@@ -255,7 +306,8 @@ const MapWrapper = () =>
                                 pType = "E";
                               } else { //각 포인트 마커
                                 markerImg = "http://topopen.tmap.co.kr/imgs/point.png";
-                                pType = "P"
+								pType = "P";
+								console.log("P");
                               }
   
                               // 경로들의 결과값들을 포인트 객체로 변환 
@@ -263,10 +315,10 @@ const MapWrapper = () =>
                                   geometry.coordinates[0],
                                   geometry.coordinates[1]);
                               // 포인트 객체를 받아 좌표값으로 다시 변환
-                              var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(
-                                  latlon);
+                              var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlon);
   
-                              var routeInfoObj = {
+							  var routeInfoObj = 
+							  {
                                 markerImage : markerImg,
                                 lng : convertPoint._lng,
                                 lat : convertPoint._lat,
@@ -275,7 +327,7 @@ const MapWrapper = () =>
                               // 마커 추가
                               addMarkers(routeInfoObj);
                             }
-                          }//for문 [E]
+						  }//for문 [E]
                       }
                     });
                 //JSON TYPE EDIT [E]
@@ -288,7 +340,8 @@ const MapWrapper = () =>
 			}
 		
 			//마커 생성하기
-			function addMarkers(infoObj) {
+			function addMarkers(infoObj) 
+			{
 				var size = new Tmapv2.Size(24, 38);//아이콘 크기 설정합니다.
 		
 				if (infoObj.pointType == "P") { //포인트점일때는 아이콘 크기를 줄입니다.
@@ -306,7 +359,8 @@ const MapWrapper = () =>
 			}
 		
 			//라인그리기
-			function drawLine(arrPoint, traffic) {
+			function drawLine(arrPoint, traffic) 
+			{
 				var polyline_;
 		
 				if (chktraffic.length != 0) {
@@ -316,9 +370,10 @@ const MapWrapper = () =>
 					// traffic :  0-정보없음, 1-원활, 2-서행, 3-지체, 4-정체  (black, green, yellow, orange, red)
 		
 					var lineColor = "";
-		
-					if (traffic != "0") {
-						if (traffic.length == 0) { //length가 0인것은 교통정보가 없으므로 검은색으로 표시
+					if (traffic != "0" && traffic != undefined) 
+					{
+						if (traffic.length == 0) //length가 0인것은 교통정보가 없으므로 검은색으로 표시
+						{ 
 		
 							lineColor = "#06050D";
 							//라인그리기[S]
@@ -330,7 +385,8 @@ const MapWrapper = () =>
 							});
 							resultdrawArr.push(polyline_);
 							//라인그리기[E]
-						} else { //교통정보가 있음
+						} else 
+						{ //교통정보가 있음
 		
 							if (traffic[0][0] != 0) { //교통정보 시작인덱스가 0이 아닌경우
 								var trafficObject = "";
@@ -435,10 +491,10 @@ const MapWrapper = () =>
 								}
 							}
 						}
-					} else {
-		
 					}
-				} else {
+				} 
+				else 
+				{
 					polyline_ = new Tmapv2.Polyline({
 						path : arrPoint,
 						strokeColor : "#DD0000",
@@ -450,27 +506,17 @@ const MapWrapper = () =>
 		
 			}
 			//초기화 기능
-			function resettingMap() {
-				//기존마커는 삭제
-				marker_s.setMap(null);
-				marker_e.setMap(null);
-		
-				if (resultMarkerArr.length > 0) {
-					for (var i = 0; i < resultMarkerArr.length; i++) {
-						resultMarkerArr[i].setMap(null);
+			function resettingMap() 
+			{
+				console.log("call resettingmap()");
+				for (var i = 0; i < marker_attr.length; i++) 
+				{
+					if(i==0 || i == marker_attr.legnth-1)
+					{
+						marker_attr[i].setMap(null);
 					}
 				}
-		
-				if (resultdrawArr.length > 0) {
-					for (var i = 0; i < resultdrawArr.length; i++) {
-						resultdrawArr[i].setMap(null);
-					}
-				}
-		
-				chktraffic = [];
-				drawInfoArr = [];
-				resultMarkerArr = [];
-				resultdrawArr = [];
+				marker_attr=[];
 			}
       //지도 타입 변경.
       function MapType(type){
@@ -482,37 +528,38 @@ const MapWrapper = () =>
             map.setMapType(Tmapv2.Map.MapType.ROAD)
         }
 	  }
-	  let temp;
-	  var cnt=0;
+	  let cnt=0;
       function retres()
 	  {
 		let str="";
 		console.log('retres()', markers.size);
 		for(const item of markers)
 		{
-			temp = item[0];
-			console.log('item : ', temp);
-			str+='<div class="row btn-row g-3"><h3 class="col-lg-8">'+temp+'</h3>\
-			<button class="col-lg-4 del-btn" type="button" onclick="deletemark(temp);return false;">삭제</button></div>';
+			str+='<<div class="row btn-row g-3"><h3 class="col-lg-8">'+item[0]+'</h3>\
+			<button class="col-lg-4 del-btn" type="button" value="'+item[0]+'" onclick="deletemark(this.value);return false;">삭제</button></div>';
 		}
 		$("#result2").html(str);
 	  }
 	  function deletemark(name)
+		{
+			markers.delete(name);
+			retres();
+		};
+	  function check_abc()
 	  {
-		  console.log('delete click',name);
-		  markers.delete(name);
-		  console.log(markers.size);
-		  retres();
-	  };
+		  console.log(abc);
+		  console.log(sessionStorage.getItem("test"));
+		}
 	  retres();
 	  initTmap();
    `;
     script.type = "text/javascript";
     script.async = "async";
-    document.head.appendChild(script);
+	document.head.appendChild(script);
   }, []);
   return (
     <div id="map_div"/>
+	
   );
 }
 
@@ -557,13 +604,12 @@ function FullScreenMap()
                   className="map"
                   style={{ position: "relative", overflow: "hidden" }}
                 >
-                {/* <button onClick={()=>MapType('ROAD')}>ROAD</button>
-                <button onClick={()=>MapType('SATELLITE')}>SATELLITE</button>
-                <button onClick={()=>MapType('HYBRID')}>HYBRID</button> */}
-            
+                
               <div id="map_wrap" class="map_wrap">
+			  <div class="row btn-row g-3"><p class="col-lg-4" id="mapty"/>
+			  <p class="col-lg-8" id="result"/></div>
               <MapWrapper/>
-			  <p id="result"/>
+			  
               </div>
               <div class="map_act_btn_wrap clear_box"></div>
               <br />

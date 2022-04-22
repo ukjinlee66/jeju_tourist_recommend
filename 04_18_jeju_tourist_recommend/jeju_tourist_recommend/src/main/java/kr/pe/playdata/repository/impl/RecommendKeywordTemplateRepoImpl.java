@@ -22,7 +22,7 @@ public class RecommendKeywordTemplateRepoImpl implements RecommendKeywordTemplat
 
     @Override
     public List<RecommendKeyword> random() {
-        SampleOperation matchStaget = Aggregation.sample(10);
+        SampleOperation matchStaget = Aggregation.sample(12);
         Aggregation aggregation = Aggregation.newAggregation(matchStaget);
         AggregationResults<RecommendKeyword> output = mongoTemplate.aggregate(aggregation, "keyword", RecommendKeyword.class);
         List<RecommendKeyword> li = output.getMappedResults();

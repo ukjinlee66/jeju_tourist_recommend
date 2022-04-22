@@ -2,12 +2,26 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../assets/css/bootstrap.min.css';
 import '../assets/css/style.css';
+import axios from "axios";
 
 function MainSearch(props) {
     const [searchInput, setSearchInput] = useState("")
 
+    const reqUrl = '/keyword/searchKeyword'
+
+    const insertElastic = async () => {
+        await axios
+            .get(reqUrl, {
+                params:{
+                    search: searchInput
+                }
+            })
+            .then();
+    }
+
     // 검색 버튼 클릭 시 이동
     function btClick(e) {
+        insertElastic()
         window.location.href = "/jeju/TouristAttractionList?search=" + searchInput;
     }
 
