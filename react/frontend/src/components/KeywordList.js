@@ -7,15 +7,11 @@ import axios from "axios";
 function KeywordList(props) {
 
     const [keywordList, setKeywordList] = useState([{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''}]);
-
-    const [test, setTest] = useState([{keyword:'하나'},{keyword:'아이와함께 가즈아'},{keyword:'삼'},{keyword:'사'},{keyword:'오'},{keyword:'육'},{keyword:'칠'},{keyword:'팔'},{keyword:'구'},{keyword:'십'},{keyword:'테스트'},{keyword:'요기어때'}]);
-    
     const [checkKeywordList, setCheckKeywordList] = useState([])
     const [strResult, setStrResult] = useState('')
 
     const reqUrl = '/keyword/randomRecommendKeyword'
-    const testData = [{keyword:'하나'},{keyword:'아이와함께 가즈아1'},{keyword:'삼1'},{keyword:'사1'},{keyword:'오1'},{keyword:'육1'},{keyword:'칠1'},{keyword:'팔'},{keyword:'구'},{keyword:'십'},{keyword:'테스트'},{keyword:'요기어때'}]
-
+    
     // 키워드 옵션 리스트 요청
     const getKeyword = async () => {
         await axios
@@ -29,9 +25,8 @@ function KeywordList(props) {
 
     // 키워드 리스트가 변할때마다 실행되는 함수
     useEffect(() => {
-        console.log(test)
         setStyleColor()
-    }, [test])
+    }, [keywordList])
 
     // 새로고침시 선택된 키워드는 css 유지, 아닐시 초기화
     const setStyleColor = () => {
@@ -40,10 +35,12 @@ function KeywordList(props) {
             if (checkKeywordList.indexOf(document.getElementById('keyword'+i).value) > -1){
                 x.style.borderColor = "var(--primary)";
                 x.style.color = "var(--primary)";
+                x.style.backgroundColor = "#FEFDCA";
             }
             else{
                 x.style.borderColor = "#d9d8d8";
                 x.style.color = "#06113C";
+                x.style.backgroundColor = "#FFFFFF";
             }
         }
     }
@@ -58,10 +55,12 @@ function KeywordList(props) {
             if (x.style.borderColor == "var(--primary)"){
                 x.style.borderColor = "#d9d8d8";
                 x.style.color = "#06113C";
+                x.style.backgroundColor = "#FFFFFF";
             }
             else{
                 x.style.borderColor = "var(--primary)";
                 x.style.color = "var(--primary)";
+                x.style.backgroundColor = "#FEFDCA";
             }
         }
         else{
@@ -70,10 +69,12 @@ function KeywordList(props) {
                 if (x.style.borderColor == "var(--primary)"){
                     x.style.borderColor = "#d9d8d8";
                     x.style.color = "#06113C";
+                    x.style.backgroundColor = "#FFFFFF";
                 }
                 else{
                     x.style.borderColor = "var(--primary)";
                     x.style.color = "var(--primary)";
+                    x.style.backgroundColor = "#FEFDCA";
                 }
             }
             else{
@@ -81,6 +82,26 @@ function KeywordList(props) {
             }
         }
 
+        setCheckKeywordList(checkKeyword)
+        setResultKeyword()
+    }
+
+    // 체크박스에서 선택된 키워드로 삭제
+    const deleteCheckboxValue = (value) => {
+        const checkKeyword = checkKeywordList
+        const idx = checkKeyword.indexOf(value)
+
+        checkKeyword.splice(idx, 1)
+
+        for (let i = 0; i < keywordList.length; i++) {
+            const x = document.getElementById('keyword'+i);
+            if (document.getElementById('keyword'+i).value == value){
+                x.style.borderColor = "#d9d8d8";
+                x.style.color = "#06113C";
+                x.style.backgroundColor = "#FFFFFF";
+            }
+        }
+        
         setCheckKeywordList(checkKeyword)
         setResultKeyword()
     }
@@ -104,7 +125,7 @@ function KeywordList(props) {
         for (let i = 0; i < checkKeywordList.length; i++) {
             renderResult.push(
                 <Fragment>
-                    <button class="select-keyword-btn" value={checkKeywordList[i]} onClick={(event) => getCheckboxValue(event.target.value)}>#{checkKeywordList[i]}</button>
+                    <button class="select-keyword-btn" value={checkKeywordList[i]} onClick={(event) => deleteCheckboxValue(event.target.value)}>#{checkKeywordList[i]}</button>
                 </Fragment>
         );}
         return renderResult;
@@ -116,7 +137,7 @@ function KeywordList(props) {
         for (let i = 0; i < keywordList.length; i++) {
             renderResult.push(
                 <li className='col-4 keyword-list'>
-                    <button id={"keyword"+i} class="keyword-btn" value={test[i].keyword} onClick={(event) => getCheckboxValue(event.target.value, event.target.id)}>#{test[i].keyword}</button>
+                    <button id={"keyword"+i} class="keyword-btn" value={keywordList[i].keyword} onClick={(event) => getCheckboxValue(event.target.value, event.target.id)}>#{keywordList[i].keyword}</button>
                 </li>
             );}
         return renderResult;
@@ -129,15 +150,14 @@ function KeywordList(props) {
     }
 
     // 새로고침 버튼 클릭시 
-    const refreshKeyword = () => {
-        // await axios
-        //     .get(reqUrl)
-        //     .then((res) => setKeywordList(res.data));
-        setTest(testData)
+    const refreshKeyword = async () => {
+        await axios
+            .get(reqUrl)
+            .then((res) => setKeywordList(res.data));
     }
 
     return (
-        <div className="container-xxl py-5">
+        <div className="container-xxl py-5 ">
             <div className="container">
                 {/* <h1 className="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">키워드 추천</h1> */}
                 <div className="row keyword-basket">

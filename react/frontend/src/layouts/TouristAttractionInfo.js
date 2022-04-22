@@ -16,9 +16,9 @@ function TouristAttractionInfo(props) {
         <div class="container-xxl bg-white p-0">
             <Navbar/>
             <TourinfoTop />
-            <hr/>
             <div class="container-xxl py-5 wow fadeInUp pdCon" data-wow-delay="0.1s">
-                <div class="row g-5 maCon" style={{width:'100%', height:'1100px'}}>
+                <hr className='info-hr'/>
+                <div class="row g-5 maCon" style={{width:'100%', minHeight:'1100px'}}>
                     <div class="col-lg-5">
                         <Tourinfoitem/>
                         <hr/>

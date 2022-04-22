@@ -7,12 +7,20 @@ import Pagination from 'react-js-pagination';
 
 function Tourlistitem(props) {
     // 현재 페이지 출력 관광지 리스트 
+    // const [tourList, setTourList] = useState([
+    //     {id:'' ,img:'', source:'', sub_title:''}, 
+    //     {id:'' ,img:'', source:'', sub_title:''}, 
+    //     {id:'' ,img:'', source:'', sub_title:''}, 
+    //     {id:'' ,img:'', source:'', sub_title:''},
+    //     {id:'' ,img:'', source:'', sub_title:''}
+    //     ])
+
     const [tourList, setTourList] = useState([
-        {id:'' ,img:'', source:'', sub_title:''}, 
-        {id:'' ,img:'', source:'', sub_title:''}, 
-        {id:'' ,img:'', source:'', sub_title:''}, 
-        {id:'' ,img:'', source:'', sub_title:''},
-        {id:'' ,img:'', source:'', sub_title:''}
+        {id:'' ,img:'https://image.fmkorea.com/files/attach/new2/20210728/3674493/3731487823/3787216388/37dbf32737fa8f62174e3764bae950ab.jpg', source:'성산일출봉', sub_title:'tetdsasdasdsadasdasdasdaasdasdasdsadasdasdadassssssssssssssssssssssssssssssssasdaasdasdasdasddadasdasdasdasdasdasdasdasdasdasdtete'}, 
+        {id:'' ,img:'https://image.fmkorea.com/files/attach/new2/20210728/3674493/3731487823/3787216388/37dbf32737fa8f62174e3764bae950ab.jpg', source:'test1', sub_title:'tetetetetete'}, 
+        {id:'' ,img:'https://image.fmkorea.com/files/attach/new2/20210728/3674493/3731487823/3787216388/37dbf32737fa8f62174e3764bae950ab.jpg', source:'test1', sub_title:'tetetetetete'}, 
+        {id:'' ,img:'https://image.fmkorea.com/files/attach/new2/20210728/3674493/3731487823/3787216388/37dbf32737fa8f62174e3764bae950ab.jpg', source:'test1', sub_title:'tetetetetete'}, 
+        {id:'' ,img:'https://image.fmkorea.com/files/attach/new2/20210728/3674493/3731487823/3787216388/37dbf32737fa8f62174e3764bae950ab.jpg', source:'test1', sub_title:'tetetetetete'}
         ])
 
     const [listSize, setListSize] = useState(1);
@@ -63,13 +71,17 @@ function Tourlistitem(props) {
         for (let i = 0; i < tourList.length; i++) {
             result.push(
                 // 출력 관광지 리스트의 관광지 id을 값으로 상세페이지에 보냄
-                <div class="list-item p-4 mb-4"  onClick={(e) => window.location.href = "/jeju/TouristAttractionInfo?tourSpot=" + tourList[i].id}>
-                    <div class="row g-4">
+                <div class="list-item p-4 mb-4">
+                    <div class="row g-4 list-section">
                         <div class="col-md-4 d-flex align-items-start">
-                            <img class="img-list" src={tourList[i].img} />
+                            <img class="img-list" src={tourList[i].img} onClick={(e) => window.location.href = "/jeju/TouristAttractionInfo?tourSpot=" + tourList[i].id} />
                         </div>
-                        <div class="col-md-8">
-                            <h3 class="text-left" typeof='text' id='test' >{tourList[i].source}</h3>
+                        <div class="col-md-8 list-info">
+                            <div className='row'>
+                                <h4 class="col-md-10 text-left list-text" typeof='text' id='test' onClick={(e) => window.location.href = "/jeju/TouristAttractionInfo?tourSpot=" + tourList[i].id}>{tourList[i].source}</h4>
+                                <div className='col-md-2' id='mapButton'></div>
+                            </div>
+                            <hr className='list-hr'/>
                             <p class="list-p">{tourList[i].sub_title}</p>
                         </div>
                     </div>

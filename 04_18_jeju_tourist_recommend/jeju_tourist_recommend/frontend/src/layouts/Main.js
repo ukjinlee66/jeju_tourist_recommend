@@ -20,7 +20,7 @@ function Main(props) {
             <MainImg />
             <MainSearch />
             <KeywordList />
-            <div class="container-xxl py-3">
+            <div class="container-xxl py-3 rank-con">
                 <div class="row g-4">
                     <Ranking />
                     <SnsRanking/>

@@ -76,7 +76,7 @@ function TourImg(props) {
     };
 
     return (
-        <div class="container-xxl py-5">
+        <div class="container-xxl py-5 rank-con">
             <div class="container">
                 <h1 class="text-center mb-5">이런 관광지는 어떠세요?</h1>
                 <Slider className='testimonial-carousel' {...tourOptions}>

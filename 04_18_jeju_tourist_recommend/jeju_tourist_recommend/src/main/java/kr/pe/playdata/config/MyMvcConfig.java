@@ -31,7 +31,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
 
 
     // 컨트롤러 작성 없이 특정 뷰로 이동하기
-    // 여기서는 /app/** 패턴은 다시 SPA(react-router)가 처리하도록 포워딩한다.
+    // 여기서는 /jeju/** 패턴은 다시 SPA(react-router)가 처리하도록 포워딩한다.
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/jeju/**").setViewName("forward:/index.html");

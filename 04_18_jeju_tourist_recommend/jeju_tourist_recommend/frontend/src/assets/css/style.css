@@ -1,7 +1,7 @@
 /********** Basic **********/
 :root {
     --primary: #f89b00;
-    --secondary: #2B9BFF;
+    --secondary: #323232;
     --light: #EFFDF5;
     --dark: #2B3940;
 }
@@ -40,12 +40,6 @@ div .detail-img {
     object-fit: cover;
 }
 
-div .list-p {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height: 95px;
-}
-
 .bg-jeju {
     background-color: var(--primary);
 }
@@ -79,7 +73,7 @@ div .list-p {
 }
 
 .bg-jeju-nav {
-    background-color: var(--primary);
+    background-color: #ff9f40;
 }
 
 .btn-primary,
@@ -113,7 +107,6 @@ div .list-p {
     font-weight: normal;
     border-radius: 2px;
     background-color: var(--primary);
-    
 }
 
 .closebutton{
@@ -138,12 +131,12 @@ div .list-p {
     box-shadow:0 0 0 0.25rem var(--primary);
 }
 
-.navarblog-btn{
+.naverblog-btn{
     cursor: pointer;
 }
 
-.navarblog-btn:hover{
-    color: blue;
+.naverblog-btn:hover{
+    color: #0654ba;
     cursor: pointer;
 }
 
@@ -265,7 +258,7 @@ div .list-p {
 
 .header-carousel .owl-carousel-item {
     position: relative;
-    min-height: 500px;
+    min-height: 300px;
 }
 
 .header-carousel .owl-carousel-item img {
@@ -355,7 +348,7 @@ div .list-p {
     line-height: 38px;
     width: 100%;
     height: 48px;
-    border: 5px solid var(--primary);
+    border: 5px solid #808080;
 }
 
 .go-map {
@@ -367,38 +360,204 @@ div .list-p {
     padding: 35px;
 }
 
-
 /*** KeywordList ***/
-.form-check .form-check-label:hover {
-    letter-spacing: 1px;
-    box-shadow: none;
+.keyword-section{
+    list-style: none;
+    text-align: center;
+    text-align: -webkit-center;
+    margin-top: 0;
+    --bs-gutter-x: 0rem;
 }
 
-.form-check .form-check-label:hover,.form-check .form-check-input:hover {
+.refresh-icon{
     cursor: pointer;
 }
 
+.refresh-icon:hover{
+    color: #f86300;
+}
+
+.keyword-basket{
+    border: 1px solid var(--secondary);
+    box-shadow: 3px 3px var(--secondary);
+    border-radius: 6px;
+    margin:auto;
+    --bs-gutter-x: 0rem;
+}
+
+.keyword-list{
+    display: inline-block;
+    margin: 0px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.keyword-btn{
+    display: block;
+    font-size: 1em;
+    /* height: 30px; */
+    padding: 3px 20px;
+    border: 1px solid #d9d8d8;
+    border-radius: 20px;
+    color: #06113C;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    width: 80%;
+    height: 56.18px;
+    overflow : hidden;
+    text-overflow : ellipsis; 
+    word-wrap : break-word; 
+    display : -webkit-box;
+    -webkit-line-clamp : 1;
+    -webkit-box-orient: vertical; 
+}
+
+.keyword-btn:hover{
+    border: 1px solid #f86300 !important;
+    color: #f86300 !important;
+}
+
+.btn-section{
+    position: relative;
+    margin-top: 0;
+}
+
+.btn-list{
+    right: 0px;
+    position: absolute;
+    border-radius: 6px;
+}
+
+.select-keyword-section{
+    --bs-gutter-x: 0rem;
+    list-style: none;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.select-keyword{
+    border: 1px solid var(--secondary);
+    border-radius: 6px;
+    margin-top: 10px;
+    --bs-gutter-x: 0rem;
+    box-shadow: 3px 3px var(--secondary);
+    height: 40px;
+}
+
+.recommend-btn{
+    border: 1px solid var(--secondary);
+    background-color: var(--secondary);
+    color: #FFFFFF;
+    border-radius: 6px;
+    margin: 4px 3px;
+}
+
+.recommend-btn:hover{
+    border: 1px solid #f86300;
+    background-color: #f86300;
+    color: #FFFFFF;
+    border-radius: 6px;
+    margin: 4px 3px;
+}
+
+.select-keyword-btn{
+    margin: 0;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 6px;
+    margin: 4px 10px;
+    border: 1px solid #d9d8d8;
+    color: #06113C;
+    background-color: #FFFFFF;
+}
 
 /*** TourListList ***/
 .list-item {
     height: 230px;
-    cursor: pointer;
+}
+
+.info-hr{
+    margin-bottom: 28px;
 }
 
 .pdCon {
     padding-left: 0;
     padding-right: 0;
+    background-color: #fcfbf7;
+    padding-top: 12px !important;
 }
 
 .maCon {
     margin-left: 0;
     margin-right: 0;
+    background-color: #fcfbf7;
+}
+
+.rank-con{
+    background-color: #fcfbf7;
+}
+
+.info-con{
+    background-color: #fcfbf7;
 }
 
 .img-list {
     max-width: 100%;
-    height: 150px;
+    height: 100%;
     object-fit: cover;
+    cursor: pointer;
+    border-radius: 15px 0 0 15px;
+}
+
+.align-items-start{
+    margin-top: 0px;
+    padding: 0px;
+}
+
+.list-text{
+    cursor: pointer;
+    margin-bottom: 0;
+    overflow : hidden;
+    text-overflow : ellipsis; 
+    /* display : -webkit-box; */
+    -webkit-line-clamp : 1;
+    -webkit-box-orient: vertical; 
+    margin-top: 8px;
+}
+
+.list-p {
+    overflow : hidden;
+    text-overflow : ellipsis; 
+    display : -webkit-box;
+    -webkit-line-clamp : 4;
+    -webkit-box-orient: vertical; 
+    height: 95px;
+    word-wrap: break-word; 
+}
+
+.list-text:hover{
+    color: #0654ba;
+}
+
+.list-hr{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    opacity: 0.5;
+    border-color: #EF5A31;
+}
+
+.list-section{
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    min-height: 178px;
+}
+
+/* .list-section:hover{
+    border: 1px solid var(--secondary);
+} */
+
+.list-info{
+    margin-top: 1px;
 }
 
 .tab-content-tourlist {
@@ -455,12 +614,13 @@ ul.pagination {
 .img-fluid-tour {
     width: 380px !important;
     height: 300px !important;
-    border: 10px solid var(--primary) !important;
+    border: 5px solid var(--primary) !important;
     cursor: pointer !important;
+    border-radius: 10px;
 }
 
 .slick-dots li.slick-active button:before {
-    color:var(--primary) !important;
+    color:var(--secondary) !important;
 }
 
 .slick-slide div{
@@ -477,7 +637,7 @@ ul.pagination {
 /*** chatbot ***/
 .chatbot-btn {
     cursor: pointer;
-    color: rgb(19, 121, 236);
+    color: #0654ba;
 }
 
 
@@ -566,4 +726,75 @@ ul.pagination {
     margin-top: 0;
     margin-right: 0;
     margin-left: 0;
+}
+
+/* sns ranking */
+.ranking-section{
+    padding: 0 30px 18px;
+    border: 1px solid var(--secondary);
+    background: #fff;
+    box-shadow: 3px 3px var(--secondary);
+    border-radius: 6px;
+}
+
+.ranking-title{
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    height: 97px;
+    position: relative;
+    margin: 0;
+    font-size: 30px;
+    color: #000;
+    text-align: center;
+}
+
+.title-span{
+    display: table-cell;
+    width: 100%;
+    padding-top: 8px;
+    vertical-align: middle;
+    font-family: helvetica;
+    line-height: 24px;
+}
+
+.ranking-inner{
+    position: relative;
+    left: 0px;
+}
+
+.ranking-list{
+    padding: 8px 10px 0;
+    list-style: none;
+    margin: 0;
+}
+
+.list-element{
+    margin-top: 20px;
+    letter-spacing: 0;
+    overflow : hidden;
+    text-overflow : ellipsis; 
+    display : -webkit-box;
+    -webkit-line-clamp : 1;
+    -webkit-box-orient: vertical; 
+    height: 37.5px;
+}
+
+.rank{
+    font-size: 25px;
+    margin-right: 19px;
+    text-align: left;
+    border: 0;
+    font-weight: bold;
+    color: #000;
+    font-family: helvetica;
+}
+
+.rank-element{
+    font-size: 20px;
+    color: #000;
+}
+
+.ranking-hr{
+    color: #06113C;
 }

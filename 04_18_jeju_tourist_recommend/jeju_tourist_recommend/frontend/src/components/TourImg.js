@@ -76,9 +76,9 @@ function TourImg(props) {
     };
 
     return (
-        <div class="container-xxl py-5">
+        <div class="container-xxl py-5 rank-con">
             <div class="container">
-                <h1 class="text-center mb-5">제주 관광지 사진</h1>
+                <h1 class="text-center mb-5">이런 관광지는 어떠세요?</h1>
                 <Slider className='testimonial-carousel' {...tourOptions}>
                     {tourImgRender()}
                     <img class="img-fluid-tour" src='https://image.fmkorea.com/files/attach/new2/20210728/3674493/3731487823/3787216388/37dbf32737fa8f62174e3764bae950ab.jpg' onClick={(e) => alert("슈슉 슈숙. 슉. 하르방은 못참지  -박태준")} />

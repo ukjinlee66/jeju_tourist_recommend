@@ -60,7 +60,7 @@ function TourinfoTop(props) {
 
 
     return (
-        <div class="container-xxl" >
+        <div class="container-xxl info-con" >
             {tourSpotRender()}
         </div>
     );

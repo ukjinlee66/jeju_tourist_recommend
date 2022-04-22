@@ -6,8 +6,6 @@ import axios from "axios";
 
 function SnsRanking(props) {
     const [snsrankings, setSnsrankings] = useState([{keyword:''},{keyword:''},{keyword:''},{keyword:''},{keyword:''}]);
-    
-    const [test, setTest] = useState([{keyword:'하나'},{keyword:'둘'},{keyword:'셋'},{keyword:'넷'},{keyword:'다섯'}]);
 
     const reqUrl = '/keyword/instaKeyword'
 
@@ -32,7 +30,7 @@ function SnsRanking(props) {
                     <li className='list-element'>
                         <a className='list-area'>
                             <em className='rank'>{i + 1}</em>
-                            <span className='rank-element'>{test[i].keyword}</span>
+                            <span className='rank-element'>{snsrankings[i].keyword}</span>
                         </a>
                     </li>
                 </Fragment>
