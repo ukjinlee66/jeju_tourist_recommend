@@ -22,6 +22,7 @@ function MainSearch(props) {
     // 검색 버튼 클릭 시 이동
     function btClick(e) {
         insertElastic()
+        sessionStorage.setItem("pageSession", 1);
         window.location.href = "/jeju/TouristAttractionList?search=" + searchInput;
     }
 

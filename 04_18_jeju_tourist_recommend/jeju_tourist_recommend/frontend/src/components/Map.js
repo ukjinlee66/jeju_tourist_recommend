@@ -3,7 +3,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../assets/css/bootstrap.min.css';
 import '../assets/css/style.css';
-import closebutton from '../assets/img/close-button.png'
 
 export default function Map() 
 { 
@@ -26,29 +25,6 @@ export default function Map()
       scrollListener(); // window 에서 스크롤을 감시
       return () => { window.removeEventListener("scroll", handleScroll); }; //  window 에서 스크롤을 감시를 종료
   });
-
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.innerHTML = `
-        var map;
-        function initTmap() 
-        {
-          var lat;
-          var lng;
-            map = new Tmapv2.Map("TMapApp", {
-                center: new Tmapv2.LatLng(33.4000,126.51555),
-                width: "100%",
-                height: "60%",
-                zoom:10
-            });
-        }
-        initTmap();
-   `;
-    script.type = "text/javascript";
-    script.async = "async";
-    script.id = "testid";
-    document.head.appendChild(script);
-  }, []);
 
   return (
     <div class="col-lg-7" style={{paddingRight:0}}>

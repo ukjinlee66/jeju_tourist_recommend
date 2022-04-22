@@ -16,15 +16,15 @@ function Tourlistitem(props) {
     ])
 
     const [listSize, setListSize] = useState(1);
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(Number(sessionStorage.getItem("pageSession")));
 
     const mapLoction = [];
-    let savePage = 1;
 
     // 특정 페이지 요청 시 작동하는 함수
     const handlePageChange = nowPage => {
         getListItem(nowPage);
         setPage(nowPage);
+        sessionStorage.setItem("pageSession", nowPage);
     };
 
     const reqUrl = '/source/searchByCertainColumn'
@@ -62,7 +62,6 @@ function Tourlistitem(props) {
     // 관광지 리스트 렌더링
     const tourlistRender = () => {
         const result = [];
-        console.log('rend', tourList)
         for (let i = 0; i < tourList.length; i++) {
             mapLoction.push(tourList[i].source);
             mapLoction.push(tourList[i].location.coordinates)
@@ -84,12 +83,11 @@ function Tourlistitem(props) {
                     </div>
                 </div>
             );}
-        console.log(mapLoction)
+
         sessionStorage.setItem("attr_arr", mapLoction)
         if (mapLoction[0] != ''){
-            console.log(savePage, page)
-            if (savePage == page){
-                console.log('true')
+            const mapDiv = document.getElementById("TMapApp");
+            if (mapDiv.childElementCount == 0){
                 const script = document.createElement("script");
                 script.innerHTML = `
                     var map;
@@ -147,12 +145,11 @@ function Tourlistitem(props) {
                 script.type = "text/javascript";
                 script.async = "async";
                 script.id = "testid";
+                script.className = "testid";
                 document.head.appendChild(script);
             }
             else{
-                const script2 = document.getElementById("testid");
-                document.head.removeChild(script2);
-
+                mapDiv.removeChild(mapDiv.firstChild);
                 const script = document.createElement("script");
                 script.innerHTML = `
                     var map;
@@ -210,8 +207,8 @@ function Tourlistitem(props) {
                 script.type = "text/javascript";
                 script.async = "async";
                 script.id = "testid";
+                script.className = "testid";
                 document.head.appendChild(script);
-                savePage = page;
             }
         }
         return result;
