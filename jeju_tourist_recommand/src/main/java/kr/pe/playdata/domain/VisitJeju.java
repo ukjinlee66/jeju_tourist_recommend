@@ -33,4 +33,5 @@ public class VisitJeju {
 	private String convenience;		// 편의 시설
 	private String etc_property;	// 기타 상세(ex.유네스코 지정)
 	private String content;			// 소개글
+	private Location location;      // 좌표
 }

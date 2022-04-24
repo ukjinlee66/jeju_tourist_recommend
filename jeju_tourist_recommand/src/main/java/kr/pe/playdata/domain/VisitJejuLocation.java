@@ -14,5 +14,5 @@ public class VisitJejuLocation {
     @Id
     private String id;                      // id
     private String source;                  // 관광지 이름
-    private Location location;              // 장소
+    private Location location;              // 좌표
 }
