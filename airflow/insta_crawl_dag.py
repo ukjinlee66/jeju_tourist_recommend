@@ -36,10 +36,9 @@ default_args = {
     'retry_delay' : timedelta(seconds=20)       # 실패 시 재시도까지 delay 시간
 }
 
-
 # DAG 정의
 dag_crawl = DAG(
-    'crawl_dag_id',
+    'insta_crawl_dag_id',
     default_args=default_args,
     description='Crawling DAG with ETL process!',
     schedule_interval= "0 3 * * *",              # 매일 새벽 03시에 인스타 크롤링 시작
@@ -103,10 +102,8 @@ task_save_in_mongo = PythonOperator(
     dag = dag_crawl,
 )
 
-
 # 크롤링한 parquet 파일 삭제
 delete_insta_crawling = f'rm -rf {save_path}/*parquet'
-
 
 task_delete = BashOperator(
     task_id = 'delete_parquet',

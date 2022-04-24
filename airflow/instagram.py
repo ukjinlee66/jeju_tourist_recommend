@@ -51,6 +51,7 @@ def insta_crawl(execution_date, save_path, driver_path):
         time.sleep(3)
     except:
         print("Login Fail")
+        driver.close()
 
     base_url = 'https://www.instagram.com/explore/tags/'            # 제두도 태그 검색
     tag = '제주도'
