@@ -12,8 +12,8 @@ stop_words = {'제주도 제주', 'Jeju-do', '제주도', '환상의 섬 Jeju Is
 
 def mongo_connection(hashtags):
     host = 'mongodb://localhost'
-    conn = MongoClient(host, port, username='admin', password='playdata')
     port = 27017
+    conn = MongoClient(host, port, username='admin', password='playdata')
     
     db = conn.jeju
     insta_hashtags = db.insta

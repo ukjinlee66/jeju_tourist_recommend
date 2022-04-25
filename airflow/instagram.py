@@ -89,20 +89,18 @@ def insta_crawl(execution_date, save_path, driver_path):
             insta_date = soup.select_one('time._1o9PC')['title']
             temp = insta_date.split()
 
-            # mac 환경
-            # year = temp[2]
-            # month = chDict[temp[0]]
-            # day = temp[1][:-1]
-            # temp_insta_date = year+month+day
-
-            # AWS 환경
-            year = temp[0][:-1]
-            month = temp[1][:-1]
-            if(len(month)==1):
-                month = '0'+month
-            day = temp[2][:-1]
-            if(len(day)==1):
-                day = '0'+day
+            if not temp[0][:-1].isdigit():
+                year = temp[2]
+                month = chDict[temp[0]]
+                day = temp[1][:-1]
+            else:
+                year = temp[0][:-1]
+                month = temp[1][:-1]
+                if(len(month)==1):
+                    month = '0'+month
+                day = temp[2][:-1]
+                if(len(day)==1):
+                    day = '0'+day
             temp_insta_date = year+month+day
         except:
             insta_date=''
@@ -170,4 +168,4 @@ def insta_crawl(execution_date, save_path, driver_path):
     df.to_parquet(f'{save_path}/{today_date}_instagram.parquet', engine='pyarrow', compression='snappy')
     driver.close()
 if __name__ == '__main__':
-    insta_crawl('20220420')
+    insta_crawl('20220420_03:00:00', './data/insta', './chromedriver')
