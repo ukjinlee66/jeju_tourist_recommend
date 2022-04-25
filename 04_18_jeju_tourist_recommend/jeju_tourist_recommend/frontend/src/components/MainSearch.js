@@ -40,7 +40,7 @@ function MainSearch(props) {
                     <div class="col-md-10">
                         <div class="row g-2">
                             <div class="col-md-12">
-                                <input type="text" class="form-control border-0" placeholder="검색어를 입력하세요." onChange={(event) => setSearchInput(event.target.value)} onKeyPress={onKeyPress} value={searchInput}/>
+                                <input type="text" class="form-control border-0" placeholder="관광지명을 입력하세요." onChange={(event) => setSearchInput(event.target.value)} onKeyPress={onKeyPress} value={searchInput}/>
                             </div>
                         </div>
                     </div>

@@ -6,7 +6,7 @@ import Scrolltop from '../components/Scrolltop';
 import Footer from '../components/Footer';
 import Tourinfoitem from '../components/Tourinfoitem';
 import NaverBlog from '../components/NaverBlog';
-import Map from '../components/Map';
+import MapInfo from '../components/MapInfo';
 import TourinfoTop from '../components/TourinfoTop';
 import ChatButton from '../components/ChatButton';
 import Navbar from '../components/Navbar';
@@ -24,7 +24,7 @@ function TouristAttractionInfo(props) {
                         <hr/>
                         <NaverBlog/>
                     </div>
-                    <Map/>
+                    <MapInfo/>
                 </div>
             </div>
             <Scrolltop />

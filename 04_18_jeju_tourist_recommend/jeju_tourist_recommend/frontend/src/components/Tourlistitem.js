@@ -98,8 +98,7 @@ function Tourlistitem(props) {
                     {
                     var lat;
                     var lng;
-                    console.log("initmap");
-                    console.log(attr_list);
+                    
                     map = new Tmapv2.Map("TMapApp", {
                         center: new Tmapv2.LatLng(33.4000,126.51555),
                         width: "100%",
@@ -115,7 +114,6 @@ function Tourlistitem(props) {
                         //Marker 객체 생성.
                         lat = attr_list[i+2];
                         lng = attr_list[i+1];
-                        console.log(lat, lng);
                         marker = new Tmapv2.Marker({
                             position: new Tmapv2.LatLng(Number(lat), Number(lng)), //Marker의 중심좌표 설정.
                             title: title1,
@@ -132,10 +130,7 @@ function Tourlistitem(props) {
                     //onclick function
                     function center_map(name)
                     {
-                    console.log(name);
                     let temp = name.split(" ");
-                    console.log(temp);
-                    console.log(Number(temp[1]),Number(temp[0]));
                     let lonlat =  new Tmapv2.LatLng(Number(temp[1]),Number(temp[0]));
                     map.setCenter(lonlat);
                     map.setZoom(12);
@@ -160,8 +155,7 @@ function Tourlistitem(props) {
                     {
                     var lat;
                     var lng;
-                    console.log("initmap");
-                    console.log(attr_list);
+
                     map = new Tmapv2.Map("TMapApp", {
                         center: new Tmapv2.LatLng(33.4000,126.51555),
                         width: "100%",
@@ -177,7 +171,7 @@ function Tourlistitem(props) {
                         //Marker 객체 생성.
                         lat = attr_list[i+2];
                         lng = attr_list[i+1];
-                        console.log(lat, lng);
+
                         marker = new Tmapv2.Marker({
                             position: new Tmapv2.LatLng(Number(lat), Number(lng)), //Marker의 중심좌표 설정.
                             title: title1,
@@ -194,10 +188,7 @@ function Tourlistitem(props) {
                     //onclick function
                     function center_map(name)
                     {
-                    console.log(name);
                     let temp = name.split(" ");
-                    console.log(temp);
-                    console.log(Number(temp[1]),Number(temp[0]));
                     let lonlat =  new Tmapv2.LatLng(Number(temp[1]),Number(temp[0]));
                     map.setCenter(lonlat);
                     map.setZoom(12);
