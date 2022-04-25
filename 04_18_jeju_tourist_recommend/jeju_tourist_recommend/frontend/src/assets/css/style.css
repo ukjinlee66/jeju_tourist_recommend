@@ -355,6 +355,10 @@ div .detail-img {
     cursor: pointer;
 }
 
+.go-map:hover {
+    color: #0654ba;
+}
+
 /*** Search ***/
 .container-fluid-search {
     padding: 35px;
