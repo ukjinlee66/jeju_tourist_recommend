@@ -60,7 +60,7 @@ function Tourinfoitem(props) {
             if (i == 5){
                 break
             }
-            mapLoction.push(nearTour[i].source)
+            mapLoction.push(nearTour[i].source.replace(/,/g, '@'))
             mapLoction.push(nearTour[i].location.coordinates)
         }
         sessionStorage.setItem("info_arr", mapLoction)
@@ -87,13 +87,13 @@ function Tourinfoitem(props) {
                 for(let i = 0; i < info_arr.length;i+=3){
                     let str="";
                     let marker;
-                    let title1 = info_arr[i];
-                    let label="<span style='background-color: #46414E;color:white'>"+info_arr[i]+"</span>";
+                    let title1 = info_arr[i].replace(/@/g, ',');
+                    let label="<span style='background-color: #46414E;color:white'>"+info_arr[i].replace(/@/g, ',')+"</span>";
                     //Marker 객체 생성.
                     lat = info_arr[i+2];
                     lng = info_arr[i+1];
                     marker = new Tmapv2.Marker({
-                        position: new Tmapv2.LatLng(Number(lat), Number(lng)), //Marker의 중심좌표 설정.
+                        position: new Tmapv2.LatLng(parseFloat(lat), parseFloat(lng)), //Marker의 중심좌표 설정.
                         title: title1,
                         label: label
                     });
@@ -109,7 +109,7 @@ function Tourinfoitem(props) {
                 function center_map(name)
                 {
                 let temp = name.split(" ");
-                let lonlat =  new Tmapv2.LatLng(Number(temp[1]),Number(temp[0]));
+                let lonlat =  new Tmapv2.LatLng(parseFloat(temp[1]), parseFloat(temp[0]));
                 map.setCenter(lonlat);
                 map.setZoom(12);
                 }

@@ -63,7 +63,7 @@ function Tourlistitem(props) {
     const tourlistRender = () => {
         const result = [];
         for (let i = 0; i < tourList.length; i++) {
-            mapLoction.push(tourList[i].source);
+            mapLoction.push(tourList[i].source.replace(/,/g, '@'));
             mapLoction.push(tourList[i].location.coordinates)
             result.push(
                 // 출력 관광지 리스트의 관광지 id을 값으로 상세페이지에 보냄
@@ -83,7 +83,7 @@ function Tourlistitem(props) {
                     </div>
                 </div>
             );}
-
+        
         sessionStorage.setItem("attr_arr", mapLoction)
         if (mapLoction[0] != ''){
             const mapDiv = document.getElementById("TMapApp");
@@ -109,13 +109,13 @@ function Tourlistitem(props) {
                     for(let i = 0; i < attr_list.length;i+=3){
                         let str="";
                         let marker;
-                        let title1 = attr_list[i];
-                        let label="<span style='background-color: #46414E;color:white'>"+attr_list[i]+"</span>";
+                        let title1 = attr_list[i].replace(/@/g, ',');
+                        let label="<span style='background-color: #46414E;color:white'>"+attr_list[i].replace(/@/g, ',')+"</span>";
                         //Marker 객체 생성.
                         lat = attr_list[i+2];
                         lng = attr_list[i+1];
                         marker = new Tmapv2.Marker({
-                            position: new Tmapv2.LatLng(Number(lat), Number(lng)), //Marker의 중심좌표 설정.
+                            position: new Tmapv2.LatLng(parseFloat(lat), parseFloat(lng)), //Marker의 중심좌표 설정.
                             title: title1,
                             label: label
                         });
@@ -131,7 +131,7 @@ function Tourlistitem(props) {
                     function center_map(name)
                     {
                     let temp = name.split(" ");
-                    let lonlat =  new Tmapv2.LatLng(Number(temp[1]),Number(temp[0]));
+                    let lonlat =  new Tmapv2.LatLng(parseFloat(temp[1]), parseFloat(temp[0]));
                     map.setCenter(lonlat);
                     map.setZoom(12);
                     }
@@ -166,8 +166,8 @@ function Tourlistitem(props) {
                     for(let i = 0; i < attr_list.length;i+=3){
                         let str="";
                         let marker;
-                        let title1 = attr_list[i];
-                        let label="<span style='background-color: #46414E;color:white'>"+attr_list[i]+"</span>";
+                        let title1 = attr_list[i].replace(/@/g, ',');
+                        let label="<span style='background-color: #46414E;color:white'>"+attr_list[i].replace(/@/g, ',')+"</span>";
                         //Marker 객체 생성.
                         lat = attr_list[i+2];
                         lng = attr_list[i+1];
