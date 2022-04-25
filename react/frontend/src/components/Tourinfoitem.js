@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../assets/css/bootstrap.min.css';
 import '../assets/css/style.css';
 import axios from "axios";
-import Map from './Map';
 function Tourinfoitem(props) {
 
     // 상세 페이지 출력 관광지 정보 

@@ -1,40 +1,36 @@
-/*!
-
-=========================================================
-* Now UI Dashboard React - v1.5.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/now-ui-dashboard-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/now-ui-dashboard-react/blob/main/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-// import React from "react";
-
-// // reactstrap components
-import { Row, Col, Card, CardHeader, CardBody } from "reactstrap";
-
-// // core components
-import PanelHeader from "../components/PanelHeader/PanelHeader.js";
-import ReactDOM from 'react-dom';
-import React, { useEffect, useState } from 'react';
-// import 'bootstrap/dist/css/bootstrap.css';
-// import './css/bootstrap.min.css';
-// import './css/style.css';
+import { Card, CardBody } from "reactstrap";
+import axios from "axios";
+import React, { useEffect, useState} from 'react';
 
 
 const MapWrapper = () => 
 {
-  useEffect(() => {
-	//axios
-    const script = document.createElement("script");
-	script.innerHTML = `
+	const [nearTour, setNearTour] = useState({id:'', source:'', location:{type:'',coordinates:['','']}})
+	const reqUrl2 = '/map/findNear';
+	const mapLoction = [];
+	
+	const getTourNear = async () =>{
+		var temp = decodeURI(window.location.search).split('=');
+		await axios.get(reqUrl2, {
+				params: {
+					longtitude: parseFloat(temp[3]),
+					latitude: parseFloat(temp[5]),
+					distance: 2
+				}
+			}).then((res) => setNearTour(res.data));
+		for(let i = 0; i < nearTour.length;i++)
+		{
+			mapLoction.push(nearTour[i].source);
+			mapLoction.push(nearTour[i].location.coordinates)
+		}
+		sessionStorage.setItem("attr_arr", mapLoction);
+	}
+	  useEffect(() => 
+	  {
+		//axios
+		getTourNear();
+		const script = document.createElement("script");
+		script.innerHTML = `
 	  		var map;
 			var markerInfo;
 			//출발지,도착지 마커
@@ -51,7 +47,8 @@ const MapWrapper = () =>
 
 			//관광지는 n x [2] 열은 위도,경도
 			var attr_list = ["관광지1",[33.5200,126.51555],"관광지2",[33.5030,126.50235],"관광지3",[33.5030,126.49235],"관광지4",[33.5030,126.48235]];
-			//var attr_list = session;
+			attr_list = sessionStorage.getItem("attr_arr");
+			attr_list = attr_list.split(',');
 			const markers = new Map();
 			function initTmap() {
 				// 1. 지도 띄우기
@@ -78,103 +75,22 @@ const MapWrapper = () =>
 				
 				temp_html = '<form><input type="button" value="초기화" onclick="window.location.reload()"></form>';
 				$("#init_map").html(temp_html);
-
-				// 2. 시작, 도착 심볼찍기
-				// 시작
-				// marker_s = new Tmapv2.Marker(
-				// {
-				// 	position : new Tmapv2.LatLng(33.5200,126.51555),
-				// 	icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png",
-				// 	iconSize : new Tmapv2.Size(24, 38),
-				// 	title : '관광지1',
-				// 	map : map
-				// });
-				//marker_s.setLabel('관광지1');
-				//array start point
-				// marker_s = new Tmapv2.Marker(
-				// {
-				// 	position : new Tmapv2.LatLng(attr_list[0][0],attr_list[0][1]),
-				// 	icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png",
-				// 	iconSize : new Tmapv2.Size(24, 38),
-				// 	map : map
-				// });
-				
-				//경유지
-				// marker_p = new Tmapv2.Marker(
-				// {
-				// 	position : new Tmapv2.LatLng(33.5030,126.50235),
-				// 	icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_p.png",
-				// 	iconSize : new Tmapv2.Size(24, 38),
-				// 	title : '관광지2',
-				// 	map : map
-				// });
-				// new_marker_p2 = new Tmapv2.Marker(
-				// {
-				// 	position : new Tmapv2.LatLng(33.4200,126.52555),
-				// 	icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_p.png",
-				// 	iconSize : new Tmapv2.Size(24, 38),
-				// 	title : '관광지3',
-				// 	map : map
-				// });
-				// //경유지
-				// for (let i = 1;i < attr_list.length-1; i++)
-				// {
-				// 	new_marker_p = new Tmapv2.Marker(
-				// 	{
-				// 		position : new Tmapv2.LatLng(attr_list[i][0],attr_list[i][1]),
-				// 		icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png",
-				// 		iconSize : new Tmapv2.Size(24, 38),
-				// 		map : map
-				// 	});
-				// }
-				
-				
-		
-				// //도착
-				// marker_e = new Tmapv2.Marker(
-				// {
-				// 	position : new Tmapv2.LatLng(33.4400,126.53555),
-				// 	icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png",
-				// 	iconSize : new Tmapv2.Size(24, 38),
-				// 	title : '관광지4',
-				// 	map : map
-				// });
-				// //도착
-				// marker_e = new Tmapv2.Marker(
-				// {
-				// 	position : new Tmapv2.LatLng(attr_list[0][0],attr_list[0][1]),
-				// 	icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png",
-				// 	iconSize : new Tmapv2.Size(24, 38),
-				// 	map : map
-				// });
-				// marker_s.addListener("click", function(evt) 
-				// {
-				// 	console.log('관광지1 push');
-				// 	attr_list.push('관광지1');
-				// });
-				// marker_e.addListener("click", function(evt) {
-				// 	attr_list.push('관광지4');
-				// });
-				// marker_p.addListener("click", function(evt) {
-				// 	attr_list.push('관광지3');
-				// });
       }
-      
 		//end initmap
-		// function
 		function addMarkersTooMuch(attr_list) 
 	  	{
-			for (var i = 0; i < attr_list.length; i+=2) 
+			for (var i = 0; i < attr_list.length; i+=3) 
 			{
 				let title1 = attr_list[i];
-				console.log(title1);
-				let lat = attr_list[i+1][0];
-				let lng = attr_list[i+1][1];
+				let lat = attr_list[i+2];
+				let lng = attr_list[i+1];
+				let label="<span style='background-color: #46414E;color:white'>"+attr_list[i]+"</span>";
 				let marker;
 				//Marker 객체 생성.
 				marker = new Tmapv2.Marker({
 					position: new Tmapv2.LatLng(lat, lng), //Marker의 중심좌표 설정.
 					title: title1,
+					label: label
 				});
 				marker_attr.push(marker);
 				marker.setMap(map); //Marker가 표시될 Map 설정.
@@ -200,14 +116,11 @@ const MapWrapper = () =>
 				let endy="";
 				let pass="";
 				const iter1 = markers.entries();
-				console.log("call Sendinfo()", markers.size);
 				let temp_mark;
 				for(var i=0;i<markers.size;i++)
 				{
-					console.log(i);
 					//start point
 					temp_mark = iter1.next().value;
-					console.log(temp_mark);
 					temp_mark = temp_mark[1].getPosition();
 					if(i==0)
 					{
@@ -230,7 +143,6 @@ const MapWrapper = () =>
 					}
 				}
 				//JSON TYPE EDIT [S]
-				console.log(startx, starty, endx, endy, pass);
                 $.ajax({
                       type : "POST",
                       url : "https://apis.openapi.sk.com/tmap/routes?version=1&format=json&callback=result",
@@ -249,7 +161,6 @@ const MapWrapper = () =>
                       },
                       success : function(response) 
                       {
-						console.log("success : ", response.features);
                         var resultData = response.features;
   
                         var tDistance = "총 거리 : "
@@ -308,7 +219,6 @@ const MapWrapper = () =>
                               } else { //각 포인트 마커
                                 markerImg = "http://topopen.tmap.co.kr/imgs/point.png";
 								pType = "P";
-								console.log("P");
                               }
   
                               // 경로들의 결과값들을 포인트 객체로 변환 
@@ -509,7 +419,6 @@ const MapWrapper = () =>
 			//초기화 기능
 			function resettingMap() 
 			{
-				console.log("call resettingmap()");
 				for (var i = 0; i < marker_attr.length; i++) 
 				{
 					if(i==0 || i == marker_attr.legnth-1)
@@ -533,10 +442,9 @@ const MapWrapper = () =>
       function retres()
 	  {
 		let str="";
-		console.log('retres()', markers.size);
 		for(const item of markers)
 		{
-			str+='<<div class="row btn-row g-3"><h3 class="col-lg-8">'+item[0]+'</h3>\
+			str+='<<div class="row btn-row g-3"><h3 class="col-lg-8" style="color:white;">'+item[0]+'</h3>\
 			<button class="col-lg-4 del-btn" type="button" value="'+item[0]+'" onclick="deletemark(this.value);return false;">삭제</button></div>';
 		}
 		$("#result2").html(str);
@@ -546,18 +454,13 @@ const MapWrapper = () =>
 			markers.delete(name);
 			retres();
 		};
-	  function check_abc()
-	  {
-		  console.log(abc);
-		  console.log(sessionStorage.getItem("test"));
-		}
 	  retres();
 	  initTmap();
    `;
     script.type = "text/javascript";
     script.async = "async";
 	document.head.appendChild(script);
-  }, []);
+  }, [nearTour]);
   return (
     <div id="map_div"/>
 	
@@ -598,7 +501,6 @@ function FullScreenMap()
 	//axios
   return (
     <>
-      <PanelHeader size="sm" />
       <div className="content">
             <Card>
               <CardBody>
@@ -609,7 +511,7 @@ function FullScreenMap()
                 >
                 
               <div id="map_wrap" class="map_wrap">
-			  <div class="row btn-row g-3"><p class="col-lg-4" id="mapty"/>
+			  <div class="row btn-row g-3" style={{marginTop:"30px"}}><p class="col-lg-4" id="mapty"/>
 			  <p class="col-lg-8" id="result"/></div>
               <MapWrapper/>
 			  

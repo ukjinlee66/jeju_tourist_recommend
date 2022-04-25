@@ -6,7 +6,7 @@ import axios from "axios";
 function TourinfoTop(props) {
 
     // 상세 페이지 출력 관광지 정보 
-    const [tourSpot, setTourSpot] = useState({source:'', tag_prev:'', img:'https://image.fmkorea.com/files/attach/new2/20210728/3674493/3731487823/3787216388/37dbf32737fa8f62174e3764bae950ab.jpg', sub_title:'', call:'', address:'', detail_content:'' })
+    const [tourSpot, setTourSpot] = useState({source:'', tag_prev:'', img:'https://image.fmkorea.com/files/attach/new2/20210728/3674493/3731487823/3787216388/37dbf32737fa8f62174e3764bae950ab.jpg', sub_title:'', call:'', address:'', detail_content:'', location:{type:'', coordinates:['','']} })
 
     const reqUrl = '/source/lookup';
 
@@ -29,7 +29,7 @@ function TourinfoTop(props) {
     // 관광지명, 전화번호, 주소, 간단한 정보 등 렌더링
     const tourSpotRender = () => {
         const result = [];
-        
+        console.log(tourSpot.source + "$longitude="+ tourSpot.location.coordinates[0] + "$latitude="+tourSpot.location.coordinates[1]);
         result.push(
             <Fragment>
             <br/>
@@ -45,7 +45,7 @@ function TourinfoTop(props) {
                     <p class="mb-2">
                         <i class="fa fa-location-arrow me-3">&nbsp; {tourSpot.address}</i>
                     </p>
-                    <p class="mb-2 go-map" onClick={(e) => window.location.href = "/jeju/Maps?tourSpot=" + tourSpot.source}>
+                    <p class="mb-2 go-map" onClick={(e) => window.location.href = "/jeju/Maps?tourSpot=" + tourSpot.source + "=longitude="+ tourSpot.location.coordinates[0] + "=latitude="+tourSpot.location.coordinates[1]}>
                         <i class="fa fa-globe me-3">&nbsp; 경로 안내</i>
                     </p>
                     <hr/>

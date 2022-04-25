@@ -21,13 +21,13 @@ import { NavLink } from "react-router-dom";
 import { Nav } from "reactstrap";
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
+import logo from '../../assets/img/logo.png';
 import {
   InputGroup,
   InputGroupText,
   InputGroupAddon,
   Input,
 } from "reactstrap";
-import logo from "../../logo-white.svg";
 
 var ps;
 console.important = function(text) 
@@ -64,23 +64,9 @@ function Sidebar(props) {
   });
   return (
     <div className="sidebar" data-color={props.backgroundColor}>
-      <div className="logo side-logo">
-        <a
-          href="https://www.creative-tim.com?ref=nudr-sidebar"
-          className="simple-text logo-mini"
-          target="_blank"
-        >
-          <div className="logo-img">
-            <img src={logo} alt="react-logo" />
-          </div>
+        <a href="/jeju" className="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+              <img class="logo" src={logo} />
         </a>
-        <a
-          href="https://www.creative-tim.com?ref=nudr-sidebar"
-          className="simple-text logo-normal"
-          target="_blank"
-        >
-        </a>
-      </div>
       <div className="sidebar-wrapper" ref={sidebar}>
         {/* 왼쪽 메뉴 부분 출력하는 부분 */}
         <p id="result2"/>
