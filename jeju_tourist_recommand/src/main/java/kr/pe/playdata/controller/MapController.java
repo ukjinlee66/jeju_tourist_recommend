@@ -51,13 +51,13 @@ public class MapController {
     @GetMapping("/findNear")
     public List<VisitJejuLocation> findNear(
             @ApiParam(value = "경도", required=false, example = "126.8990639")
-            @RequestParam String longtitude,
+            @RequestParam String longitude,
             @ApiParam(value = "위도", required=false, example = "33.4397")
             @RequestParam String latitude,
             @ApiParam(value = "반경", required=false, example = "1")
             @RequestParam double distance
     ){
-        Point p = new Point(Double.valueOf(longtitude), Double.valueOf(latitude));
+        Point p = new Point(Double.valueOf(longitude), Double.valueOf(latitude));
         Distance d = new Distance(distance, Metrics.KILOMETERS);
         List<VisitJejuLocation> li = locationService.findNear(p,d);
         return li;
