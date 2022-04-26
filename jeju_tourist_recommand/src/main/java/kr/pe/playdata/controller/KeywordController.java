@@ -34,9 +34,6 @@ public class KeywordController {
     private KeywordService service;
     
     @Autowired
-    private ElasticService esService;
-    
-    @Autowired
     private HighLevelClientElasticService hlcEsService;
 
     
@@ -51,19 +48,6 @@ public class KeywordController {
         return hlcEsService.getTopFiveSearchKeywords("searchName");          // 상위 5개의 검색어를 가져온다.
     }
 
-    
-    @ApiOperation(value = "검색어 입력", notes = "사용자가 입력한 검색어 저장")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "OK !!"),
-            @ApiResponse(code = 404, message = "404 에러 발생, Not Found !"),
-            @ApiResponse(code = 500, message = "500 에러 발생, Internal Server Error !")
-    })
-    @GetMapping("/searchKeyword")
-    public SearchRank insertSearchKeywords(
-    		@ApiParam(value = "검색어", required=false, example = "우도 가볼만한 곳")
-            @RequestParam String search){
-        return esService.insertSearch(search);			// 검색어를 elastic에 저장한다.          
-    }
 
     
     @ApiOperation(value = "인스타 해쉬 태그 순위 조회", notes = "태그가 가장 많이 된 상위 5개 키워드 조회")

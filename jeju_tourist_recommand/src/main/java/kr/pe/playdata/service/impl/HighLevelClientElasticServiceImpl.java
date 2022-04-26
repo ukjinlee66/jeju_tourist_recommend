@@ -67,10 +67,10 @@ public class HighLevelClientElasticServiceImpl implements HighLevelClientElastic
 					((Terms) aggregation).getBuckets()
 						.forEach(bucket -> result.put(bucket.getKeyAsString(), bucket.getDocCount()));
 				});
-			
+			System.out.println(aggregations);
 			// Map.Entry 리스트
 			List<Entry<String, Long>> entryList = new ArrayList<Entry<String, Long>>(result.entrySet());
-			
+			System.out.println(entryList);
 			// Comparator를 사용하여 정렬
 			Collections.sort(entryList, new Comparator<Entry<String, Long>>(){
 				
@@ -87,7 +87,11 @@ public class HighLevelClientElasticServiceImpl implements HighLevelClientElastic
 			// 상위 5개 검색어 리스트로 저장
 			int count = 0;
 			for (Entry<String, Long> entry : entryList) {
-				count++;
+				if (entry.getKey().equals("")){
+					continue;
+				}
+				else count++;
+				
 				if (count>5) break;
 				System.out.println(entry.getKey()+":"+entry.getValue());
 				result_list.add(entry.getKey());

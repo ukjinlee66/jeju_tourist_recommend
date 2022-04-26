@@ -1,12 +1,16 @@
 package kr.pe.playdata.service.impl;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import kr.pe.playdata.domain.SearchRank;
-import kr.pe.playdata.repository.ElasticRepo;
+import kr.pe.playdata.domain.TourClickLog;
+import kr.pe.playdata.repository.ClickLogElasticRepo;
+import kr.pe.playdata.repository.SearchLogElasticRepo;
 import kr.pe.playdata.service.ElasticService;
 import lombok.RequiredArgsConstructor;
 
@@ -17,17 +21,44 @@ import lombok.RequiredArgsConstructor;
 public class ElasticServiceImpl implements ElasticService{
 	
 
-	private final ElasticRepo elasticRepo;
+	private final SearchLogElasticRepo searchLogElasticRepo;
+	private final ClickLogElasticRepo clickLlogElasticRepo;
 	
-	public SearchRank insertSearch(String search) {	
-		
+	public SearchRank insertSearchLog(String search) {	
 		SearchRank searchRank = new SearchRank();
     	searchRank.setSearchName(search);
     	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
 		searchRank.setSearchDate(sdf.format(new Date()));
     	
-		elasticRepo.save(searchRank);	
+		searchLogElasticRepo.save(searchRank);	
 		return searchRank;
 	};
+	
+	public List<SearchRank> insertKeywordListLog(String keywords){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+		
+		String[] key_inputs = keywords.split(",");
+		List<SearchRank> keyList = new ArrayList<>();
+		
+		for(String key : key_inputs) {
+			keyList.add(new SearchRank(key,sdf.format(new Date())));
+		}
+		
+		searchLogElasticRepo.saveAll(keyList);
+		return keyList;
+	}
+	
+	public TourClickLog insertClickLog(String tourName) {	
+		TourClickLog tourClickLog = new TourClickLog();
+		tourClickLog.setTourName(tourName);
+    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+    	tourClickLog.setLogDate(sdf.format(new Date()));
+    	
+    	clickLlogElasticRepo.save(tourClickLog);	
+		
+		return tourClickLog;
+	};
+	
+	
 
 }
