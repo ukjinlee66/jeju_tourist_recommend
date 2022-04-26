@@ -30,7 +30,7 @@ function Tourinfoitem(props) {
         await axios
             .get(reqUrl2, {
                 params: {
-                    longtitude: tourInfo.location.coordinates[0],
+                    longitude: tourInfo.location.coordinates[0],
                     latitude: tourInfo.location.coordinates[1],
                     distance: 2
                 }
