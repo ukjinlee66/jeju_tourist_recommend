@@ -3,6 +3,7 @@ package kr.pe.playdata.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.elasticsearch.core.geo.GeoPoint;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,8 +64,13 @@ public class LogController {
     @GetMapping("/tourClickLog")
     public TourClickLog insertClickLog(
     		@ApiParam(value = "검색어", required=false, example = "아르떼뮤지엄")
-            @RequestParam String source){
-        return esService.insertClickLog(source);			// 검색어를 elastic에 저장한다.          
+            @RequestParam String source,
+            @ApiParam(value = "경도", required=false, example = "126.8990639")
+            @RequestParam String longitude,
+            @ApiParam(value = "위도", required=false, example = "33.4397")
+    		@RequestParam String latitude){
+    	GeoPoint geoPoint = new GeoPoint(Double.valueOf(longitude),Double.valueOf(latitude));
+        return esService.insertClickLog(source,geoPoint);			// 검색어를 elastic에 저장한다.          
     }
     
 	
