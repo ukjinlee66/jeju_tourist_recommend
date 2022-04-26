@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.data.elasticsearch.core.geo.GeoPoint;
 import org.springframework.stereotype.Service;
 
 import kr.pe.playdata.domain.SearchRank;
@@ -48,9 +49,10 @@ public class ElasticServiceImpl implements ElasticService{
 		return keyList;
 	}
 	
-	public TourClickLog insertClickLog(String tourName) {	
+	public TourClickLog insertClickLog(String tourName, GeoPoint geoPoint) {	
 		TourClickLog tourClickLog = new TourClickLog();
 		tourClickLog.setTourName(tourName);
+		tourClickLog.setLocation(geoPoint);
     	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
     	tourClickLog.setLogDate(sdf.format(new Date()));
     	
@@ -58,7 +60,5 @@ public class ElasticServiceImpl implements ElasticService{
 		
 		return tourClickLog;
 	};
-	
-	
-
+		
 }
