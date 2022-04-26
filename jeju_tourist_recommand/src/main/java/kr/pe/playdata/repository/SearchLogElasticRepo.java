@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import kr.pe.playdata.domain.SearchRank;
 
 //@Repository
-public interface ElasticRepo extends ElasticsearchRepository<SearchRank, String> {
+public interface SearchLogElasticRepo extends ElasticsearchRepository<SearchRank, String> {
 	
 	
 
