@@ -24,13 +24,13 @@ function TourinfoTop(props) {
     }
 
     // elasticSearch에 상세페이지 log데이터 통신
-    const insertElastic = async (searchWord, searchLongitude, searchLatitude) => {
+    const insertElastic = async (searchWord, searchLocation) => {
         await axios
             .get(elasticUrl, {
                 params:{
                     source: searchWord,
-                    longitude: searchLongitude,
-                    latitude: searchLatitude
+                    location: searchLocation,
+                    logClass:'chatbotLog'
                 }
             })
             .then();
@@ -45,7 +45,7 @@ function TourinfoTop(props) {
     const tourSpotRender = () => {
         const result = [];
         if (tourSpot.source != ''){
-            insertElastic(tourSpot.source, tourSpot.location.coordinates[0], tourSpot.location.coordinates[1]);
+            insertElastic(tourSpot.source, tourSpot.location);
         }
         result.push(
             <Fragment>

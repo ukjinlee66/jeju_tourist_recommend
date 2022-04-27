@@ -7,21 +7,8 @@ import axios from "axios";
 function MainSearch(props) {
     const [searchInput, setSearchInput] = useState("")
 
-    const reqUrl = '/log/searchKeyword'
-
-    const insertElastic = async () => {
-        await axios
-            .get(reqUrl, {
-                params:{
-                    search: searchInput
-                }
-            })
-            .then();
-    }
-
     // 검색 버튼 클릭 시 이동
     function btClick(e) {
-        insertElastic()
         sessionStorage.setItem("pageSession", 1);
         window.location.href = "/jeju/TouristAttractionList?search=" + searchInput;
     }

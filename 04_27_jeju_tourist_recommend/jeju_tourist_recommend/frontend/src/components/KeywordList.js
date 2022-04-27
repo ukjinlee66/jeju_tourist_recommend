@@ -24,7 +24,8 @@ function KeywordList(props) {
         await axios
             .get(elasticUrl, {
                 params:{
-                    search: searchWord
+                    search: searchWord,
+                    logClass:'searchLog'
                 }
             })
             .then();
@@ -171,6 +172,14 @@ function KeywordList(props) {
     return (
         <div className="container-xxl py-5 ">
             <div className="container">
+                {/* <div className="row g-4 recommend-keyword-section">
+                    <div className='col-lg-2 hotkeyword-title'>
+                        Hot Keyword
+                    </div>
+                    <ui className='col-lg-10'>
+                        {}
+                    </ui>
+                </div> */}
                 {/* <h1 className="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">키워드 추천</h1> */}
                 <div className="row keyword-basket">
                     <ui className='col-lg-11 row g-4 keyword-section'>

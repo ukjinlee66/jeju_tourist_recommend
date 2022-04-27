@@ -29,7 +29,7 @@ function Ranking(props) {
                     <li className='list-element'>
                         <a className='list-area'>
                             <em className='rank'>{i + 1}</em>
-                            <span className='rank-element'>{rankings[i]}</span>
+                            <span className='rank-element' onClick={(e) => window.location.href = "/jeju/TouristAttractionList?search=" + rankings[i]}>{rankings[i]}</span>
                         </a>
                     </li>
                 </Fragment>

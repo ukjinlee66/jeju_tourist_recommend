@@ -373,6 +373,23 @@ div .detail-img {
     --bs-gutter-x: 0rem;
 }
 
+/* .recommend-keyword-section{
+    border: 1px solid var(--secondary);
+    border-radius: 6px;
+    box-shadow: 3px 0px var(--secondary);
+    --bs-gutter-x: 0rem;
+    margin-bottom: 3px;
+}
+
+.hotkeyword-title{
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0;
+    border: 1px solid;
+    border-radius: 6px 0 0 6px;
+} */
+
 .refresh-icon{
     cursor: pointer;
 }
@@ -844,6 +861,11 @@ ul.pagination {
 .rank-element{
     font-size: 20px;
     color: #000;
+    cursor: pointer;
+}
+
+.rank-element:hover{
+    color: #0654ba;
 }
 
 .ranking-hr{
