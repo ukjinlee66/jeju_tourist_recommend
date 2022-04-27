@@ -29,6 +29,7 @@ function Tourlistitem(props) {
 
     const reqUrl = '/source/searchByCertainColumn'
     const tourSizeUrl = '/source/searchSize'
+    const elaUrl = '/log/searchKeyword'
 
     // 페이지에 따른 관광지 리스트 요청
     const getListItem = async (page) => {
@@ -53,8 +54,21 @@ function Tourlistitem(props) {
             .then((res) => setListSize(res.data));  
     }
 
+    // 엘라스틱 서치에 로그 데이터 전송
+    const insertElastic = async (searchKeyword) => {
+        await axios
+            .get(elaUrl, {
+                params:{
+                    search: searchKeyword,
+                    logClass:'searchLog'
+                }
+            })
+            .then();
+    }
+
    // 처음 렌더링시 한번 실행되는 함수
     useEffect(() => {
+        insertElastic(decodeURI(window.location.search.split('=')[1]));
         getlistSize();
         getListItem(page);
     }, [])
