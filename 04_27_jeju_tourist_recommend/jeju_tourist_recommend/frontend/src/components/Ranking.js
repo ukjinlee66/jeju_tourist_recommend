@@ -11,7 +11,11 @@ function Ranking(props) {
     // 검색어 랭킹 요청
     const getRanking = async () => {
         await axios
-            .get(reqUrl)
+            .get(reqUrl, {
+                params:{
+                    logClass:'searchLog'
+                }
+            })
             .then((res) => setRankings(res.data));
     }
 
