@@ -1,5 +1,7 @@
 package kr.pe.playdata.domain;
 
+import java.util.Map;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
@@ -29,6 +31,6 @@ public class TourClickLog {
 	private String logDate;
 	
 	@GeoPointField
-	private GeoPoint location;
+	private Map<String, Object> location;
 
 }

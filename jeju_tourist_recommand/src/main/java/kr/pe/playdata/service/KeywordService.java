@@ -2,7 +2,7 @@ package kr.pe.playdata.service;
 
 import kr.pe.playdata.domain.InstaRank;
 import kr.pe.playdata.domain.RecommendKeyword;
-import kr.pe.playdata.domain.SearchRank;
+import kr.pe.playdata.domain.SearchLog;
 
 import java.util.List;
 
