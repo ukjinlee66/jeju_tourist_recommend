@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@Document(indexName = "searchrank", createIndex = false)
-public class SearchRank {
+@Document(indexName = "searchlog", createIndex = true)
+public class SearchLog {
 	/*
 	 * 		검색어 순위
 	 */
@@ -28,13 +28,16 @@ public class SearchRank {
 	@Field(type = FieldType.Keyword)
     private String searchName;		// 검색어
 	
+	@Field(type = FieldType.Keyword)
+	private String logClass;
 	
 	@Field(type = FieldType.Date)
 	private String searchDate;
 	
-	public SearchRank(String searchName, String searchDate){
+	public SearchLog(String searchName, String searchDate, String logClass){
 		
 		this.searchName = searchName;
 		this.searchDate = searchDate;
+		this.logClass = logClass;
 	}
 }

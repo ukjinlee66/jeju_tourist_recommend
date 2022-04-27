@@ -4,11 +4,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.elasticsearch.core.geo.GeoPoint;
 import org.springframework.stereotype.Service;
 
-import kr.pe.playdata.domain.SearchRank;
+import kr.pe.playdata.domain.SearchLog;
 import kr.pe.playdata.domain.TourClickLog;
 import kr.pe.playdata.repository.ClickLogElasticRepo;
 import kr.pe.playdata.repository.SearchLogElasticRepo;
@@ -25,33 +26,35 @@ public class ElasticServiceImpl implements ElasticService{
 	private final SearchLogElasticRepo searchLogElasticRepo;
 	private final ClickLogElasticRepo clickLlogElasticRepo;
 	
-	public SearchRank insertSearchLog(String search) {	
-		SearchRank searchRank = new SearchRank();
-    	searchRank.setSearchName(search);
+	public SearchLog insertSearchLog(String search,String logClass) {	
+		
     	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-		searchRank.setSearchDate(sdf.format(new Date()));
     	
-		searchLogElasticRepo.save(searchRank);	
-		return searchRank;
+    	SearchLog searchLog = new SearchLog(search,sdf.format(new Date()),logClass);
+    	
+		searchLogElasticRepo.save(searchLog);	
+		return searchLog;
 	};
 	
-	public List<SearchRank> insertKeywordListLog(String keywords){
+	public List<SearchLog> insertKeywordListLog(String keywords){
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
 		
 		String[] key_inputs = keywords.split(",");
-		List<SearchRank> keyList = new ArrayList<>();
+		List<SearchLog> keyList = new ArrayList<>();
 		
 		for(String key : key_inputs) {
-			keyList.add(new SearchRank(key,sdf.format(new Date())));
+			keyList.add(new SearchLog(key,sdf.format(new Date()),"chatbotLog"));
 		}
 		
 		searchLogElasticRepo.saveAll(keyList);
 		return keyList;
 	}
 	
-	public TourClickLog insertClickLog(String tourName, GeoPoint geoPoint) {	
+	public TourClickLog insertClickLog(String tourName, Map<String, Object> geoPoint) {	
 		TourClickLog tourClickLog = new TourClickLog();
 		tourClickLog.setTourName(tourName);
+		
+	
 		tourClickLog.setLocation(geoPoint);
     	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
     	tourClickLog.setLogDate(sdf.format(new Date()));

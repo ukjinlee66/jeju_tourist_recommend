@@ -17,6 +17,7 @@ import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.aggregations.Aggregation;
@@ -36,7 +37,7 @@ public class HighLevelClientElasticServiceImpl implements HighLevelClientElastic
 	
 	private final RestHighLevelClient restHighLevelClient;
 	
-	public List<String> getTopFiveSearchKeywords(String term){
+	public List<String> getTopFiveSearchKeywords(String term, String logclass){
 		
 		// 현재로 부터 하루 전의 시간을 구함
 		Calendar cal = Calendar.getInstance();
@@ -46,15 +47,21 @@ public class HighLevelClientElasticServiceImpl implements HighLevelClientElastic
 		String date = sdf.format(cal.getTime());
 		
 		// 검색을 위한 request객체 생성
-		SearchRequest searchRequest = new SearchRequest("searchrank");
+		SearchRequest searchRequest = new SearchRequest("searchlog");
 		SearchSourceBuilder sourceBuilder = SearchSourceBuilder.searchSource();
 		// 검색어 집계를 위한 aggregation 생성
 		TermsAggregationBuilder terms = AggregationBuilders.terms(term).field(term).order(BucketOrder.count(true));
 		// 하루동안의 검색어를 가지고 오기위한 query 생성
-		QueryBuilder q = QueryBuilders.rangeQuery("searchDate").gt(date);
-				
+		QueryBuilder q1 = QueryBuilders.matchQuery("logClass", logclass);
+		QueryBuilder q2 = QueryBuilders.rangeQuery("searchDate").gt(date);
+		BoolQueryBuilder boolQuery = new BoolQueryBuilder();
+		boolQuery.must(q1);
+		boolQuery.must(q2);
+		
+		System.out.println(boolQuery);
 		sourceBuilder.size(0);
-		sourceBuilder.query(q);
+		sourceBuilder.query(boolQuery);
+		
 		sourceBuilder.aggregation(terms);
 		
 		searchRequest.source(sourceBuilder);
