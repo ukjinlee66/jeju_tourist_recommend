@@ -6,5 +6,5 @@ import java.util.Map;
 public interface HighLevelClientElasticService {
 	
 	//Map<String, Long> getTopFiveSearchKeywords(String term);
-	List<String> getTopFiveSearchKeywords(String term);
+	List<String> getTopFiveSearchKeywords(String term, String logName);
 }

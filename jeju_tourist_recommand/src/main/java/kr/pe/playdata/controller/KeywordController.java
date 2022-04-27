@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import kr.pe.playdata.domain.InstaRank;
 import kr.pe.playdata.domain.RecommendKeyword;
-import kr.pe.playdata.domain.SearchRank;
+import kr.pe.playdata.domain.SearchLog;
 import kr.pe.playdata.service.ElasticService;
 import kr.pe.playdata.service.HighLevelClientElasticService;
 import kr.pe.playdata.service.KeywordService;
@@ -44,8 +44,10 @@ public class KeywordController {
             @ApiResponse(code = 500, message = "500 에러 발생, Internal Server Error !")
     })
     @GetMapping("/top5Keyword")
-    public List<String> getTopFiveSearchKeywords(){
-        return hlcEsService.getTopFiveSearchKeywords("searchName");          // 상위 5개의 검색어를 가져온다.
+    public List<String> getTopFiveSearchKeywords(
+    		@ApiParam(value = "검색어", required=false, example = "우도 가볼만한 곳")
+            @RequestParam String logClass){
+        return hlcEsService.getTopFiveSearchKeywords("searchName",logClass);          // 상위 5개의 검색어를 가져온다.
     }
 
 

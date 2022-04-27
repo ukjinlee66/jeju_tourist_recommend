@@ -1,6 +1,8 @@
 package kr.pe.playdata.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.geo.GeoPoint;
@@ -13,7 +15,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import kr.pe.playdata.domain.SearchRank;
+import kr.pe.playdata.domain.SearchLog;
 import kr.pe.playdata.domain.TourClickLog;
 import kr.pe.playdata.service.ElasticService;
 
@@ -36,10 +38,12 @@ public class LogController {
             @ApiResponse(code = 500, message = "500 에러 발생, Internal Server Error !")
     })
     @GetMapping("/searchKeyword")
-    public SearchRank insertSearchKeyword(
+    public SearchLog insertSearchKeyword(
     		@ApiParam(value = "검색어", required=false, example = "우도 가볼만한 곳")
-            @RequestParam String search){
-        return esService.insertSearchLog(search);			// 검색어를 elastic에 저장한다.          
+            @RequestParam String search,
+            @ApiParam(value = "로그분류", required=false, example = "searchLog")
+            @RequestParam String logClass){
+        return esService.insertSearchLog(search,logClass);			// 검색어를 elastic에 저장한다.          
     }
 
     @ApiOperation(value = "검색어 입력", notes = "사용자가 입력한 검색어 저장")
@@ -49,7 +53,7 @@ public class LogController {
             @ApiResponse(code = 500, message = "500 에러 발생, Internal Server Error !")
     })
     @GetMapping("/searchKeywordList")
-    public List<SearchRank> insertSearchKeywordList(
+    public List<SearchLog> insertSearchKeywordList(
     		@ApiParam(value = "키워드", required=false, example = "바다 아름다운 아이와함께")
             @RequestParam String search){
         return esService.insertKeywordListLog(search);			// 검색어를 elastic에 저장한다.          
@@ -66,14 +70,9 @@ public class LogController {
     		@ApiParam(value = "검색어", required=false, example = "아르떼뮤지엄")
             @RequestParam String source,
             @ApiParam(value = "경도", required=false, example = "126.8990639")
-            @RequestParam String longitude,
-            @ApiParam(value = "위도", required=false, example = "33.4397")
-    		@RequestParam String latitude){
-    	GeoPoint geoPoint = new GeoPoint(Double.valueOf(longitude),Double.valueOf(latitude));
-        return esService.insertClickLog(source,geoPoint);			// 검색어를 elastic에 저장한다.          
+            @RequestParam Map<String, Object> location) {
+           
+        return esService.insertClickLog(source,location);			// 검색어를 elastic에 저장한다.          
     }
-    
-	
-	
-    
+        
 }

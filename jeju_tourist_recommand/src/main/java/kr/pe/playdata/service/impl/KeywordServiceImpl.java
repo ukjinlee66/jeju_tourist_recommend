@@ -2,7 +2,7 @@ package kr.pe.playdata.service.impl;
 
 import kr.pe.playdata.domain.InstaRank;
 import kr.pe.playdata.domain.RecommendKeyword;
-import kr.pe.playdata.domain.SearchRank;
+import kr.pe.playdata.domain.SearchLog;
 import kr.pe.playdata.repository.InstaKeywordMongoRepo;
 import kr.pe.playdata.repository.RecommendKeywordTemplateRepo;
 import kr.pe.playdata.service.KeywordService;
