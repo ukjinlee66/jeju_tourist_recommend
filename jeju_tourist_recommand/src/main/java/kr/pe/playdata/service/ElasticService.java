@@ -14,6 +14,6 @@ public interface ElasticService {
 	
 	List<SearchLog> insertKeywordListLog(String search);
 	
-	TourClickLog insertClickLog(String tourName, Map<String, Object> geoPoint);
+	TourClickLog insertClickLog(String tourName, String longitute, String latitute);
 	
 }

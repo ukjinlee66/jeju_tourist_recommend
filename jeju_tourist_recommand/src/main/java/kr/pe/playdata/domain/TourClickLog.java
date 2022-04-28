@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document(indexName = "tourclicklog", createIndex = false)
+@Document(indexName = "tourclicklog", createIndex = true)
 public class TourClickLog {	
 
 	@Id
@@ -31,6 +31,6 @@ public class TourClickLog {
 	private String logDate;
 	
 	@GeoPointField
-	private Map<String, Object> location;
-
+	private GeoPoint location;
 }
+
