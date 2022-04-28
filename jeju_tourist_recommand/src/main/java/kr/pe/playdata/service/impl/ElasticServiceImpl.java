@@ -2,13 +2,16 @@ package kr.pe.playdata.service.impl;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.data.elasticsearch.core.geo.GeoPoint;
 import org.springframework.stereotype.Service;
 
+import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
 import kr.pe.playdata.domain.SearchLog;
 import kr.pe.playdata.domain.TourClickLog;
 import kr.pe.playdata.repository.ClickLogElasticRepo;
@@ -50,15 +53,21 @@ public class ElasticServiceImpl implements ElasticService{
 		return keyList;
 	}
 	
-	public TourClickLog insertClickLog(String tourName, Map<String, Object> geoPoint) {	
+	public TourClickLog insertClickLog(String tourName, String longitute, String latitute) {
+		
+//		List<Double> coordinates =Arrays.asList(Double.parseDouble(longitute),Double.parseDouble(latitute));
+//		Map<String, Object> location = new HashMap<>();
+//		location.put("coordinates", coordinates);
+//		location.put("type","Point");
+		GeoPoint geopoint = new GeoPoint(Double.parseDouble(longitute),Double.parseDouble(latitute));
+
+		
 		TourClickLog tourClickLog = new TourClickLog();
 		tourClickLog.setTourName(tourName);
-		
-	
-		tourClickLog.setLocation(geoPoint);
+		tourClickLog.setLocation(geopoint);
     	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
     	tourClickLog.setLogDate(sdf.format(new Date()));
-    	
+    	System.out.println(tourClickLog);
     	clickLlogElasticRepo.save(tourClickLog);	
 		
 		return tourClickLog;

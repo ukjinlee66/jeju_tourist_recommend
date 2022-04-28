@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.geo.GeoPoint;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -70,9 +71,12 @@ public class LogController {
     		@ApiParam(value = "검색어", required=false, example = "아르떼뮤지엄")
             @RequestParam String source,
             @ApiParam(value = "경도", required=false, example = "126.8990639")
-            @RequestParam Map<String, Object> location) {
+            @RequestParam String longitute,
+            @ApiParam(value = "위도", required=false, example = "32.31223")
+            @RequestParam String latitute) {
+    		
            
-        return esService.insertClickLog(source,location);			// 검색어를 elastic에 저장한다.          
+        return esService.insertClickLog(source,longitute,latitute);			// 검색어를 elastic에 저장한다.          
     }
-        
+
 }
