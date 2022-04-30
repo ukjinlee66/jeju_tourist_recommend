@@ -50,7 +50,7 @@ public class HighLevelClientElasticServiceImpl implements HighLevelClientElastic
 		SearchRequest searchRequest = new SearchRequest("searchlog");
 		SearchSourceBuilder sourceBuilder = SearchSourceBuilder.searchSource();
 		// 검색어 집계를 위한 aggregation 생성
-		TermsAggregationBuilder terms = AggregationBuilders.terms(term+".keyword").field(term+".keyword").order(BucketOrder.count(true));
+		TermsAggregationBuilder terms = AggregationBuilders.terms(term).field(term);
 		// 하루동안의 검색어를 가지고 오기위한 query 생성
 		QueryBuilder q1 = QueryBuilders.matchQuery("logClass", logclass);
 		QueryBuilder q2 = QueryBuilders.rangeQuery("searchDate").gt(date);
