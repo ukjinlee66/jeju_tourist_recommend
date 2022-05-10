@@ -63,4 +63,5 @@ SNS, Blog 데이터를 활용해 키워드 및 챗봇 기반의 제주 관광지
 
 ### 📚Reference
 - React Package - [https://www.npmjs.com/]
-- 
+- Elasticsearch - [https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html?baymax=KR-ES-getting-started&elektra=landing-page]
+- Airflow - [https://airflow.apache.org/docs/]
