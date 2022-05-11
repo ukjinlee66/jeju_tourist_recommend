@@ -8,25 +8,25 @@ Encore Playdata Bigdata Engineer - Final Project
 
 ### 🖥️프로젝트 주제
 SNS, Blog 데이터를 활용해 키워드 및 챗봇 기반의 제주 관광지 추천 플랫폼 
-#
+<br><hr>
 
 ### 📆프로젝트 기간
 2022-01-13 ~ 2022-04-29
-#
+<br><hr>
 
 ### 👨‍👨팀 소개
 🙋🏼‍♂️[이욱진](https://github.com/ukjinlee66) : Front-end / Data Collection / Project Manage  
 🙋🏼‍[이용광](https://github.com/dldydrhkd) : Back-end / Data Preprocessing / Data Collection  
 🙋🏼‍♂️[권건우](https://github.com/Geonw00) : Front-end / Data Analysis / Data Collection  
 🙋🏼‍♂️[박태준](https://github.com/ih-tjpark) : DB / Data Preprocessing / Data Analysis / Data Collection 
-#
+<br><hr>
 
 ### 🏗️아키텍처
 <p align="center">
 <img src="/asset/Architecture.jpg" width="1000" height="500" >
 </p>
 
-#
+<br><hr>
 
 ### 🛠️기술 스택
 <p>
@@ -45,7 +45,7 @@ SNS, Blog 데이터를 활용해 키워드 및 챗봇 기반의 제주 관광지
   <img src="https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=AmazonAWS&logoColor=white"/>
 </p>
 
-#
+<br><hr>
 
 ### 📂설치 파일 및 버전
 - Spring Boot 2.6.4 version
@@ -59,7 +59,7 @@ SNS, Blog 데이터를 활용해 키워드 및 챗봇 기반의 제주 관광지
 - Elasticsearch 7.17.3 version
 - Kibana 7.17.3 version
 
-# 
+<br><hr>
 
 ### 📚Reference
 - React Package - [https://www.npmjs.com/]
