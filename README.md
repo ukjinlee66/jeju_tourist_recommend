@@ -15,10 +15,10 @@ SNS, Blog 데이터를 활용해 키워드 및 챗봇 기반의 제주 관광지
 #
 
 ### 👨‍👨팀 소개
-🙋🏼‍♂️이욱진 : Front-end / Data Collection / Project Manage  
-🙋🏼‍♂️이용광 : Back-end / Data Preprocessing / Data Collection  
-🙋🏼‍♂️권건우 : Front-end / Data Analysis / Data Collection  
-🙋🏼‍♂️박태준 : DB / Data Preprocessing / Data Analysis / Data Collection 
+🙋🏼‍♂️[이욱진](https://github.com/ukjinlee66) : Front-end / Data Collection / Project Manage  
+🙋🏼‍[이용광](https://github.com/dldydrhkd) : Back-end / Data Preprocessing / Data Collection  
+🙋🏼‍♂️[권건우](https://github.com/Geonw00) : Front-end / Data Analysis / Data Collection  
+🙋🏼‍♂️[박태준](https://github.com/ih-tjpark) : DB / Data Preprocessing / Data Analysis / Data Collection 
 #
 
 ### 🏗️아키텍처
@@ -65,3 +65,4 @@ SNS, Blog 데이터를 활용해 키워드 및 챗봇 기반의 제주 관광지
 - React Package - [https://www.npmjs.com/]
 - Elasticsearch - [https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html?baymax=KR-ES-getting-started&elektra=landing-page]
 - Airflow - [https://airflow.apache.org/docs/apache-airflow/stable/index.html]
+- TmapAPI - [http://tmapapi.sktelecom.com]
