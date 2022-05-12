@@ -11,6 +11,7 @@ import time
 from fake_useragent import UserAgent
 from time import sleep
 from multiprocessing import Pool
+from multiprocessing.pool import ThreadPool
 from concurrent.futures import ThreadPoolExecutor
 from bs4 import BeautifulSoup
 import concurrent.futures
@@ -117,8 +118,8 @@ def naver_api(execution_date, cur_dir, naver_save_path):
     tour_list = open_excel(cur_dir)
     dum_list = []
     start = time.time()
-    with Pool(processes=4) as pool:
-        temp = pool.map(do_process_with_thread_crawl, tour_list)
+    pool = ThreadPool(4)
+    temp = pool.map(do_precess_with_thread_crawl, tour_list)
     end = time.time()
     sec = (end - start)
     result = datetime.timedelta(seconds=sec)
